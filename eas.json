@@ -1,0 +1,20 @@
+{
+  "build": {
+    "development": {
+      "releaseChannel": "development",
+      "developmentClient": true,
+      "distribution": "internal",
+      "credentialsSource": "remote"
+    },
+    "preview": {
+      "releaseChannel": "staging",
+      "distribution": "internal"
+    },
+    "production": {
+      "releaseChannel": "production"
+    }
+  },
+  "cli": {
+    "version": ">= 0.46.0"
+  }
+}

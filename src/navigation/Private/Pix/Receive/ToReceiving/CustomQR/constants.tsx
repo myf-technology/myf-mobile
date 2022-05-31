@@ -1,0 +1,3 @@
+export enum CUSTOMQR {
+  CUSTOMQR = 'CUSTOMQR_VIEW',
+}

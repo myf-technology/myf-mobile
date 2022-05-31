@@ -1,0 +1,4 @@
+export enum BALANCE {
+  GET = 'GET_BALANCE',
+  GET_ERROR = 'GET_BALANCE_ERROR',
+}

@@ -1,0 +1,4 @@
+export enum CONFIRM {
+  CONFIRM = 'CONFIRM_VIEW',
+  RECEIPT = 'RECEIPT_VIEW',
+}

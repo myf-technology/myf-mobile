@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "owner": "valepay",
+    "name": "Valepay",
+    "slug": "valepay",
+    "scheme": "valepay",
+    "version": "0.0.1",
+    "orientation": "default",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "requireFullScreen": true,
+      "supportsTablet": true,
+      "bundleIdentifier": "com.valepay.valepay",
+      "buildNumber": "0.0.1"
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 1,
+      "package": "com.valepay.valepay",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    }
+  }
+}

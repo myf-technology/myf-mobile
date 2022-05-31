@@ -1,0 +1,4 @@
+export enum CONFIRM {
+  CONFIRM = 'CONFIRM_STACK',
+  DASHBOARD = 'DASHBOARD_STACK',
+}

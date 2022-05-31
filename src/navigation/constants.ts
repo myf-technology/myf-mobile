@@ -1,0 +1,4 @@
+export enum NAVIGATORS {
+  PUBLIC = 'PUBLIC_STACK',
+  PRIVATE = 'PRIVATE_STACK',
+}

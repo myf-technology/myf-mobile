@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "677418375211",
+    "project_id": "valepay-app",
+    "storage_bucket": "valepay-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677418375211:android:7773719820a948dd75f26e",
+        "android_client_info": {
+          "package_name": "com.valepay.valepay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677418375211-p65p3tlad5kcn2lt7t00v32ns3togu8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcMNybk3UCqej7bCkC0wNosYdIo_fzHTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677418375211-p65p3tlad5kcn2lt7t00v32ns3togu8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+export enum DESTINY {
+  DESTINY = 'DESTINY_VIEW',
+  CONFIRM = 'DESTINY_CONFIRM',
+}

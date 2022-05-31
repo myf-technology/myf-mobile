@@ -1,0 +1,4 @@
+export enum QUESTIONS {
+  QUESTIONS = 'QUESTIONS_VIEW',
+  QRCODE = 'QRCODE_VIEW',
+}

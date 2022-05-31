@@ -1,0 +1,3 @@
+export enum REGISTERKEY {
+  NEW_ADRESS = 'REGISTER_NEW-ADRESS',
+}

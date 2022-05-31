@@ -1,0 +1,4 @@
+export enum PAYMENT {
+  BAR_CODE = 'PAYMENT_BAR_CODE',
+  PAY = 'PAYMENT_PAY',
+}

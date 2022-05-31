@@ -1,0 +1,5 @@
+export enum SAFETY {
+  SAFETY = 'SAFETY_VIEW',
+  RESET = 'RESET_VIEW',
+  UPDATE = 'UPDATE_VIEW',
+}

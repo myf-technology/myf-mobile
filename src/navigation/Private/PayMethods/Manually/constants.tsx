@@ -1,0 +1,4 @@
+export enum MANUALLY {
+  MANUALLY = 'MANUALLY_VIEW',
+  FORM = 'FORM_VIEW',
+}
