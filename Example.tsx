@@ -60,8 +60,8 @@ export const Example = () => {
       style={{
         justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
         height: '100%'
+        width: '100%',
       }}
     >
       <GestureDetector gesture={qualquer}>
