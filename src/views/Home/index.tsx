@@ -17,8 +17,8 @@ export const Home = () => {
 
   const { navigate } = useNavigation();
 
-  const handleRegister = async () => {
-    navigate(PUBLIC.CPFCNPJ as never);
+  const handleRegister = () => {
+    navigate(PUBLIC.EMAILNAME as never);
   };
 
   const handleLogin = () => {
@@ -32,33 +32,23 @@ export const Home = () => {
     //   style={styles.background}
     //   source={require('../../../assets/images/home.jpeg')}
     // >
-      <SafeAreaView style={{ flex: 1, backgroundColor:'black' }}>
-        <StatusBar style={'light'} />
-        <View style={styles.logo}>
-          <Icon
-            name="MyF"
-          fill="white"
-            height={height(15)}
-            width={width(87)}
-          />
-        </View>
-        <View style={styles.containerButton}>
-          <View style={styles.registerButton}>
-            <Button
-              testID='"button'
-              onPress={handleRegister}
-              theme={Theme.white}
-            title="Abrir conta"
-            />
-          </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+      <StatusBar style={'light'} />
+      <View style={styles.logo}>
+        <Icon name='MyF' fill='white' height={height(15)} width={width(87)} />
+      </View>
+      <View style={styles.containerButton}>
+        <View style={styles.registerButton}>
           <Button
-            onPress={handleLogin}
-            testID="button"
-            theme={Theme.transparent}
-            title="Entrar"
+            testID='"button'
+            onPress={handleRegister}
+            theme={Theme.white}
+            title='Abrir conta'
           />
         </View>
-      </SafeAreaView>
+        <Button onPress={handleLogin} testID='button' theme={Theme.transparent} title='Entrar' />
+      </View>
+    </SafeAreaView>
     // </ImageBackground>
   );
 };

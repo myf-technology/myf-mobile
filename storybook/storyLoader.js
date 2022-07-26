@@ -53,7 +53,7 @@ function loadStories() {
   require('../src/views/register/Company/Guide/Guide.stories');
   require('../src/views/register/Company/Name/Name.stories');
   require('../src/views/register/Company/RepresentantGuide/RepresentantGuide.stories');
-  require('../src/views/register/CpfCnpj/NameEmail.stories');
+  require('../src/views/register/EmailName/NameEmail.stories');
   require('../src/views/register/Document/Document.stories');
   require('../src/views/register/Email/Email.stories');
   require('../src/views/register/Password/Password.stories');
@@ -132,7 +132,7 @@ const stories = [
   '../src/views/register/Company/Guide/Guide.stories',
   '../src/views/register/Company/Name/Name.stories',
   '../src/views/register/Company/RepresentantGuide/RepresentantGuide.stories',
-  '../src/views/register/CpfCnpj/CpfCnpj.stories',
+  '../src/views/register/CpfCnpj/NameEmail.stories',
   '../src/views/register/Document/Document.stories',
   '../src/views/register/Email/Email.stories',
   '../src/views/register/Password/Password.stories',
