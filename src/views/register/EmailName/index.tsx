@@ -1,5 +1,5 @@
-import RegisterLayout from '../_helpers/RegisterLayout';
 import { useState } from 'react';
+import PageLayout from '../../../components/PageLayout/PageLayout';
 import { FlashInput } from './_components/FlashInput';
 
 export const NameEmail = () => {
@@ -26,7 +26,7 @@ export const NameEmail = () => {
   };
 
   return (
-    <RegisterLayout>
+    <PageLayout>
       {res !== 200 ? (
         <FlashInput
           value={value}
@@ -46,6 +46,6 @@ export const NameEmail = () => {
           holder='Email...'
         />
       )}
-    </RegisterLayout>
+    </PageLayout>
   );
 };

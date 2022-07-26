@@ -1,36 +1,33 @@
-import Profile from './Profile';
-import Wallet from './Wallet';
 import { DASHBOARD } from './constants';
 
 import { Icon } from '../../../components/Icon';
 import { Dashboard } from '../../../views/Dashboard';
 import { Statement } from '../../../views/Statement';
-import { Transactions } from '../../../views/Transaction/MainPage';
 
 export default [
   {
     name: DASHBOARD.DASHBOARD,
     component: Dashboard,
-    Icon: () => <Icon name="Home" fill='white' />,
+    Icon: () => <Icon name='Home' fill='white' />
   },
   {
     name: DASHBOARD.WALLET,
-    Icon: () => <Icon name="Wallet" fill='white' />,
-    component: Wallet,
+    Icon: () => <Icon name='Wallet' fill='white' />,
+    component: 'Wallet'
   },
   {
     name: DASHBOARD.TRANSACTIONS,
-    Icon: () => <Icon name="Money" fill="red" />,
-    component: Transactions,
+    Icon: () => <Icon name='Money' fill='red' />,
+    component: 'Transactions'
   },
   {
     name: DASHBOARD.STATEMENT,
-    Icon: () => <Icon name="Statement" fill='white' />,
-    component: Statement,
+    Icon: () => <Icon name='Statement' fill='white' />,
+    component: Statement
   },
   {
     name: DASHBOARD.PROFILE,
-    Icon: () => <Icon name="Person" fill='white' />,
-    component: Profile,
-  },
+    Icon: () => <Icon name='Person' fill='white' />,
+    component: 'Profile'
+  }
 ];

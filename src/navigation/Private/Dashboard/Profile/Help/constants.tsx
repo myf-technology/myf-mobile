@@ -1,5 +1,0 @@
-export enum HELP {
-  HELP = 'HELP_VIEW',
-  NEEDS = 'NEEDS_VIEW',
-  CONTACT = 'CONTACT_VIEW',
-}

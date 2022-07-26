@@ -1,4 +1,0 @@
-export enum FORM {
-  FORM = 'FORM_VIEW',
-  BALANCEPAYMENT = 'BALANCEPAYMENT_STACK',
-}

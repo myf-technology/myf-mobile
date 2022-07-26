@@ -1,4 +1,0 @@
-export enum PRICE {
-  PRICE = 'PRICE_VIEW',
-  CONFIRM = 'CONFIRM_STACK',
-}
