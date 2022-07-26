@@ -20,66 +20,66 @@ import { SelfieGuide } from '../../views/register/SelfieGuide';
 export default [
   {
     name: PUBLIC.DEV,
-    component: Dev,
+    component: Dev
   },
   {
     name: PUBLIC.HOME,
-    component: Home,
+    component: Home
   },
   {
     name: PUBLIC.STORYBOOK,
-    component: Storybook,
+    component: Storybook
   },
   {
     name: PUBLIC.LOGIN,
-    component: Login,
+    component: Login
   },
   {
     name: PUBLIC.CPFCNPJ,
-    component: CpfCnpj,
+    component: CpfCnpj
   },
   {
     name: PUBLIC.BIRTHDATE,
-    component: Birthdate,
+    component: Birthdate
   },
   {
     name: PUBLIC.EMAIL,
-    component: Email,
+    component: Email
   },
   {
     name: PUBLIC.ADDRESS,
-    component: Address,
+    component: Address
   },
   {
     name: PUBLIC.PASSWORD,
-    component: Password,
+    component: Password
   },
   {
     name: PUBLIC.SELFIEGUIDE,
-    component: SelfieGuide,
+    component: SelfieGuide
   },
   {
     name: PUBLIC.SELFIE,
-    component: Selfie,
+    component: Selfie
   },
   {
     name: PUBLIC.DOCUMENT,
-    component: Document,
+    component: Document
   },
   {
     name: PUBLIC.RESIDENCE_PROOF,
-    component: ResidenceProof,
+    component: ResidenceProof
   },
   {
     name: PUBLIC.AKNOWLEDGEMENT,
-    component: Aknowledgment,
+    component: Aknowledgment
   },
   {
     name: PUBLIC.JURIDICAL_PERSON,
-    component: JuricidalPerson,
+    component: JuricidalPerson
   },
   {
     name: PUBLIC.FINANCE_PASSWORD,
-    component: FinancePassword,
-  },
+    component: FinancePassword
+  }
 ];

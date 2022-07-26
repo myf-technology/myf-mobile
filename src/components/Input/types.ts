@@ -16,6 +16,9 @@ export interface Iprops extends TextInputProps {
   label?: string;
   placeholderAlign?: textAlignType;
   refs?: any;
+  loading?: boolean;
+  arrowForward?: any | boolean;
+  onArrowPress?: () => void;
   passwordMode?: boolean;
   toggleVisibility?(): void;
   containerTestID?: string;

@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   NativeSyntheticEvent,
   TextInputFocusEventData,
+  ActivityIndicator
 } from 'react-native';
 import MaskInput from 'react-native-mask-input';
 
@@ -15,12 +16,13 @@ import Colors from '../../constants/Colors';
 import { width } from '../../constants/responsive';
 import { Spacer } from '../Spacer';
 import { Text } from '../Text';
+import { Icon } from '../Icon';
 
 export const Input = ({
   mask,
   refs,
   label = '',
-  fontSize,
+  fontSize = 16,
   eyeIcon,
   textColor = 'white',
   backgroundColor = 'dark',
@@ -29,6 +31,9 @@ export const Input = ({
   placeholderAlign = 'left',
   passwordMode = false,
   toggleVisibility,
+  arrowForward,
+  loading,
+  onArrowPress,
   containerTestID,
   ...rest
 }: Iprops) => {
@@ -70,7 +75,7 @@ export const Input = ({
   return (
     <View testID={containerTestID}>
       {label ? (
-        <Text color={colors} textAlign="left" font="callout">
+        <Text color={colors} textAlign='left' font='callout'>
           {label}
         </Text>
       ) : null}
@@ -83,13 +88,13 @@ export const Input = ({
             borderColor: isErrorState ? Colors.red : 'transparent',
             fontSize,
             backgroundColor: Colors[backgroundColor],
-            color: Colors[textColor],
-          },
+            color: Colors[textColor]
+          }
         ]}
         numberOfLines={1}
         ref={refs}
-        placeholderTextColor={Colors.dark}
-        testID="textinput-input-component"
+        placeholderTextColor={Colors.grey3}
+        testID='textinput-input-component'
         onChangeText={changeHandler}
         secureTextEntry={passwordMode}
         mask={mask}
@@ -98,18 +103,30 @@ export const Input = ({
         onFocus={focusHandler}
         onBlur={blurHandler}
       />
+      {arrowForward ? (
+        <TouchableOpacity
+          onPress={() => onArrowPress(setValue)}
+          style={{ position: 'absolute', top: width(10), left: width(54) }}
+        >
+          {loading ? (
+            <ActivityIndicator style={{ right: width(3) }} />
+          ) : (
+            <Icon name='ArrowForward' />
+          )}
+        </TouchableOpacity>
+      ) : null}
       {eyeIcon ? (
         <TouchableOpacity onPress={toggleVisibility} style={styles.eyeWrapper}>
           {iconVisible &&
             (passwordMode ? (
-              <Ionicons name="md-eye-off" size={width(5.63)} />
+              <Ionicons name='md-eye-off' size={width(5.63)} />
             ) : (
-              <Ionicons name="md-eye" size={width(5.63)} />
+              <Ionicons name='md-eye' size={width(5.63)} />
             ))}
         </TouchableOpacity>
       ) : null}
       <Spacer amount={2} />
-      <Text color={Colors.red} textAlign="left" font="callout">
+      <Text color={Colors.red} textAlign='left' font='callout'>
         {isErrorState && errorMessage}
       </Text>
     </View>

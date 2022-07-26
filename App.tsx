@@ -15,15 +15,9 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <View
-          style={{
-            backgroundColor: '#222',
-            flex: 1
-            // padding: 20
-          }}
-        >
-          <Example />
-        </View>
+        <WithProvider store={store}>
+          <Navigator />
+        </WithProvider>
       </SafeAreaProvider>
     );
   }

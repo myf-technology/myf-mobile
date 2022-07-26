@@ -14,7 +14,7 @@ export enum Theme {
   disabled = 'disabled',
 }
 export interface Iprops extends ButtonProps {
-  theme?: 'yellow' |'green' | 'red' | 'transparent' | 'dark' | 'disabled';
+  theme?: 'yellow' |'green' | 'red' | 'white' | 'transparent' | 'dark' | 'disabled';
   onPress(ev: NativeSyntheticEvent<NativeTouchEvent>): void;
   text?: string;
   small?: boolean;

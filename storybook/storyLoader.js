@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/components/ContainerButton/ContainerButton.stories');
   require('../src/components/Deprecated.DatePicker/deprecated.AndroidDatePicker/AndroidDatePicker.stories');
   require('../src/components/Deprecated.DatePicker/IosDatePicker/IosDatePicker.stories');
+  require('../src/components/FlipInputButton/FlipInputButton.stories');
   require('../src/components/Input/Input.stories');
   require('../src/components/Modal/Modal.stories');
   require('../src/components/PathLink/PathLink.stories');
@@ -52,7 +53,7 @@ function loadStories() {
   require('../src/views/register/Company/Guide/Guide.stories');
   require('../src/views/register/Company/Name/Name.stories');
   require('../src/views/register/Company/RepresentantGuide/RepresentantGuide.stories');
-  require('../src/views/register/CpfCnpj/CpfCnpj.stories');
+  require('../src/views/register/CpfCnpj/NameEmail.stories');
   require('../src/views/register/Document/Document.stories');
   require('../src/views/register/Email/Email.stories');
   require('../src/views/register/Password/Password.stories');
@@ -89,12 +90,12 @@ const stories = [
   '../src/components/ContainerButton/ContainerButton.stories',
   '../src/components/Deprecated.DatePicker/deprecated.AndroidDatePicker/AndroidDatePicker.stories',
   '../src/components/Deprecated.DatePicker/IosDatePicker/IosDatePicker.stories',
+  '../src/components/FlipInputButton/FlipInputButton.stories',
   '../src/components/Input/Input.stories',
   '../src/components/Modal/Modal.stories',
   '../src/components/PathLink/PathLink.stories',
   '../src/components/Text/Text.stories',
   '../src/components/Toggle/Toggle.stories',
-  '../src/views/Dashboard/Dashboard.stories',
   '../src/views/Home/Home.stories',
   '../src/views/Login/Login.stories',
   '../src/views/Pix/Area/Area.stories',

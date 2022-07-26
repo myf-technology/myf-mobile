@@ -36,7 +36,7 @@ const RegisterLayout = ({
           height={Layout.window.height * 0.02}
           width={Layout.window.width * 0.024}
           style={{ justifyContent: 'center' }}
-          fill="dark"
+          fill="white"
         />
       </TouchableOpacity>
       {children}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   layoutContainer: {
     flex: 1,
     padding: Layout.paddingHorizontal,
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.dark,
   },
 });
 
