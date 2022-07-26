@@ -18,18 +18,18 @@ export default StyleSheet.create({
     borderColor: 'transparent',
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 4
     },
     shadowOpacity: 0.14,
     shadowRadius: 4,
 
-    elevation: 10,
+    elevation: 10
   },
   eyeWrapper: {
     elevation: 100,
     position: 'absolute',
     right: height(1.2),
     bottom: height(6),
-    zIndex: 500,
-  },
+    zIndex: 500
+  }
 });

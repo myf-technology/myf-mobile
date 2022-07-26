@@ -14,6 +14,7 @@ export interface Iprops extends TextInputProps {
   validateAsync?: boolean;
   backgroundColor?: colorTypes;
   label?: string;
+  noShadow?: boolean;
   placeholderAlign?: textAlignType;
   refs?: any;
   loading?: boolean;

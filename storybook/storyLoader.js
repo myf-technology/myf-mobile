@@ -3,88 +3,51 @@
 //
 // https://github.com/elderfo/react-native-storybook-loader.git
 
-function loadStories() {}
+function loadStories() {
+  require("../src/components/Balance/BaseBalance/BaseBalance.stories");
+  require("../src/components/Button/Button.stories");
+  require("../src/components/CameraButton/CameraButton.stories");
+  require("../src/components/ConfirmationModal/ConfirmationModal.stories");
+  require("../src/components/ContainerButton/ContainerButton.stories");
+  require("../src/components/Deprecated.DatePicker/deprecated.AndroidDatePicker/AndroidDatePicker.stories");
+  require("../src/components/Deprecated.DatePicker/IosDatePicker/IosDatePicker.stories");
+  require("../src/components/FlipInputButton/FlipInputButton.stories");
+  require("../src/components/Input/Input.stories");
+  require("../src/components/Modal/Modal.stories");
+  require("../src/components/PathLink/PathLink.stories");
+  require("../src/components/Text/Text.stories");
+  require("../src/components/Toggle/Toggle.stories");
+  require("../src/components/Tooltips/Tooltips.stories");
+  require("../src/views/Home/Home.stories");
+  require("../src/views/Login/Login.stories");
+  require("../src/views/register/EmailName/NameEmail.stories");
+  require("../src/views/register/Password/Password.stories");
+  require("../src/views/Statement/Statement.stories");
+}
 
 const stories = [
-  '../src/components/Balance/BaseBalance/BaseBalance.stories',
-  '../src/components/Button/Button.stories',
-  '../src/components/CameraButton/CameraButton.stories',
-  '../src/components/ConfirmationModal/ConfirmationModal.stories',
-  '../src/components/ContainerButton/ContainerButton.stories',
-  '../src/components/Deprecated.DatePicker/deprecated.AndroidDatePicker/AndroidDatePicker.stories',
-  '../src/components/Deprecated.DatePicker/IosDatePicker/IosDatePicker.stories',
-  '../src/components/FlipInputButton/FlipInputButton.stories',
-  '../src/components/Input/Input.stories',
-  '../src/components/Modal/Modal.stories',
-  '../src/components/PathLink/PathLink.stories',
-  '../src/components/Text/Text.stories',
-  '../src/components/Toggle/Toggle.stories',
-  '../src/views/Home/Home.stories',
-  '../src/views/Login/Login.stories',
-  '../src/views/Pix/Area/Area.stories',
-  '../src/views/Pix/BankPassword/BankPassword.stories',
-  '../src/views/Pix/CodeChecker/CodeChecker.stories',
-  '../src/views/Pix/Keys/Keys.stories',
-  '../src/views/Pix/MobileRegister/MobileRegister.stories',
-  '../src/views/Pix/PixLimit/PixLimit.stories',
-  '../src/views/Pix/QRcodePay/MainMenu/QRcodePay.stories',
-  '../src/views/Pix/QRcodePay/PixCopyPaste/PixCopyPaste.stories',
-  '../src/views/Pix/QRcodePay/QRreader/QRreader.stories',
-  '../src/views/Profile/accountConfig/fees/Fees.stories',
-  '../src/views/Profile/accountConfig/MainPage/accountConfig.stories',
-  '../src/views/Profile/accountConfig/permission/Permission.stories',
-  '../src/views/Profile/accountConfig/privacy/Privacy.stories',
-  '../src/views/Profile/accountConfig/terms/Terms.stories',
-  '../src/views/Profile/desable/DisableAccount.stories',
-  '../src/views/Profile/help/asked/MainMenu/Asked.stories',
-  '../src/views/Profile/help/contactUs/contactUs.stories',
-  '../src/views/Profile/help/MainMenu/Help.stories',
-  '../src/views/Profile/ProfileField/Profile.stories',
-  '../src/views/Profile/registrationData/_components/OpenButton/openButton.stories',
-  '../src/views/Profile/registrationData/registrationData.stories',
-  '../src/views/Profile/safety/ChangeAddress/ChangeAddress.stories',
-  '../src/views/Profile/safety/MainPage/safety.stories',
-  '../src/views/Profile/safety/PasswordReset/PasswordRest.stories',
-  '../src/views/Recharge/Finalize/RechargeConfirm.stories',
-  '../src/views/Recharge/MainPage/MobileCredit.stories',
-  '../src/views/Recharge/Products/SelectPrice.stories',
-  '../src/views/register/Address/Address.stories',
-  '../src/views/register/Aknowledgment/Aknowledgment.stories',
-  '../src/views/register/Birthdate/Birthdate.stories',
-  '../src/views/register/Company/Email/Email.stories',
-  '../src/views/register/Company/Guide/Guide.stories',
-  '../src/views/register/Company/Name/Name.stories',
-  '../src/views/register/Company/RepresentantGuide/RepresentantGuide.stories',
-  '../src/views/register/CpfCnpj/NameEmail.stories',
-  '../src/views/register/Document/Document.stories',
-  '../src/views/register/Email/Email.stories',
-  '../src/views/register/Password/Password.stories',
-  '../src/views/register/ResidenceProof/ResidenceProof.stories',
-  '../src/views/register/Selfie/Selfie.stories',
-  '../src/views/register/SelfieGuide/SelfieGuide.stories',
-  '../src/views/Statement/Statement.stories',
-  '../src/views/Transaction/BilletPay/BalancePayment/BalancePayment.stories',
-  '../src/views/Transaction/BilletPay/ManuallyType/ManuallyType.stories',
-  '../src/views/Transaction/BilletPay/PaymentForm/PaymentForm.stories',
-  '../src/views/Transaction/BilletPay/PayMethods/PayMethods.stories',
-  '../src/views/Transaction/BilletPay/Scanner/Scanner.stories',
-  '../src/views/Transaction/CardPayment/CardPayment.stories',
-  '../src/views/Transaction/Confirm/Confirm.stories',
-  '../src/views/Transaction/CustomQRcode/CustomQRcode.stories',
-  '../src/views/Transaction/Destiny/TrasferDestiny.stories',
-  '../src/views/Transaction/FinancePassword/FinancePassword.stories',
-  '../src/views/Transaction/MainPage/Transactions.stories',
-  '../src/views/Transaction/P2P/MainPage/P2P.stories',
-  '../src/views/Transaction/Receipt/Receipt.stories',
-  '../src/views/Transaction/Receive/Receiving.stories',
-  '../src/views/Transaction/ToReceiving/ToReceiving.stories',
-  '../src/views/Transaction/Transferring/Transferring.stories',
-  '../src/views/Wallet/Balance/Balance.stories',
-  '../src/views/Wallet/MainMenu/Wallet.stories',
-  '../src/views/Wallet/Withdraw/Withdraw.stories'
+  "../src/components/Balance/BaseBalance/BaseBalance.stories",
+  "../src/components/Button/Button.stories",
+  "../src/components/CameraButton/CameraButton.stories",
+  "../src/components/ConfirmationModal/ConfirmationModal.stories",
+  "../src/components/ContainerButton/ContainerButton.stories",
+  "../src/components/Deprecated.DatePicker/deprecated.AndroidDatePicker/AndroidDatePicker.stories",
+  "../src/components/Deprecated.DatePicker/IosDatePicker/IosDatePicker.stories",
+  "../src/components/FlipInputButton/FlipInputButton.stories",
+  "../src/components/Input/Input.stories",
+  "../src/components/Modal/Modal.stories",
+  "../src/components/PathLink/PathLink.stories",
+  "../src/components/Text/Text.stories",
+  "../src/components/Toggle/Toggle.stories",
+  "../src/components/Tooltips/Tooltips.stories",
+  "../src/views/Home/Home.stories",
+  "../src/views/Login/Login.stories",
+  "../src/views/register/EmailName/NameEmail.stories",
+  "../src/views/register/Password/Password.stories",
+  "../src/views/Statement/Statement.stories",
 ];
 
 module.exports = {
   loadStories,
-  stories
+  stories,
 };

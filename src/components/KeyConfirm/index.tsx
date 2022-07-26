@@ -2,19 +2,33 @@ import { useRef, useState } from 'react';
 import { View } from 'react-native';
 
 import styles from './styles';
+import { iProps } from './types';
 
 import { Input } from '../Input';
+import { WhiteLine } from './_components/WhiteLine';
 
-export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
+export const KeyConfirm = ({
+  digitOne,
+  digitTwo,
+  digitThree,
+  digitFour,
+  onBlur,
+  digitOneValue,
+  digitTowValue,
+  digitThreeValue,
+  digitFourValue,
+  passwordMode
+}: iProps) => {
   const refOne = useRef();
   const refTwo = useRef();
   const refThree = useRef();
   const refFour = useRef();
+  const [backOnDigit, setBackOnDigit] = useState('');
   const [focused, setFocused] = useState({
     one: false,
     two: false,
     three: false,
-    four: false,
+    four: false
   });
 
   const onFocusOne = () => {
@@ -22,7 +36,7 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
       one: true,
       two: false,
       three: false,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -31,7 +45,7 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
       one: false,
       two: true,
       three: false,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -40,7 +54,7 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
       one: false,
       two: false,
       three: true,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -50,7 +64,7 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
       one: false,
       two: false,
       three: false,
-      four: true,
+      four: true
     };
     setFocused(newFocused);
   };
@@ -87,8 +101,10 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
 
   const handleDigitFour = (value) => {
     digitFour(value);
+    setBackOnDigit('onBlur');
 
     if (value.length === 1) {
+      refFour.current.blur();
       return;
     } else if (value.length === 0) {
       refThree.current.focus();
@@ -99,67 +115,95 @@ export const SquaredInput = ({ digitOne, digitTwo, digitThree, digitFour }) => {
     <View style={styles.container}>
       <View style={styles.squaredInput}>
         <Input
+          noShadow
+          value={digitOneValue}
           onFocus={onFocusOne}
-          textColor={focused.one ? 'white' : 'dark'}
-          backgroundColor={focused.one ? 'dark' : 'white'}
+          textColor={focused.one ? 'white' : 'grey3'}
+          backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
           keyboardType={'numeric'}
-          fontSize={30}
-          textAlign="center"
+          fontSize={38}
+          textAlign='center'
           refs={refOne}
           onChangeText={handleDigitOne}
-          passwordMode={true}
+          passwordMode={passwordMode}
         />
+        <WhiteLine />
       </View>
       <View style={styles.squaredInput}>
         <Input
+          noShadow
+          value={digitTowValue}
           onFocus={onFocusTwo}
-          textColor={focused.two ? 'white' : 'dark'}
-          backgroundColor={focused.two ? 'dark' : 'white'}
+          onKeyPress={({ nativeEvent: { key: keyValue } }) => {
+            if (keyValue === 'Backspace') {
+              refOne.current.focus();
+            }
+          }}
+          textColor={focused.two ? 'white' : 'grey3'}
+          backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
           keyboardType={'numeric'}
           fontSize={30}
-          textAlign="center"
+          textAlign='center'
           refs={refTwo}
           onChangeText={handleDigitTwo}
-          passwordMode={true}
+          passwordMode={passwordMode}
         />
+        <WhiteLine />
       </View>
       <View style={styles.squaredInput}>
         <Input
+          noShadow
+          value={digitThreeValue}
           onFocus={onFocusThree}
-          textColor={focused.three ? 'white' : 'dark'}
-          backgroundColor={focused.three ? 'dark' : 'white'}
+          onKeyPress={({ nativeEvent: { key: keyValue } }) => {
+            if (keyValue === 'Backspace') {
+              refTwo.current.focus();
+            }
+          }}
+          textColor={focused.three ? 'white' : 'grey3'}
+          backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
           keyboardType={'numeric'}
           fontSize={30}
-          textAlign="center"
+          textAlign='center'
           refs={refThree}
           onChangeText={handleDigitThree}
-          passwordMode={true}
+          passwordMode={passwordMode}
         />
+        <WhiteLine />
       </View>
       <View style={styles.squaredInput}>
         <Input
+          noShadow
+          value={digitFourValue}
+          onBlur={backOnDigit ? onBlur : ''}
           onFocus={onFocusFour}
-          textColor={focused.four ? 'white' : 'dark'}
-          backgroundColor={focused.four ? 'dark' : 'white'}
+          onKeyPress={({ nativeEvent: { key: keyValue } }) => {
+            if (keyValue === 'Backspace') {
+              refThree.current.focus(), setBackOnDigit('');
+            }
+          }}
+          textColor={focused.four ? 'white' : 'grey3'}
+          backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
           keyboardType={'numeric'}
           fontSize={30}
-          textAlign="center"
+          textAlign='center'
           refs={refFour}
           onChangeText={handleDigitFour}
-          passwordMode={true}
+          passwordMode={passwordMode}
         />
+        <WhiteLine />
       </View>
     </View>
   );

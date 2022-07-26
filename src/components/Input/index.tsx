@@ -21,6 +21,7 @@ import { Icon } from '../Icon';
 export const Input = ({
   mask,
   refs,
+  noShadow,
   label = '',
   fontSize = 16,
   eyeIcon,
@@ -88,7 +89,15 @@ export const Input = ({
             borderColor: isErrorState ? Colors.red : 'transparent',
             fontSize,
             backgroundColor: Colors[backgroundColor],
-            color: Colors[textColor]
+            color: Colors[textColor],
+            shadowOffset: {
+              width: noShadow ? null : 1,
+              height: noShadow ? null : 4
+            },
+            shadowOpacity: noShadow ? null : 0.14,
+            shadowRadius: noShadow ? null : 4,
+
+            elevation: noShadow ? null : 10
           }
         ]}
         numberOfLines={1}
