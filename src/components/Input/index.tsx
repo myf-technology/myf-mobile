@@ -118,7 +118,7 @@ export const Input = ({
           style={{ position: 'absolute', top: width(10), left: width(54) }}
         >
           {loading ? (
-            <ActivityIndicator style={{ right: width(3) }} />
+            <ActivityIndicator style={{ right: width(3), bottom: width(1) }} />
           ) : (
             <Icon name='ArrowForward' />
           )}

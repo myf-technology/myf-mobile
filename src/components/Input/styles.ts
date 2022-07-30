@@ -28,8 +28,9 @@ export default StyleSheet.create({
   eyeWrapper: {
     elevation: 100,
     position: 'absolute',
-    right: height(1.2),
-    bottom: height(6),
+    right: height(4.5),
+    // left: height(1.2),
+    bottom: height(5.9),
     zIndex: 500
   }
 });
