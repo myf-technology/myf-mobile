@@ -1,6 +1,4 @@
-import { userRootState } from './types';
-
-const rootState: userRootState = {
+const rootState = {
   isPep: false,
   cnpj: false,
   document: '',

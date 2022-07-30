@@ -1,8 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import PageLayout from '../../../components/PageLayout/PageLayout';
+import { PUBLIC } from '../../../navigation/Public/constants';
 import { FlashInput } from './_components/FlashInput';
 
 export const Password = () => {
+const {navigate} = useNavigation();
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState('');
@@ -23,6 +26,7 @@ export const Password = () => {
       setPasswordCheck('');
       setLoading(false);
       setRes(200);
+     navigate(PUBLIC.VERIFY_EMAIL as never); 
     }, 3000);
   };
 

@@ -1,4 +1,4 @@
-import { LayoutRectangle, TextProps } from 'react-native';
+import { LayoutRectangle, TextProps as RNTextProps } from 'react-native';
 
 import Colors from '../../constants/Colors';
 import { fontType } from '../../constants/Typography';
@@ -11,7 +11,7 @@ export type textAlignType =
   | 'justify'
   | undefined;
 
-export interface Iprops extends TextProps {
+export interface TextProps extends RNTextProps {
   children: React.ReactNode;
   font?: fontType;
   color?: Colors;
