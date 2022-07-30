@@ -1,10 +1,3 @@
-export interface iProps {
-  value?: string;
-  onArrowPress?: any | void;
-  onChangeText?: any | void;
-  loading?: boolean;
-  arrowForward?: boolean;
-  holder?: string;
-  passwordMode?: boolean;
-  eyeIcon?: boolean;
-}
+import { Iprops } from '../../../../../components/Input/types';
+
+export interface FlashInputProps extends Iprops {}

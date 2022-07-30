@@ -6,6 +6,7 @@ export const Password = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
   const [res, setRes] = useState(0);
   const onArrowPress = () => {
     setLoading(true);
@@ -33,21 +34,23 @@ export const Password = () => {
           arrowForward={password.length >= 4 ? true : false}
           onArrowPress={onArrowPress}
           onChangeText={setPassword}
-          holder='Crie uma senha...'
+          placeholder='Crie uma senha...'
           loading={loading}
           value={password}
-          passwordMode
+          passwordMode={showPassword}
+          toggleVisibility={() => setShowPassword(!showPassword)}
         />
       ) : (
         <FlashInput
           eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
           arrowForward={passwordCheck.length >= 1 ? true : false}
           onChangeText={setPasswordCheck}
-          holder='Repita sua senha...'
+          placeholder='Repita sua senha...'
           onArrowPress={onSendEmail}
           value={passwordCheck}
           loading={loading}
-          passwordMode
+          passwordMode={showPassword}
+          toggleVisibility={() => setShowPassword(!showPassword)}
         />
       )}
     </PageLayout>
