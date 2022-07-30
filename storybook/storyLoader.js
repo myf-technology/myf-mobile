@@ -22,6 +22,7 @@ function loadStories() {
   require("../src/views/Login/Login.stories");
   require("../src/views/register/EmailName/NameEmail.stories");
   require("../src/views/register/Password/Password.stories");
+  require("../src/views/register/ValidationToken/ValidationToken.stories");
   require("../src/views/Statement/Statement.stories");
 }
 
@@ -44,6 +45,7 @@ const stories = [
   "../src/views/Login/Login.stories",
   "../src/views/register/EmailName/NameEmail.stories",
   "../src/views/register/Password/Password.stories",
+  "../src/views/register/ValidationToken/ValidationToken.stories",
   "../src/views/Statement/Statement.stories",
 ];
 

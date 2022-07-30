@@ -1,36 +1,51 @@
-import { View } from 'react-native';
-import PageLayout from '../../../components/PageLayout/PageLayout';
-import { KeyConfirm } from '../../../components/KeyConfirm';
-import { Text } from '../../../components/Text';
 import { useState } from 'react';
+import PageLayout from '../../../components/PageLayout/PageLayout';
+import { FlashInput } from './_components/FlashInput';
 
 export const Password = () => {
-  const [digitOne, setDigitOne] = useState('');
-  const [digitTwo, setDigitTwo] = useState('');
-  const [digitThree, setDigitThree] = useState('');
-  const [digitFour, setDigitFour] = useState('');
+  const [value, setValue] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [passwordCheck, setPasswordCheck] = useState('');
+  const [res, setRes] = useState(0);
+  const onArrowPress = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setValue('');
+      setLoading(false);
+      setRes(200);
+    }, 3000);
+  };
 
-  console.log(
-    'digitOne',
-    digitOne,
-    'digitTwo',
-    digitTwo,
-    'digitThree',
-    digitThree,
-    'digitFour',
-    digitFour
-  );
+  const onSendEmail = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setPasswordCheck('');
+      setLoading(false);
+      setRes(200);
+    }, 3000);
+  };
 
   return (
     <PageLayout>
-      <Text color='white'>Password</Text>
-      <KeyConfirm
-        passwordMode={false}
-        digitOne={setDigitOne}
-        digitTwo={setDigitTwo}
-        digitThree={setDigitThree}
-        digitFour={setDigitFour}
-      />
+      {res !== 200 ? (
+        <FlashInput
+          value={value}
+          onArrowPress={onArrowPress}
+          arrowForward={value.length >= 3 ? true : false}
+          onChangeText={setValue}
+          loading={loading}
+          holder='Nome...'
+        />
+      ) : (
+        <FlashInput
+          value={passwordCheck}
+          onArrowPress={onSendEmail}
+          arrowForward={passwordCheck.match('@') ? true : false}
+          onChangeText={setPasswordCheck}
+          loading={loading}
+          holder='Email...'
+        />
+      )}
     </PageLayout>
   );
 };
