@@ -5,4 +5,6 @@ export interface iProps {
   loading?: boolean;
   arrowForward?: boolean;
   holder?: string;
+  passwordMode?: boolean;
+  eyeIcon?: boolean;
 }

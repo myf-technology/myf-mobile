@@ -1,8 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import PageLayout from '../../../components/PageLayout/PageLayout';
+import { PUBLIC } from '../../../navigation/Public/constants';
 import { FlashInput } from './_components/FlashInput';
 
 export const NameEmail = () => {
+  const { navigate } = useNavigation();
   const [value, setValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -19,6 +22,7 @@ export const NameEmail = () => {
   const onSendEmail = () => {
     setLoading(true);
     setTimeout(() => {
+      navigate(PUBLIC.PASSWORD as never);
       setEmail('');
       setLoading(false);
       setRes(200);

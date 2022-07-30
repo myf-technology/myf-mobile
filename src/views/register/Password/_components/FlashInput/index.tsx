@@ -9,7 +9,9 @@ export const FlashInput = ({
   onChangeText,
   loading,
   arrowForward,
-  holder
+  holder,
+  passwordMode,
+  eyeIcon
 }: iProps) => {
   return (
     <View style={styles.input}>
@@ -22,6 +24,8 @@ export const FlashInput = ({
         backgroundColor='white'
         placeholder={holder}
         loading={loading}
+        passwordMode={passwordMode}
+        eyeIcon={eyeIcon}
       />
     </View>
   );

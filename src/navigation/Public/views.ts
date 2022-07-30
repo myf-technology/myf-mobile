@@ -5,6 +5,7 @@ import Dev from '../../views/Dev';
 import { Home } from '../../views/Home';
 import { Login } from '../../views/Login';
 import { NameEmail } from '../../views/register/EmailName';
+import { Password } from '../../views/register/Password';
 
 export default [
   {
@@ -26,5 +27,9 @@ export default [
   {
     name: PUBLIC.EMAILNAME,
     component: NameEmail
+  },
+  {
+    name: PUBLIC.PASSWORD,
+    component: Password
   }
 ];

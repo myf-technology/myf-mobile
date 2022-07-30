@@ -3,14 +3,14 @@ import PageLayout from '../../../components/PageLayout/PageLayout';
 import { FlashInput } from './_components/FlashInput';
 
 export const Password = () => {
-  const [value, setValue] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState('');
   const [res, setRes] = useState(0);
   const onArrowPress = () => {
     setLoading(true);
     setTimeout(() => {
-      setValue('');
+      setPassword('');
       setLoading(false);
       setRes(200);
     }, 3000);
@@ -29,21 +29,25 @@ export const Password = () => {
     <PageLayout>
       {res !== 200 ? (
         <FlashInput
-          value={value}
+          eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
+          arrowForward={password.length >= 4 ? true : false}
           onArrowPress={onArrowPress}
-          arrowForward={value.length >= 3 ? true : false}
-          onChangeText={setValue}
+          onChangeText={setPassword}
+          holder='Crie uma senha...'
           loading={loading}
-          holder='Nome...'
+          value={password}
+          passwordMode
         />
       ) : (
         <FlashInput
-          value={passwordCheck}
-          onArrowPress={onSendEmail}
-          arrowForward={passwordCheck.match('@') ? true : false}
+          eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
+          arrowForward={passwordCheck.length >= 1 ? true : false}
           onChangeText={setPasswordCheck}
+          holder='Repita sua senha...'
+          onArrowPress={onSendEmail}
+          value={passwordCheck}
           loading={loading}
-          holder='Email...'
+          passwordMode
         />
       )}
     </PageLayout>
