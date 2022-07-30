@@ -2,28 +2,21 @@ import { View } from 'react-native';
 import PageLayout from '../../../components/PageLayout/PageLayout';
 import { KeyConfirm } from '../../../components/KeyConfirm';
 import { Text } from '../../../components/Text';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
+import Colors from '../../../constants/Colors';
+import { PathLink } from '../../../components/PathLink';
+import { Spacer } from '../../../components/Spacer';
 
-export const ValidationToken = () => {
+export const VerifyEmail = () => {
   const [digitOne, setDigitOne] = useState('');
   const [digitTwo, setDigitTwo] = useState('');
   const [digitThree, setDigitThree] = useState('');
   const [digitFour, setDigitFour] = useState('');
 
-  console.log(
-    'digitOne',
-    digitOne,
-    'digitTwo',
-    digitTwo,
-    'digitThree',
-    digitThree,
-    'digitFour',
-    digitFour
-  );
-
   return (
     <PageLayout>
-      <Text color='white'>Token</Text>
+      <Text textAlign='left' color={Colors.white}>Please check the token sent to your E-mail.</Text>
+      <Text textAlign='left' color={Colors.grey3}>your@email.com</Text>
       <KeyConfirm
         passwordMode={false}
         digitOne={setDigitOne}
@@ -31,6 +24,8 @@ export const ValidationToken = () => {
         digitThree={setDigitThree}
         digitFour={setDigitFour}
       />
+      <Spacer amount={6} />
+      <PathLink color={Colors.grey3}>Resend Token</PathLink>
     </PageLayout>
   );
 };

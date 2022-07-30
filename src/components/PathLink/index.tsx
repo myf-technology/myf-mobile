@@ -1,23 +1,23 @@
-import { useLinkProps, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
-import { Iprops } from './types';
+import { PathLinkProps } from './types';
 
-import Colors from '../../constants/Colors';
 import { Text } from '../Text';
 
-export const PathLink = ({ destination, children }: Iprops) => {
+export const PathLink = ({ destination, children, onPress, ...props }: PathLinkProps) => {
   const { navigate } = useNavigation();
 
   return (
     <TouchableOpacity
       onPress={() => {
-        navigate(destination);
+        destination && navigate(destination as never);
+        onPress && onPress();
       }}
     >
       <View>
-        <Text textDecorationLine="underline" color={Colors.yellow}>
+        <Text textDecorationLine="underline" {...props}>
           {children}
         </Text>
       </View>

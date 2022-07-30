@@ -3,7 +3,7 @@ import { StyleSheet, TextStyle } from 'react-native';
 import Animated from 'react-native-reanimated';
 
 import fontControl from './helpers/fontControl';
-import { Iprops } from './types';
+import { TextProps } from './types';
 
 import Colors from '../../constants/Colors';
 import { FontSize, Font } from '../../constants/Typography';
@@ -18,7 +18,7 @@ export const Text = ({
   style,
   onMeasurement,
   ...rest
-}: Iprops) => {
+}: TextProps) => {
   const [defaultFont, setDefaultFont] = useState<TextStyle>(styles.title2);
 
   useEffect(
