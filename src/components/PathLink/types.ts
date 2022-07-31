@@ -5,4 +5,5 @@ export interface PathLinkProps extends TextProps {
   onPress?: () => void;
   destination?: string;
   children: ReactChild;
+  disabled?: boolean;
 }

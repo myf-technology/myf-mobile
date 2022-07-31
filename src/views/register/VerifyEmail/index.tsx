@@ -2,21 +2,34 @@ import { View } from 'react-native';
 import PageLayout from '../../../components/PageLayout/PageLayout';
 import { KeyConfirm } from '../../../components/KeyConfirm';
 import { Text } from '../../../components/Text';
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 import Colors from '../../../constants/Colors';
 import { PathLink } from '../../../components/PathLink';
 import { Spacer } from '../../../components/Spacer';
 import { useSelector } from 'react-redux';
 import { Store } from '../../../store/types';
 import styles from './styles';
+import { Countdown } from './_helpers/Countdown';
 
 export const VerifyEmail = () => {
+  const { email } = useSelector(({ user }: Store) => user);
+
   const [digitOne, setDigitOne] = useState('');
   const [digitTwo, setDigitTwo] = useState('');
   const [digitThree, setDigitThree] = useState('');
   const [digitFour, setDigitFour] = useState('');
+  const [resendDisabled, setResendDisabled] = useState(true);
+  const [restartCountdown, setRestartCountdown] = useState(false);
 
-  const { email } = useSelector(({ user }: Store) => user);
+  const onComplete = () => {
+    setResendDisabled(false);
+    setRestartCountdown(false);
+  };
+
+  const resendToken = () => {
+    setResendDisabled(true);
+    setRestartCountdown(true);
+  };
 
   return (
     <PageLayout>
@@ -36,7 +49,18 @@ export const VerifyEmail = () => {
           digitFour={setDigitFour}
         />
         <Spacer amount={6} />
-        <PathLink color={Colors.grey3}>Resend Token</PathLink>
+        <PathLink
+          disabled={resendDisabled}
+          color={resendDisabled ? Colors.grey3 : Colors.yellow}
+          onPress={resendToken}
+        >
+          Resend Token
+        </PathLink>
+        <Countdown
+          restart={restartCountdown}
+          from={60}
+          onComplete={onComplete}
+        />
       </View>
     </PageLayout>
   );
