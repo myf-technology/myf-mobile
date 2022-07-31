@@ -18,28 +18,28 @@ export const Dev = () => {
     {
       screen: PUBLIC.STORYBOOK,
       title: 'Go to Storybook',
-      Icon: <StorybookSVG style={styles.storybookSVG} />,
+      Icon: <StorybookSVG style={styles.storybookSVG} />
     },
     {
       screen: PUBLIC.HOME,
       title: 'Go to App',
       Icon: (
         <Icon
-          name="ValepayLogo"
-          fill="dark"
+          name='MyF'
+          fill='dark'
           style={{ position: 'absolute', right: 20 }}
           width={50}
           height={30}
         />
-      ),
-    },
+      )
+    }
   ];
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
+      <StatusBar style='light' />
       <Spacer amount={23} />
-      <Icon name="MyF" fill="white" />
+      <Icon name='MyF' fill='white' />
       <Spacer amount={25} />
       {screens.map(({ screen, title, Icon }) => (
         <View key={title}>
@@ -49,7 +49,7 @@ export const Dev = () => {
             key={title}
             onPress={() => navigate(screen as never)}
           >
-            <Text font="body">{title}</Text>
+            <Text font='body'>{title}</Text>
             {Icon}
           </TouchableOpacity>
         </View>

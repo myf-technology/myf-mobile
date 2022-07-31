@@ -30,9 +30,7 @@ export const Button = ({
       {...rest}
     >
       <Text color={Colors[textColorMapper(theme)]}>{title}</Text>
-      {loading && (
-        <ActivityIndicator style={{ position: 'absolute', right: width(6) }} />
-      )}
+      {loading && <ActivityIndicator style={{ position: 'absolute', right: width(6) }} />}
     </TouchableOpacity>
   );
 };

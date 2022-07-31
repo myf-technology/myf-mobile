@@ -8,9 +8,16 @@ export enum Colors {
   white2 = '#ECECEC',
   green = '#004D40',
   red = '#EB0707',
-  yellow = '#F2C94C',
+  yellow = '#FAD826',
+  yellow3 = '#FFF4B9',
+  yellow4 = '#655502',
   blue = '#03259F',
-  deepBlue = '#00104A',
+  blue2 = '#07C4FF',
+  purple = '#6917D2',
+  purple2 = '#E88BFF',
+  purple3 = '#F2C0FF',
+  purple4 = '#1A0633',
+  deepBlue = '#00104A'
 }
 
 export type colorTypes =
@@ -23,8 +30,15 @@ export type colorTypes =
   | 'white2'
   | 'green'
   | 'blue'
+  | 'blue2'
   | 'deepBlue'
   | 'red'
+  | 'purple'
+  | 'purple2'
+  | 'purple3'
+  | 'purple4'
+  | 'yellow3'
+  | 'yellow4'
   | 'yellow';
 
 export default Colors;

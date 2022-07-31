@@ -114,13 +114,16 @@ export const Input = ({
       />
       {arrowForward ? (
         <TouchableOpacity
-          onPress={() => onArrowPress(setValue)}
-          style={{ position: 'absolute', top: width(10), left: width(54) }}
+          onPress={() => onArrowPress()}
+          style={{ position: 'absolute', top: width(10), left: width(80) }}
         >
           {loading ? (
-            <ActivityIndicator style={{ right: width(3), bottom: width(1) }} />
+            <ActivityIndicator
+              color={Colors.yellow}
+              style={{ right: width(3), bottom: width(1) }}
+            />
           ) : (
-            <Icon name='ArrowForward' />
+            <Icon fill='yellow' name='ArrowForward' />
           )}
         </TouchableOpacity>
       ) : null}
@@ -128,9 +131,9 @@ export const Input = ({
         <TouchableOpacity onPress={toggleVisibility} style={styles.eyeWrapper}>
           {iconVisible &&
             (passwordMode ? (
-              <Ionicons name='md-eye-off' size={width(5.63)} />
+              <Icon fill='yellow4' name='Eye' />
             ) : (
-              <Ionicons name='md-eye' size={width(5.63)} />
+              <Icon fill='yellow4' name='Eye' />
             ))}
         </TouchableOpacity>
       ) : null}

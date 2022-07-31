@@ -1,8 +1,4 @@
-import {
-  ButtonProps,
-  NativeSyntheticEvent,
-  NativeTouchEvent,
-} from 'react-native';
+import { ButtonProps, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 
 export enum Theme {
   yellow = 'yellow',
@@ -11,10 +7,10 @@ export enum Theme {
   red = 'red',
   dark = 'dark',
   green = 'green',
-  disabled = 'disabled',
+  disabled = 'disabled'
 }
 export interface Iprops extends ButtonProps {
-  theme?: 'yellow' |'green' | 'red' | 'white' | 'transparent' | 'dark' | 'disabled';
+  theme?: 'yellow' | 'green' | 'red' | 'white' | 'transparent' | 'dark' | 'disabled';
   onPress(ev: NativeSyntheticEvent<NativeTouchEvent>): void;
   text?: string;
   small?: boolean;
