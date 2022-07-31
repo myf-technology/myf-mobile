@@ -35,13 +35,18 @@ export const VerifyEmail = () => {
     <PageLayout>
       <View style={styles.container}>
         <Spacer amount={18} />
-        <Text textAlign='left' color={Colors.white}>
+        <Text textAlign='left' color={Colors.yellow}>
           Please check the token sent to your E-mail.
         </Text>
-        <Text textAlign='left' font='footnote' color={Colors.grey3}>
+        <Spacer amount={1} />
+        <Text textAlign='left' font='footnote' color={Colors.yellow3}>
           {email}
         </Text>
         <KeyConfirm
+          digitOneValue={digitOne}
+          digitTwoValue={digitTwo}
+          digitThreeValue={digitThree}
+          digitFourValue={digitFour}
           passwordMode={false}
           digitOne={setDigitOne}
           digitTwo={setDigitTwo}
@@ -51,14 +56,14 @@ export const VerifyEmail = () => {
         <Spacer amount={6} />
         <PathLink
           disabled={resendDisabled}
-          color={resendDisabled ? Colors.grey3 : Colors.yellow}
+          color={resendDisabled ? Colors.yellow4 : Colors.yellow}
           onPress={resendToken}
         >
           Resend Token
         </PathLink>
         <Countdown
           restart={restartCountdown}
-          from={60}
+          from={3}
           onComplete={onComplete}
         />
       </View>

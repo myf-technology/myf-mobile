@@ -10,32 +10,32 @@ export default StyleSheet.create({
     borderRadius: height(1.6),
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   yellow: {
-    backgroundColor: Colors.yellow,
+    backgroundColor: Colors.yellow3
   },
   green: {
-    backgroundColor: Colors.green,
+    backgroundColor: Colors.green
   },
   white: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.white
   },
   red: {
-    backgroundColor: Colors.red,
+    backgroundColor: Colors.red
   },
   dark: {
-    backgroundColor: Colors.dark,
+    backgroundColor: Colors.dark
   },
   transparent: {
     backgroundColor: 'transparent',
     borderColor: Colors.white,
-    borderWidth: 1,
+    borderWidth: 1
   },
   disabled: {
-    backgroundColor: '#AFAFAF',
+    backgroundColor: '#AFAFAF'
   },
   sizeSmall: {
-    width: height(18),
-  },
+    width: height(18)
+  }
 });

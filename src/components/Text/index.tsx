@@ -81,5 +81,6 @@ const styles = StyleSheet.create({
   },
   footnote: {
     fontSize: FontSize.subhead,
+    fontFamily: 'rubik',
   },
 });

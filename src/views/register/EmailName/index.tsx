@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PageLayout from '../../../components/PageLayout/PageLayout';
+import Colors from '../../../constants/Colors';
 import { PUBLIC } from '../../../navigation/Public/constants';
 import { storeEmailAction } from '../../../store/reducers/user/actions';
 import { FlashInput } from './_components/FlashInput';
@@ -43,7 +44,9 @@ export const NameEmail = () => {
           arrowForward={value.length >= 3 ? true : false}
           onChangeText={setValue}
           loading={loading}
-          holder='Nome...'
+          placeholder='Nome...'
+          placeholderTextColor={Colors.grey2}
+          fontSize={20}
         />
       ) : (
         <FlashInput
@@ -52,7 +55,9 @@ export const NameEmail = () => {
           arrowForward={email.match('@') ? true : false}
           onChangeText={setEmail}
           loading={loading}
-          holder='Email...'
+          placeholder='Email...'
+          placeholderTextColor={Colors.grey2}
+          fontSize={20}
         />
       )}
     </PageLayout>

@@ -6,6 +6,8 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
+import { Text } from '../../../../components/Text';
+import Colors from '../../../../constants/Colors';
 
 interface CountdownProps {
   /**
@@ -56,8 +58,12 @@ export const Countdown = ({ from, onComplete, restart }: CountdownProps) => {
   });
 
   return (
-    <Animated.Text style={{ color: 'white', fontSize: 200, opacity: 0.1 }}>
+    <Text
+      font='footnote'
+      style={{ fontSize: 200, opacity: 0.4 }}
+      color={Colors.yellow4}
+    >
       {Math.floor(timer)}
-    </Animated.Text>
+    </Text>
   );
 };

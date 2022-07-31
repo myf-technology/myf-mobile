@@ -7,7 +7,7 @@ export interface iProps {
   digitFour?: Dispatch<SetStateAction<string>> | void;
   onBlur?: () => void;
   digitOneValue?: string;
-  digitTowValue?: string;
+  digitTwoValue?: string;
   digitThreeValue?: string;
   digitFourValue?: string;
   passwordMode?: boolean;

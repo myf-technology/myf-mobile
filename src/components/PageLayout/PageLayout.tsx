@@ -53,7 +53,7 @@ const PageLayout = ({
           height={Layout.window.height * 0.02}
           width={Layout.window.width * 0.024}
           style={{ justifyContent: 'center' }}
-          fill='white'
+          fill='yellow'
         />
         {toolTips ? <Tooltips /> : <View></View>}
       </TouchableOpacity>

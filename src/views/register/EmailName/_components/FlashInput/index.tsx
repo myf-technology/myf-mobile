@@ -1,28 +1,14 @@
 import { View } from 'react-native';
 import { Input } from '../../../../../components/Input';
+import { Spacer } from '../../../../../components/Spacer';
+import { FlashInputProps } from '../../../Password/_components/FlashInput/types';
 import styles from '../../styles';
-import { iProps } from './types';
 
-export const FlashInput = ({
-  value,
-  onArrowPress,
-  onChangeText,
-  loading,
-  arrowForward,
-  holder
-}: iProps) => {
+export const FlashInput = ({ ...rest }: FlashInputProps) => {
   return (
-    <View style={styles.input}>
-      <Input
-        value={value}
-        onArrowPress={onArrowPress}
-        arrowForward={arrowForward}
-        onChangeText={onChangeText}
-        textColor='dark'
-        backgroundColor='white'
-        placeholder={holder}
-        loading={loading}
-      />
+    <View>
+      <Spacer amount={30} />
+      <Input textColor='yellow3' noShadow autoFocus {...rest} />
     </View>
   );
 };

@@ -4,10 +4,11 @@ const textColorMapper = (theme: string) => {
   const textColorMap = {
     [Theme.yellow]: 'dark',
     [Theme.dark]: 'white',
-    [Theme.transparent]: 'white',
+    [Theme.transparent]: 'yellow3',
     [Theme.disabled]: 'white',
     [Theme.red]: 'white',
     [Theme.green]: 'white',
+    [Theme.white]: 'yellow4'
   };
 
   return textColorMap[theme];

@@ -9,7 +9,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.dark,
     alignItems: 'center',
-    padding: Layout.paddingHorizontal,
+    padding: Layout.paddingHorizontal
   },
   logo: { marginBottom: 'auto', marginTop: height(3) },
   button: {
@@ -19,10 +19,10 @@ export default StyleSheet.create({
     borderRadius: height(1),
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: width(10),
+    paddingHorizontal: width(10)
   },
   storybookSVG: {
     position: 'absolute',
-    right: 0,
-  },
+    right: 0
+  }
 });

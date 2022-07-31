@@ -14,10 +14,10 @@ export const KeyConfirm = ({
   digitFour,
   onBlur,
   digitOneValue,
-  digitTowValue,
+  digitTwoValue,
   digitThreeValue,
   digitFourValue,
-  passwordMode
+  passwordMode,
 }: iProps) => {
   const refOne = useRef();
   const refTwo = useRef();
@@ -28,7 +28,7 @@ export const KeyConfirm = ({
     one: false,
     two: false,
     three: false,
-    four: false
+    four: false,
   });
 
   const onFocusOne = () => {
@@ -36,7 +36,7 @@ export const KeyConfirm = ({
       one: true,
       two: false,
       three: false,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -45,7 +45,7 @@ export const KeyConfirm = ({
       one: false,
       two: true,
       three: false,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -54,7 +54,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: true,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -64,7 +64,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: false,
-      four: true
+      four: true,
     };
     setFocused(newFocused);
   };
@@ -118,31 +118,31 @@ export const KeyConfirm = ({
           noShadow
           value={digitOneValue}
           onFocus={onFocusOne}
-          textColor={focused.one ? 'white' : 'grey3'}
+          textColor={focused.one ? 'yellow' : 'yellow3'}
           backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
           keyboardType={'numeric'}
-          fontSize={38}
+          fontSize={30}
           textAlign='center'
           refs={refOne}
           onChangeText={handleDigitOne}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitOneValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
           noShadow
-          value={digitTowValue}
+          value={digitTwoValue}
           onFocus={onFocusTwo}
           onKeyPress={({ nativeEvent: { key: keyValue } }) => {
             if (keyValue === 'Backspace') {
               refOne.current.focus();
             }
           }}
-          textColor={focused.two ? 'white' : 'grey3'}
+          textColor={focused.two ? 'yellow' : 'yellow3'}
           backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
@@ -154,7 +154,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitTwo}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitTwoValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
@@ -166,7 +166,7 @@ export const KeyConfirm = ({
               refTwo.current.focus();
             }
           }}
-          textColor={focused.three ? 'white' : 'grey3'}
+          textColor={focused.three ? 'yellow' : 'yellow3'}
           backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
@@ -178,7 +178,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitThree}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitThreeValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
@@ -191,7 +191,7 @@ export const KeyConfirm = ({
               refThree.current.focus(), setBackOnDigit('');
             }
           }}
-          textColor={focused.four ? 'white' : 'grey3'}
+          textColor={focused.four ? 'yellow' : 'yellow3'}
           backgroundColor='dark'
           caretHidden
           returnKeyType={'done'}
@@ -203,7 +203,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitFour}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitFourValue ? 'yellow' : 'yellow4'} />
       </View>
     </View>
   );
