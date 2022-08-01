@@ -14,23 +14,23 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowOffset: {
       height: 0,
-      width: 0,
+      width: 0
     },
-    shadowRadius: 6,
+    shadowRadius: 6
   },
   toggle: {
     width: width(11),
     height: height(3.3),
     justifyContent: 'center',
     borderRadius: width(5.1),
-    marginLeft: 'auto',
+    marginLeft: 'auto'
   },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
-  },
+    width: '13%'
+  }
 });
 
 export default styles;

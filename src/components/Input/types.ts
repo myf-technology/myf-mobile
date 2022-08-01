@@ -1,6 +1,7 @@
 import { TextInputProps } from 'react-native';
 
 import { colorTypes } from '../../constants/Colors';
+import { iconNameProp } from '../Icon/types';
 import { textAlignType } from '../Text/types';
 
 export interface Iprops extends TextInputProps {
@@ -17,8 +18,9 @@ export interface Iprops extends TextInputProps {
   noShadow?: boolean;
   placeholderAlign?: textAlignType;
   refs?: any;
+  arrowType?: iconNameProp;
   loading?: boolean;
-  arrowForward?: any | boolean;
+  arrowGo?: any | boolean;
   onArrowPress?: () => void;
   passwordMode?: boolean;
   toggleVisibility?(): void;

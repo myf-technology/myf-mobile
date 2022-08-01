@@ -38,7 +38,7 @@ export const Login = () => {
       <Spacer amount={25} />
       {!flip ? (
         <InvisibleInput
-          arrowForward={email.match('@') ? true : false}
+          arrowGo={email.match('@') ? true : false}
           placeholderTextColor='grey'
           onArrowPress={onEmailSet}
           onChangeText={setEmail}
@@ -52,7 +52,7 @@ export const Login = () => {
           eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
           passwordMode={showPassword}
-          arrowForward={password.length >= 4 ? true : false}
+          arrowGo={password.length >= 4 ? true : false}
           placeholderTextColor='grey'
           onArrowPress={onPasswordSet}
           onChangeText={setPassword}

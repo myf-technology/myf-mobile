@@ -43,7 +43,7 @@ export const NameEmail = () => {
       <Spacer amount={25} />
       {!flip ? (
         <InvisibleInput
-          arrowForward={value.length >= 3 ? true : false}
+          arrowGo={value.length >= 3 ? true : false}
           placeholderTextColor={Colors.grey2}
           onArrowPress={onArrowPress}
           onChangeText={setValue}
@@ -54,7 +54,7 @@ export const NameEmail = () => {
         />
       ) : (
         <InvisibleInput
-          arrowForward={email.match('@') ? true : false}
+          arrowGo={email.match('@') ? true : false}
           placeholderTextColor={Colors.grey2}
           onArrowPress={onSendEmail}
           onChangeText={setEmail}

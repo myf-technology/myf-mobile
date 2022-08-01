@@ -1,6 +1,5 @@
 import { View } from 'react-native';
 import { Input } from '../Input';
-import { Spacer } from '../Spacer';
 import { FlashInputProps } from '../../views/register/Password/_components/FlashInput/types';
 
 export const InvisibleInput = ({ ...rest }: FlashInputProps) => {

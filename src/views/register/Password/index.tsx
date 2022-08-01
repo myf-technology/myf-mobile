@@ -75,7 +75,7 @@ export const Password = () => {
         <InvisibleInput
           eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          arrowForward={password.length >= 4 ? true : false}
+          arrowGo={password.length >= 4 ? true : false}
           placeholder='Senha, crie uma.'
           placeholderTextColor={Colors.grey2}
           passwordMode={showPassword}
@@ -89,7 +89,7 @@ export const Password = () => {
         <InvisibleInput
           eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          arrowForward={passwordCheck.length >= 1 ? true : false}
+          arrowGo={passwordCheck.length >= 1 ? true : false}
           placeholderTextColor={Colors.grey2}
           placeholder='Sua senha, repita.'
           onChangeText={setPasswordCheck}

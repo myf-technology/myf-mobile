@@ -32,7 +32,7 @@ export const Input = ({
   placeholderAlign = 'left',
   passwordMode = false,
   toggleVisibility,
-  arrowForward,
+  arrowGo,
   loading,
   onArrowPress,
   containerTestID,
@@ -112,7 +112,7 @@ export const Input = ({
         onFocus={focusHandler}
         onBlur={blurHandler}
       />
-      {arrowForward ? (
+      {arrowGo ? (
         <TouchableOpacity
           onPress={() => onArrowPress()}
           style={{ position: 'absolute', top: width(10), left: width(80) }}

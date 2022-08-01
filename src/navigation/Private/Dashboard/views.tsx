@@ -16,11 +16,6 @@ export default [
     component: 'Wallet'
   },
   {
-    name: DASHBOARD.TRANSACTIONS,
-    Icon: () => <Icon name='Money' fill='red' />,
-    component: 'Transactions'
-  },
-  {
     name: DASHBOARD.STATEMENT,
     Icon: () => <Icon name='Statement' fill='white' />,
     component: Statement
