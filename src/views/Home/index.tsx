@@ -11,6 +11,9 @@ import { Icon } from '../../components/Icon';
 import { height, width } from '../../constants/responsive';
 import useRegisterForPushNotifications from '../../hooks/useRegisterForPushNotifications';
 import { PUBLIC } from '../../navigation/Public/constants';
+import { Spacer } from '../../components/Spacer';
+import { PathLink } from '../../components/PathLink';
+import Colors from '../../constants/Colors';
 
 export const Home = () => {
   useRegisterForPushNotifications();
@@ -33,20 +36,33 @@ export const Home = () => {
     //   source={require('../../../assets/images/home.jpeg')}
     // >
     <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
+      <Spacer amount={2} />
+      <PathLink
+        color={Colors.yellow3}
+        testID='"button'
+        onPress={handleRegister}
+        // theme={Theme.transparent}
+        // title='sing up'
+      >
+        sing up
+      </PathLink>
       <StatusBar style={'light'} />
       <View style={styles.logo}>
         <Icon name='MyF' fill='white' height={height(15)} width={width(87)} />
       </View>
       <View style={styles.containerButton}>
         <View style={styles.registerButton}>
-          <Button
+          <PathLink
+            color={Colors.yellow3}
             testID='"button'
-            onPress={handleRegister}
-            theme={Theme.white}
-            title='Abrir conta'
-          />
+            onPress={handleLogin}
+            // theme={Theme.transparent}
+            // title='sing up'
+          >
+            login
+          </PathLink>
+          <Spacer amount={5} />
         </View>
-        <Button onPress={handleLogin} testID='button' theme={Theme.transparent} title='Entrar' />
       </View>
     </SafeAreaView>
     // </ImageBackground>

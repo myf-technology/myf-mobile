@@ -16,10 +16,7 @@ interface registerAddressAPIParams {
   city?: string;
 }
 
-export const validateDocument = async (data: {
-  document: string;
-  is_cnpj: boolean;
-}) => {
+export const validateDocument = async (data: { document: string; is_cnpj: boolean }) => {
   try {
     const res = await instance.post('/check_register', data);
 
@@ -82,14 +79,11 @@ interface IregisterUploadImages {
   cnpj: boolean;
 }
 
-export const registerUploadImages = async ({
-  cnpj,
-  ...rest
-}: IregisterUploadImages) => {
+export const registerUploadImages = async ({ cnpj, ...rest }: IregisterUploadImages) => {
   try {
     const res = await instance.post('/register/upload/docs', {
       is_cnpj: cnpj,
-      ...rest,
+      ...rest
     });
 
     return res.data;
@@ -113,8 +107,8 @@ export const getCEPAddressAPI = async (CEP) => {
       method: 'GET',
       url: `/address/${CEP}`,
       headers: {
-        Authorization: Authorization,
-      },
+        Authorization: Authorization
+      }
     });
 
     return res.data;

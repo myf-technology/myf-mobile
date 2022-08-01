@@ -11,14 +11,26 @@ export default (state = rootState, action: UserReducerAction) => {
   switch (action.type) {
     case USER_REGISTER.EMAIL:
       const {
-        payload: { email },
+        payload: { email }
       } = action;
 
       return {
         ...state,
-        email,
+        email
       };
     default:
       return state;
+
+    case USER_REGISTER.FULL_NAME:
+      return {
+        ...state,
+        fullName: action.payload.fullName
+      };
+
+    case USER_REGISTER.PASSWORD:
+      return {
+        ...state,
+        password: action.payload.password
+      };
   }
 };

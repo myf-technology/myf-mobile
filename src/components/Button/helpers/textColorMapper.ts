@@ -3,7 +3,7 @@ import { Theme } from '../types';
 const textColorMapper = (theme: string) => {
   const textColorMap = {
     [Theme.yellow]: 'dark',
-    [Theme.dark]: 'white',
+    [Theme.dark]: 'yellow3',
     [Theme.transparent]: 'yellow3',
     [Theme.disabled]: 'white',
     [Theme.red]: 'white',

@@ -26,7 +26,7 @@ export const Input = ({
   fontSize = 16,
   eyeIcon,
   textColor = 'white',
-  backgroundColor = 'dark',
+  backgroundColor = 'black',
   onChangeText,
   errorMessage = '',
   placeholderAlign = 'left',

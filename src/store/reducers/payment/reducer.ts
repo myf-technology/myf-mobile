@@ -9,16 +9,16 @@ export default (state = rootState, action) => {
         ...action.payload,
         controls: {
           ...state.controls,
-          ...action.payload.controls,
-        },
+          ...action.payload.controls
+        }
       };
     case PAYMENT.PAY:
       return {
         ...state,
         controls: {
           ...state.controls,
-          ...action.payload.controls,
-        },
+          ...action.payload.controls
+        }
       };
     default:
       return state;

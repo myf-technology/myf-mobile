@@ -29,7 +29,7 @@ export default StyleSheet.create({
   },
   transparent: {
     backgroundColor: 'transparent',
-    borderColor: Colors.white,
+    // borderColor: Colors.white,
     borderWidth: 1
   },
   disabled: {

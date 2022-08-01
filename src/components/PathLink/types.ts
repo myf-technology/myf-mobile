@@ -4,5 +4,6 @@ import { TextProps } from '../Text/types';
 export interface PathLinkProps extends TextProps {
   onPress?: () => void;
   destination?: string;
+  textColor?: string;
   children: ReactChild;
 }

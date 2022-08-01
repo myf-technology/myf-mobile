@@ -5,8 +5,15 @@ import { TouchableOpacity, View } from 'react-native';
 import { PathLinkProps } from './types';
 
 import { Text } from '../Text';
+import Colors from '../../constants/Colors';
 
-export const PathLink = ({ destination, children, onPress, ...props }: PathLinkProps) => {
+export const PathLink = ({
+  destination,
+  children,
+  textColor,
+  onPress,
+  ...props
+}: PathLinkProps) => {
   const { navigate } = useNavigation();
 
   return (
@@ -17,7 +24,7 @@ export const PathLink = ({ destination, children, onPress, ...props }: PathLinkP
       }}
     >
       <View>
-        <Text textDecorationLine="underline" {...props}>
+        <Text color={textColor} textDecorationLine='underline' {...props}>
           {children}
         </Text>
       </View>
