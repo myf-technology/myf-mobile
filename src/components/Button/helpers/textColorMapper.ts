@@ -7,8 +7,9 @@ const textColorMapper = (theme: string) => {
     [Theme.transparent]: 'yellow3',
     [Theme.disabled]: 'white',
     [Theme.red]: 'white',
-    [Theme.green]: 'white',
-    [Theme.white]: 'yellow4'
+    [Theme.green]: 'green',
+    [Theme.white]: 'yellow4',
+    [Theme.red]: 'red'
   };
 
   return textColorMap[theme];

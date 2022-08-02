@@ -10,7 +10,7 @@ import { Text } from '../Text';
 export const Toggle = ({ testID, onPress, text, on = true }: Iprops) => {
   const marginLeft = on ? width(5) : width(1);
 
-  const backgroundColor = on ? Colors.grey2 : Colors.yellow4;
+  const backgroundColor = on ? Colors.red : Colors.green;
 
   return (
     <TouchableWithoutFeedback testID={testID ? testID : 'touchable-button'} onPress={onPress}>

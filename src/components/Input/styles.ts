@@ -10,7 +10,7 @@ export default StyleSheet.create({
     fontSize: FontSize.body,
     borderRadius: 8,
     height: height(7.2),
-    padding: 10,
+    // padding: 10,
     marginTop: height(2),
     backgroundColor: Colors.white,
     shadowColor: Colors.grey3,

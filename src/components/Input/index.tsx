@@ -33,6 +33,7 @@ export const Input = ({
   passwordMode = false,
   toggleVisibility,
   arrowGo,
+  sufixIcon = 'ArrowForward',
   loading,
   onArrowPress,
   containerTestID,
@@ -123,7 +124,7 @@ export const Input = ({
               style={{ right: width(3), bottom: width(1) }}
             />
           ) : (
-            <Icon fill='yellow' name='ArrowForward' />
+            <Icon fill='yellow' name={sufixIcon} />
           )}
         </TouchableOpacity>
       ) : null}

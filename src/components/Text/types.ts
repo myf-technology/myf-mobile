@@ -3,13 +3,7 @@ import { LayoutRectangle, TextProps as RNTextProps } from 'react-native';
 import Colors from '../../constants/Colors';
 import { fontType } from '../../constants/Typography';
 
-export type textAlignType =
-  | 'center'
-  | 'left'
-  | 'right'
-  | 'auto'
-  | 'justify'
-  | undefined;
+export type textAlignType = 'center' | 'left' | 'right' | 'auto' | 'justify' | undefined;
 
 export interface TextProps extends RNTextProps {
   children: React.ReactNode;
@@ -18,9 +12,5 @@ export interface TextProps extends RNTextProps {
   textAlign?: textAlignType;
   testID?: string;
   onMeasurement?: (layout: LayoutRectangle) => void;
-  textDecorationLine?:
-    | 'none'
-    | 'underline'
-    | 'line-through'
-    | 'underline line-through';
+  textDecorationLine?: 'none' | 'underline' | 'line-through' | 'underline line-through';
 }

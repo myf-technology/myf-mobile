@@ -15,10 +15,10 @@ export interface Iprops extends TextInputProps {
   validateAsync?: boolean;
   backgroundColor?: colorTypes;
   label?: string;
+  sufixIcon?: iconNameProp;
   noShadow?: boolean;
   placeholderAlign?: textAlignType;
   refs?: any;
-  arrowType?: iconNameProp;
   loading?: boolean;
   arrowGo?: any | boolean;
   onArrowPress?: () => void;

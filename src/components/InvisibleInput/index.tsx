@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import { Input } from '../Input';
-import { FlashInputProps } from '../../views/register/Password/_components/FlashInput/types';
+import { FlashInputProps } from './types';
 
-export const InvisibleInput = ({ ...rest }: FlashInputProps) => {
+export const InvisibleInput = ({ noShadow, sufixIcon, ...rest }: FlashInputProps) => {
   return (
     <View>
-      <Input textColor='yellow3' noShadow autoFocus {...rest} />
+      <Input sufixIcon={sufixIcon} textColor='yellow' noShadow autoFocus {...rest} />
     </View>
   );
 };
