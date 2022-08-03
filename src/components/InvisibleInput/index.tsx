@@ -5,7 +5,14 @@ import { FlashInputProps } from './types';
 export const InvisibleInput = ({ noShadow, sufixIcon, ...rest }: FlashInputProps) => {
   return (
     <View>
-      <Input sufixIcon={sufixIcon} textColor='yellow' noShadow autoFocus {...rest} />
+      <Input
+        fontSize={20}
+        sufixIcon={sufixIcon}
+        textColor='yellow3'
+        noShadow
+        autoFocus
+        {...rest}
+      />
     </View>
   );
 };

@@ -6,7 +6,7 @@ import { width } from '../../../../constants/responsive';
 
 interface pressableItensProps {
   onPress: () => void;
-  content: string;
+  content: any;
   color?: colorTypes;
 }
 export default ({ onPress, content, color }: pressableItensProps) => {

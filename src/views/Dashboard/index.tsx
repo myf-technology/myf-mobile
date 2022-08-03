@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, TouchableOpacity, View } from 'react-native';
 import { InvisibleInput } from '../../components/InvisibleInput';
 import { Spacer } from '../../components/Spacer';
 import { Toggle } from '../../components/Toggle';
@@ -9,13 +9,14 @@ import { Agenda } from './_components/Agenda';
 import { Balance } from './_components/Balance';
 import { HiddenNotify } from './_components/HiddenNotify';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { height } from '../../constants/responsive';
+import { height, width } from '../../constants/responsive';
 import { inCategories } from './_components/InCategory/inCategories';
 import { InCategory } from './_components/InCategory/InCategory';
 import Describe from '../Dashboard/_components/Category/index';
 import MaskInput, { Masks } from 'react-native-mask-input';
 import { Icon } from '../../components/Icon';
 import { Button } from '../../components/Button';
+import { Text } from '../../components/Text';
 
 export const Dashboard = () => {
   const [onOff, setOnOff] = useState(false);
@@ -28,8 +29,9 @@ export const Dashboard = () => {
   const [description, setDescription] = useState(false);
   const [arrow, setArrow] = useState(false);
   const [showButton, setShowButton] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const onChange = (masked) => {
+  const onChange = (masked: any) => {
     if (masked.length > 0) {
       setArrow(true);
     } else {
@@ -42,12 +44,17 @@ export const Dashboard = () => {
   };
 
   const onSendIn = () => {
+    setArrow(false);
     setDescription(false);
     setAmountChosen(false);
-    setCategoryChosen('Chosse a category way IN...');
-    setAmount('');
-    setArrow(false);
     setShowButton(false);
+    setCategoryChosen('');
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setCategoryChosen('Chosse a category way IN...');
+      setAmount('');
+    }, 2000);
   };
 
   const onSendOut = () => {
@@ -64,9 +71,9 @@ export const Dashboard = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.viewBorders}>
           <View style={styles.header}>
-            <Agenda />
-            <Balance />
-            <HiddenNotify />
+            <Agenda nextEvent='24/01' />
+            <Balance balanceAmount='-1.231,23' pennyColor='red' />
+            <HiddenNotify notify='Notify' />
           </View>
           <View style={styles.flow}>
             {/* <Incoming /> */}
@@ -82,20 +89,34 @@ export const Dashboard = () => {
             {InOut ? (
               <View>
                 <Describe
-                  color={Colors.green}
+                  color={Colors.yellow3}
                   onPress={() => (setOutUp(1), setInUp(300))}
                   content={
                     categoryChosen === 'Chosse a category way IN...' ||
-                    categoryChosen === 'Chosse a category way OUT...'
-                      ? 'Chosse a category way IN...'
-                      : categoryChosen
+                    categoryChosen === 'Chosse a category way OUT...' ? (
+                      'Chosse a category way IN...'
+                    ) : (
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignSelf: 'center'
+                        }}
+                      >
+                        <View>
+                          <Icon name='Penny' fill='green' />
+                        </View>
+                        <View style={{ marginLeft: width(2) }}>
+                          <Text color={Colors.yellow3}>{categoryChosen}</Text>
+                        </View>
+                      </View>
+                    )
                   }
                 />
                 <Spacer amount={2} />
                 {amountChosen ? (
                   <MaskInput
                     placeholderTextColor={Colors.grey}
-                    style={{ ...styles.inputMask, color: onOff ? Colors.red : Colors.green }}
+                    style={{ ...styles.inputMask, color: onOff ? Colors.red : Colors.yellow3 }}
                     placeholder='R$ 0,00'
                     value={amount}
                     onChangeText={(masked, unmasked) => {
@@ -125,24 +146,45 @@ export const Dashboard = () => {
                   />
                 ) : null}
                 {showButton ? <Button onPress={onSendIn} title='Send    √' theme='green' /> : null}
+                {loading ? (
+                  <ActivityIndicator
+                    size={'large'}
+                    style={{ marginTop: width(20) }}
+                    color={Colors.yellow3}
+                  />
+                ) : null}
               </View>
             ) : (
               <View>
                 <Describe
-                  color={Colors.red}
+                  color='yellow3'
                   onPress={() => (setOutUp(1), setInUp(300))}
                   content={
                     categoryChosen === 'Chosse a category way OUT...' ||
-                    categoryChosen === 'Chosse a category way IN...'
-                      ? 'Chosse a category way OUT...'
-                      : categoryChosen
+                    categoryChosen === 'Chosse a category way IN...' ? (
+                      'Chosse a category way OUT...'
+                    ) : (
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          alignSelf: 'center'
+                        }}
+                      >
+                        <View>
+                          <Icon name='Penny' fill='red' />
+                        </View>
+                        <View style={{ marginLeft: width(2) }}>
+                          <Text color={Colors.yellow3}>{categoryChosen}</Text>
+                        </View>
+                      </View>
+                    )
                   }
                 />
                 <Spacer amount={2} />
                 {amountChosen ? (
                   <MaskInput
                     placeholderTextColor={Colors.grey}
-                    style={{ ...styles.inputMask, color: onOff ? Colors.red : Colors.green }}
+                    style={{ ...styles.inputMask, color: onOff ? Colors.yellow3 : Colors.green }}
                     placeholder='R$ 0,00'
                     value={amount}
                     onChangeText={(masked, unmasked) => {
@@ -179,7 +221,7 @@ export const Dashboard = () => {
       </SafeAreaView>
       <BottomSheet backgroundStyle={{ backgroundColor: 'black' }} snapPoints={[inUp]}>
         <View style={{ backgroundColor: 'black', height: height(90) }}>
-          {inCategories.map(({ category, index }) => (
+          {inCategories.map(({ category, index }: any) => (
             <InCategory
               key={index}
               Category={category}
@@ -193,7 +235,7 @@ export const Dashboard = () => {
       </BottomSheet>
       <BottomSheet backgroundStyle={{ backgroundColor: 'black' }} snapPoints={[outUp]}>
         <View style={{ backgroundColor: 'black', height: height(90) }}>
-          {inCategories.map(({ category, index }) => (
+          {inCategories.map(({ category, index }: any) => (
             <InCategory key={index} Category={category} onPress={() => onModalPress(category)} />
           ))}
         </View>

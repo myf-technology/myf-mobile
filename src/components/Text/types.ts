@@ -1,6 +1,6 @@
 import { LayoutRectangle, TextProps as RNTextProps } from 'react-native';
 
-import Colors from '../../constants/Colors';
+import { colorTypes } from '../../constants/Colors';
 import { fontType } from '../../constants/Typography';
 
 export type textAlignType = 'center' | 'left' | 'right' | 'auto' | 'justify' | undefined;
@@ -8,7 +8,7 @@ export type textAlignType = 'center' | 'left' | 'right' | 'auto' | 'justify' | u
 export interface TextProps extends RNTextProps {
   children: React.ReactNode;
   font?: fontType;
-  color?: Colors;
+  color?: colorTypes;
   textAlign?: textAlignType;
   testID?: string;
   onMeasurement?: (layout: LayoutRectangle) => void;
