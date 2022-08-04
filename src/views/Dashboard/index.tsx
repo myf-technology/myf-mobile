@@ -19,17 +19,17 @@ import { Button } from '../../components/Button';
 import { Text } from '../../components/Text';
 
 export const Dashboard = () => {
-  const [onOff, setOnOff] = useState(false);
-  const [InOut, setInOut] = useState(true);
-  const [inUp, setInUp] = useState(1);
-  const [outUp, setOutUp] = useState(1);
-  const [categoryChosen, setCategoryChosen] = useState('Chosse a category way IN...');
+  const [categoryChosen, setCategoryChosen] = useState('');
   const [amountChosen, setAmountChosen] = useState(false);
-  const [amount, setAmount] = useState('');
   const [description, setDescription] = useState(false);
-  const [arrow, setArrow] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [arrow, setArrow] = useState(false);
+  const [onOff, setOnOff] = useState(false);
+  const [amount, setAmount] = useState('');
+  const [InOut, setInOut] = useState(true);
+  const [outUp, setOutUp] = useState(1);
+  const [inUp, setInUp] = useState(1);
 
   const onChange = (masked: any) => {
     if (masked.length > 0) {
@@ -52,18 +52,21 @@ export const Dashboard = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setCategoryChosen('Chosse a category way IN...');
       setAmount('');
     }, 2000);
   };
 
   const onSendOut = () => {
-    setDescription(false);
-    setAmountChosen(false);
-    setCategoryChosen('Chosse a category way OUT...');
-    setAmount('');
-    setArrow(false);
-    setShowButton(false);
+    setLoading(true);
+    setTimeout(() => {
+      setAmountChosen(false);
+      setCategoryChosen('');
+      setDescription(false);
+      setShowButton(false);
+      setArrow(false);
+      setLoading(false);
+      setAmount('');
+    }, 2000);
   };
 
   return (
@@ -76,41 +79,21 @@ export const Dashboard = () => {
             <HiddenNotify notify='Notify' />
           </View>
           <View style={styles.flow}>
-            {/* <Incoming /> */}
-
-            <Toggle
-              on={onOff}
-              onPress={() => {
-                setOnOff(!onOff);
-                setInOut(!InOut);
-              }}
-            />
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <TouchableOpacity onPress={() => (setInOut(true), setOutUp(1), setInUp(300))}>
+                <Icon name='Penny' fill='green' />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => (setInOut(false), setOutUp(1), setInUp(300))}>
+                <Icon name='Penny' fill='red' />
+              </TouchableOpacity>
+            </View>
             <Spacer amount={2} />
             {InOut ? (
               <View>
                 <Describe
+                  content={categoryChosen}
                   color={Colors.yellow3}
                   onPress={() => (setOutUp(1), setInUp(300))}
-                  content={
-                    categoryChosen === 'Chosse a category way IN...' ||
-                    categoryChosen === 'Chosse a category way OUT...' ? (
-                      'Chosse a category way IN...'
-                    ) : (
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignSelf: 'center'
-                        }}
-                      >
-                        <View>
-                          <Icon name='Penny' fill='green' />
-                        </View>
-                        <View style={{ marginLeft: width(2) }}>
-                          <Text color={Colors.yellow3}>{categoryChosen}</Text>
-                        </View>
-                      </View>
-                    )
-                  }
                 />
                 <Spacer amount={2} />
                 {amountChosen ? (
@@ -128,7 +111,7 @@ export const Dashboard = () => {
                 ) : null}
                 {arrow ? (
                   <TouchableOpacity onPress={() => setDescription(true)} style={styles.arrow}>
-                    <Icon name='ArrowForward' fill='green' color={Colors.grey} />
+                    <Icon name='ArrowForward' fill='yellow3' />
                   </TouchableOpacity>
                 ) : null}
                 {description ? (
@@ -149,42 +132,29 @@ export const Dashboard = () => {
                 {loading ? (
                   <ActivityIndicator
                     size={'large'}
-                    style={{ marginTop: width(20) }}
+                    style={{ marginTop: width(10) }}
                     color={Colors.yellow3}
                   />
                 ) : null}
               </View>
             ) : (
-              <View>
+              <View
+                style={{
+                  width: width(90),
+                  alignItems: 'flex-end',
+                  alignSelf: 'flex-end'
+                }}
+              >
                 <Describe
-                  color='yellow3'
+                  content={categoryChosen}
+                  color={Colors.yellow3}
                   onPress={() => (setOutUp(1), setInUp(300))}
-                  content={
-                    categoryChosen === 'Chosse a category way OUT...' ||
-                    categoryChosen === 'Chosse a category way IN...' ? (
-                      'Chosse a category way OUT...'
-                    ) : (
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          alignSelf: 'center'
-                        }}
-                      >
-                        <View>
-                          <Icon name='Penny' fill='red' />
-                        </View>
-                        <View style={{ marginLeft: width(2) }}>
-                          <Text color={Colors.yellow3}>{categoryChosen}</Text>
-                        </View>
-                      </View>
-                    )
-                  }
                 />
                 <Spacer amount={2} />
                 {amountChosen ? (
                   <MaskInput
                     placeholderTextColor={Colors.grey}
-                    style={{ ...styles.inputMask, color: onOff ? Colors.yellow3 : Colors.green }}
+                    style={{ ...styles.inputMask, color: onOff ? Colors.yellow3 : Colors.yellow3 }}
                     placeholder='R$ 0,00'
                     value={amount}
                     onChangeText={(masked, unmasked) => {
@@ -196,7 +166,7 @@ export const Dashboard = () => {
                 ) : null}
                 {arrow ? (
                   <TouchableOpacity onPress={() => setDescription(true)} style={styles.arrow}>
-                    <Icon name='ArrowForward' fill='red' color={Colors.grey} />
+                    <Icon name='ArrowForward' fill='yellow3' />
                   </TouchableOpacity>
                 ) : null}
                 {description ? (
@@ -214,6 +184,13 @@ export const Dashboard = () => {
                   />
                 ) : null}
                 {showButton ? <Button onPress={onSendOut} title='Send    √' theme='red' /> : null}
+                {loading ? (
+                  <ActivityIndicator
+                    size={'large'}
+                    style={{ marginTop: width(10), marginRight: width(38) }}
+                    color={Colors.yellow3}
+                  />
+                ) : null}
               </View>
             )}
           </View>

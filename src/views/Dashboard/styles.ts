@@ -21,7 +21,7 @@ export default StyleSheet.create({
   arrow: {
     alignItems: 'flex-end',
     position: 'absolute',
-    right: width(1),
-    top: width(15)
+    right: width(42),
+    top: width(13)
   }
 });
