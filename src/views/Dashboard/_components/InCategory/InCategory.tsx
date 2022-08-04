@@ -22,7 +22,6 @@ export const InCategory = ({ Category, onPress }: inCategoryProps) => {
         }}
       >
         <Text color={Colors.yellow3}>{Category}</Text>
-        {/* <Icon style={{ marginLeft: width(2) }} name='Penny' fill={pennyColor} /> */}
       </View>
       <Spacer amount={2} />
     </TouchableOpacity>

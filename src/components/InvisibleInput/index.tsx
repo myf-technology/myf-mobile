@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { Input } from '../Input';
 import { FlashInputProps } from './types';
 
-export const InvisibleInput = ({ noShadow, sufixIcon, ...rest }: FlashInputProps) => {
+export const InvisibleInput = ({ noShadow, sufixIcon, mask, ...rest }: FlashInputProps) => {
   return (
     <View>
       <Input
@@ -11,6 +11,7 @@ export const InvisibleInput = ({ noShadow, sufixIcon, ...rest }: FlashInputProps
         textColor='yellow3'
         noShadow
         autoFocus
+        mask={mask}
         {...rest}
       />
     </View>

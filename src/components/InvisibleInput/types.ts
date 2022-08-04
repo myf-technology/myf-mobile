@@ -2,12 +2,13 @@ import { TextInputProps } from 'react-native';
 import { iconNameProp } from '../Icon/types';
 
 export interface FlashInputProps extends TextInputProps {
-  value?: string;
+  sufixIcon?: iconNameProp;
   onArrowPress?: any | void;
   onChangeText?: any | void;
+  noShadow?: boolean;
   loading?: boolean;
   arrowGo?: boolean;
-  sufixIcon?: iconNameProp;
-  noShadow?: boolean;
   holder?: string;
+  value?: string;
+  mask?: (string | RegExp)[];
 }

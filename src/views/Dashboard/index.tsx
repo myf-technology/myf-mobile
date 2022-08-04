@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import { ActivityIndicator, SafeAreaView, TouchableOpacity, View } from 'react-native';
-import { InvisibleInput } from '../../components/InvisibleInput';
-import { Spacer } from '../../components/Spacer';
-import { Toggle } from '../../components/Toggle';
-import Colors from '../../constants/Colors';
-import styles from './styles';
-import { Agenda } from './_components/Agenda';
-import { Balance } from './_components/Balance';
-import { HiddenNotify } from './_components/HiddenNotify';
-import BottomSheet from '@gorhom/bottom-sheet';
-import { height, width } from '../../constants/responsive';
 import { inCategories } from './_components/InCategory/inCategories';
 import { InCategory } from './_components/InCategory/InCategory';
-import Describe from '../Dashboard/_components/Category/index';
-import MaskInput, { Masks } from 'react-native-mask-input';
-import { Icon } from '../../components/Icon';
-import { Button } from '../../components/Button';
+import { height, width } from '../../constants/responsive';
+import { HiddenNotify } from './_components/HiddenNotify';
+import React, { SetStateAction, useState } from 'react';
+import { PennyInOut } from './_components/PennyInOut';
+import { SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native';
+import { Spacer } from '../../components/Spacer';
+import { Balance } from './_components/Balance';
+import BottomSheet from '@gorhom/bottom-sheet';
+import { Agenda } from './_components/Agenda';
 import { Text } from '../../components/Text';
+import Colors from '../../constants/Colors';
+import { Incoming } from './Incoming';
+import styles from './styles';
+import { Icon } from '../../components/Icon';
 
 export const Dashboard = () => {
   const [categoryChosen, setCategoryChosen] = useState('');
@@ -24,8 +21,7 @@ export const Dashboard = () => {
   const [description, setDescription] = useState(false);
   const [showButton, setShowButton] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [arrow, setArrow] = useState(false);
-  const [onOff, setOnOff] = useState(false);
+  const [showDate, setShowDate] = useState('');
   const [amount, setAmount] = useState('');
   const [InOut, setInOut] = useState(true);
   const [outUp, setOutUp] = useState(1);
@@ -33,37 +29,23 @@ export const Dashboard = () => {
 
   const onChange = (masked: any) => {
     if (masked.length > 0) {
-      setArrow(true);
+      setDescription(true);
     } else {
-      setArrow(false);
+      setDescription(false);
     }
   };
 
-  const onModalPress = (category: string) => {
+  const SelectCategory = (category: string) => {
     setCategoryChosen(category);
   };
 
   const onSendIn = () => {
-    setArrow(false);
-    setDescription(false);
-    setAmountChosen(false);
-    setShowButton(false);
     setCategoryChosen('');
+    setAmountChosen(false);
+    setDescription(false);
+    setShowButton(false);
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
-      setAmount('');
-    }, 2000);
-  };
-
-  const onSendOut = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setAmountChosen(false);
-      setCategoryChosen('');
-      setDescription(false);
-      setShowButton(false);
-      setArrow(false);
       setLoading(false);
       setAmount('');
     }, 2000);
@@ -79,143 +61,110 @@ export const Dashboard = () => {
             <HiddenNotify notify='Notify' />
           </View>
           <View style={styles.flow}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <TouchableOpacity onPress={() => (setInOut(true), setOutUp(1), setInUp(300))}>
-                <Icon name='Penny' fill='green' />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => (setInOut(false), setOutUp(1), setInUp(300))}>
-                <Icon name='Penny' fill='red' />
-              </TouchableOpacity>
-            </View>
+            <PennyInOut
+              onPennyInPress={() => (
+                setAmountChosen(false),
+                setDescription(false),
+                setShowButton(false),
+                setCategoryChosen(''),
+                setLoading(false),
+                setInOut(true),
+                setAmount(''),
+                setOutUp(1),
+                setInUp(300),
+                setOutUp(1)
+              )}
+              onPennyOutPress={() => (
+                setDescription(false),
+                setAmountChosen(false),
+                setShowButton(false),
+                setCategoryChosen(''),
+                setAmount(''),
+                setInOut(false),
+                setOutUp(1),
+                setInUp(300),
+                setOutUp(1)
+              )}
+            />
             <Spacer amount={2} />
             {InOut ? (
-              <View>
-                <Describe
-                  content={categoryChosen}
-                  color={Colors.yellow3}
-                  onPress={() => (setOutUp(1), setInUp(300))}
-                />
-                <Spacer amount={2} />
-                {amountChosen ? (
-                  <MaskInput
-                    placeholderTextColor={Colors.grey}
-                    style={{ ...styles.inputMask, color: onOff ? Colors.red : Colors.yellow3 }}
-                    placeholder='R$ 0,00'
-                    value={amount}
-                    onChangeText={(masked, unmasked) => {
-                      setAmount(masked);
-                      onChange(masked);
-                    }}
-                    mask={Masks.BRL_CURRENCY}
-                  />
-                ) : null}
-                {arrow ? (
-                  <TouchableOpacity onPress={() => setDescription(true)} style={styles.arrow}>
-                    <Icon name='ArrowForward' fill='yellow3' />
-                  </TouchableOpacity>
-                ) : null}
-                {description ? (
-                  <InvisibleInput
-                    multiline
-                    onFocus={() => {
-                      setArrow(false);
-                      setTimeout(() => {
-                        setShowButton(true);
-                      }, 1000);
-                    }}
-                    numberOfLines={10}
-                    noShadow={true}
-                    placeholder='Some description...'
-                  />
-                ) : null}
-                {showButton ? <Button onPress={onSendIn} title='Send    √' theme='green' /> : null}
-                {loading ? (
-                  <ActivityIndicator
-                    size={'large'}
-                    style={{ marginTop: width(10) }}
-                    color={Colors.yellow3}
-                  />
-                ) : null}
-              </View>
-            ) : (
-              <View
-                style={{
-                  width: width(90),
-                  alignItems: 'flex-end',
-                  alignSelf: 'flex-end'
+              <Incoming
+                InOut={InOut}
+                showDate={showDate}
+                dateValue={showDate}
+                onChangeDate={(masked, unmasked) => {
+                  setShowDate(masked);
                 }}
-              >
-                <Describe
-                  content={categoryChosen}
-                  color={Colors.yellow3}
-                  onPress={() => (setOutUp(1), setInUp(300))}
-                />
-                <Spacer amount={2} />
-                {amountChosen ? (
-                  <MaskInput
-                    placeholderTextColor={Colors.grey}
-                    style={{ ...styles.inputMask, color: onOff ? Colors.yellow3 : Colors.yellow3 }}
-                    placeholder='R$ 0,00'
-                    value={amount}
-                    onChangeText={(masked, unmasked) => {
-                      setAmount(masked);
-                      onChange(masked);
-                    }}
-                    mask={Masks.BRL_CURRENCY}
-                  />
-                ) : null}
-                {arrow ? (
-                  <TouchableOpacity onPress={() => setDescription(true)} style={styles.arrow}>
-                    <Icon name='ArrowForward' fill='yellow3' />
-                  </TouchableOpacity>
-                ) : null}
-                {description ? (
-                  <InvisibleInput
-                    multiline
-                    onFocus={() => {
-                      setArrow(false);
-                      setTimeout(() => {
-                        setShowButton(true);
-                      }, 1000);
-                    }}
-                    numberOfLines={10}
-                    noShadow={true}
-                    placeholder='Some description...'
-                  />
-                ) : null}
-                {showButton ? <Button onPress={onSendOut} title='Send    √' theme='red' /> : null}
-                {loading ? (
-                  <ActivityIndicator
-                    size={'large'}
-                    style={{ marginTop: width(10), marginRight: width(38) }}
-                    color={Colors.yellow3}
-                  />
-                ) : null}
-              </View>
+                incomeDescription={description}
+                onDescriptionChanges={(text: SetStateAction<boolean>) => setDescription(text)}
+                onDiscribePress={() => (setOutUp(1), setInUp(300))}
+                onPress={() => (setOutUp(1), setInUp(300))}
+                onArrowInPress={() => setDescription(true)}
+                onChangeInText={(masked, unmasked) => {
+                  setAmount(masked);
+                  onChange(masked);
+                  unmasked.length > 0 ? setShowButton(true) : setShowButton(false);
+                }}
+                categoryInChosen={categoryChosen}
+                amountChosen={amountChosen}
+                showInButton={showButton}
+                description={description}
+                onSendIn={onSendIn}
+                loading={loading}
+                value={amount}
+              />
+            ) : (
+              <Incoming
+                InOut={InOut}
+                showDate={showDate}
+                dateValue={showDate}
+                onChangeDate={(masked, unmasked) => {
+                  setShowDate(masked);
+                }}
+                incomeDescription={description}
+                onDescriptionChanges={(text: SetStateAction<boolean>) => setDescription(text)}
+                onDiscribePress={() => (setOutUp(1), setInUp(300))}
+                onPress={() => (setOutUp(1), setInUp(300))}
+                onArrowInPress={() => setDescription(true)}
+                onChangeInText={(masked, unmasked) => {
+                  setAmount(masked);
+                  onChange(masked);
+                  unmasked.length > 0 ? setShowButton(true) : setShowButton(false);
+                }}
+                categoryInChosen={categoryChosen}
+                amountChosen={amountChosen}
+                showInButton={showButton}
+                description={description}
+                onSendIn={onSendIn}
+                loading={loading}
+                value={amount}
+              />
             )}
           </View>
         </View>
       </SafeAreaView>
       <BottomSheet backgroundStyle={{ backgroundColor: 'black' }} snapPoints={[inUp]}>
-        <View style={{ backgroundColor: 'black', height: height(90) }}>
+        <ScrollView style={{ backgroundColor: 'black', height: height(90) }}>
+          <View style={styles.bottomSheet}>
+            <Text color={Colors.yellow3}>{InOut ? 'Earnings' : 'Expensives'}</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.plusSign}>
+              <Icon name='PlusSign' width={20} fill='grey3' />
+            </TouchableOpacity>
+          </View>
+          <Spacer amount={2} />
           {inCategories.map(({ category, index }: any) => (
             <InCategory
               key={index}
               Category={category}
               onPress={() => {
-                onModalPress(category), setInUp(1);
+                SelectCategory(category), setInUp(1);
                 setAmountChosen(true);
               }}
             />
           ))}
-        </View>
-      </BottomSheet>
-      <BottomSheet backgroundStyle={{ backgroundColor: 'black' }} snapPoints={[outUp]}>
-        <View style={{ backgroundColor: 'black', height: height(90) }}>
-          {inCategories.map(({ category, index }: any) => (
-            <InCategory key={index} Category={category} onPress={() => onModalPress(category)} />
-          ))}
-        </View>
+        </ScrollView>
       </BottomSheet>
     </>
   );

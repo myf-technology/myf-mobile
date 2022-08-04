@@ -18,10 +18,32 @@ export default StyleSheet.create({
   inputMask: {
     fontSize: width(6)
   },
+  bottomSheet: {
+    backgroundColor: Colors.grey,
+    width: width(35),
+    borderRadius: width(16),
+    height: width(8),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center'
+  },
   arrow: {
     alignItems: 'flex-end',
     position: 'absolute',
     right: width(42),
-    top: width(13)
+    top: width(25)
+  },
+  plusSign: {
+    alignItems: 'center',
+    marginTop: width(8),
+    marginBottom: width(2)
+  },
+  titleBox: {
+    backgroundColor: Colors.grey,
+    borderRadius: width(16),
+    height: width(8),
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center'
   }
 });

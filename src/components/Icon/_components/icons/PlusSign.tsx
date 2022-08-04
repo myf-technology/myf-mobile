@@ -1,39 +1,18 @@
 import * as React from 'react';
 import { Component as ComponentProp, forwardRef, LegacyRef } from 'react';
-import Svg, { Line, Path, SvgProps } from 'react-native-svg';
+import Svg, { Defs, Image, Line, Path, Pattern, Rect, SvgProps } from 'react-native-svg';
 
 import Colors from '../../../../constants/Colors';
 import { iconProps } from '../types';
 
 const Component = (
-  { fill = 'dark', ...props }: iconProps,
+  { fill = 'white', ...props }: iconProps,
   ref: LegacyRef<ComponentProp<SvgProps>>
 ) => (
-  <Svg
-    width="15"
-    height="15"
-    viewBox="0 0 15 15"
-    fill="none"
-    {...props}
-    ref={ref}
-  >
-    <Line
-      x1="1"
-      y1="7"
-      x2="14"
-      y2="7"
-      stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
-    />
-    <Line
-      x1="7"
-      y1="14"
-      x2="7"
-      y2="1"
-      stroke="black"
-      stroke-width="2"
-      stroke-linecap="round"
+  <Svg width='15' height='15' viewBox='0 0 48 48' fill={Colors[fill]}>
+    <Path
+      d='M19.9773 47.0284V0.153406H27.9318V47.0284H19.9773ZM0.517046 27.5682V19.6136H47.392V27.5682H0.517046Z'
+      fill='white'
     />
   </Svg>
 );
