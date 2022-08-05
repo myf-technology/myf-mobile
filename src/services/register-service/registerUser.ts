@@ -35,3 +35,18 @@ export const resendTokenService = async (email: string) => {
     return error.response;
   }
 };
+
+interface loginUserServiceProps {
+  email: string;
+  password: string;
+}
+
+export const loginUserService = async (data: loginUserServiceProps) => {
+  try {
+    const res = await instance.post('/identity/login', data);
+
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};

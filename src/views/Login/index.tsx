@@ -1,36 +1,60 @@
 import { useNavigation } from '@react-navigation/native';
+import { Alert, View } from 'react-native';
 import { useState } from 'react';
-import { View } from 'react-native';
 
-import { Button } from '../../components/Button';
+import { loginUserService } from '../../services/register-service/registerUser';
 import { InvisibleInput } from '../../components/InvisibleInput';
 import PageLayout from '../../components/PageLayout/PageLayout';
+import { NAVIGATORS } from '../../navigation/constants';
+import { storeToken } from '../../storage/storageToken';
 import { PathLink } from '../../components/PathLink';
 import { Spacer } from '../../components/Spacer';
 import { Text } from '../../components/Text';
 import Colors from '../../constants/Colors';
-import { NAVIGATORS } from '../../navigation/constants';
 
 export const Login = () => {
-  const { navigate } = useNavigation();
-  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState('');
   const [flip, setFlip] = useState(false);
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(true);
+  const { navigate } = useNavigation();
 
   const onEmailSet = () => {
     setLoading(true);
     setFlip(true);
-    setEmail('');
     setLoading(false);
   };
-  const onPasswordSet = () => {
-    setLoading(true);
-    navigate(NAVIGATORS.PRIVATE as never);
-    setEmail('');
-    setLoading(false);
+  const onPasswordSet = async () => {
+    const data = {
+      email,
+      password
+    };
+
+    const res = await loginUserService(data);
+
+    if (res.status === 400) {
+      Alert.alert('Error', res.data.message, [
+        {
+          text: 'OK',
+          onPress: () => {
+            setFlip(false);
+            setEmail('');
+            setPassword('');
+          }
+        }
+      ]);
+    }
+    if (res.status === 201) {
+      const token = res.data.data.token;
+
+      await storeToken(token);
+      setLoading(true);
+      navigate(NAVIGATORS.PRIVATE as never);
+      setEmail('');
+      setPassword('');
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,10 +63,10 @@ export const Login = () => {
       {!flip ? (
         <InvisibleInput
           arrowGo={email.match('@') ? true : false}
+          placeholder='Logue com email...'
           placeholderTextColor='grey'
           onArrowPress={onEmailSet}
           onChangeText={setEmail}
-          placeholder='Logue com email...'
           loading={loading}
           value={email}
           fontSize={20}
@@ -51,18 +75,17 @@ export const Login = () => {
         <InvisibleInput
           eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          passwordMode={showPassword}
           arrowGo={password.length >= 4 ? true : false}
-          placeholderTextColor='grey'
-          onArrowPress={onPasswordSet}
-          onChangeText={setPassword}
           placeholder='Digite sua senha...'
+          onArrowPress={onPasswordSet}
+          passwordMode={showPassword}
+          placeholderTextColor='grey'
+          onChangeText={setPassword}
           loading={loading}
           value={password}
           fontSize={20}
         />
       )}
-      <Text color={Colors.red}>{error}</Text>
 
       <Spacer amount={36} />
       <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
