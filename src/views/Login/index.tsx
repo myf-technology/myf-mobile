@@ -42,7 +42,7 @@ export const Login = () => {
           placeholderTextColor='grey'
           onArrowPress={onEmailSet}
           onChangeText={setEmail}
-          placeholder='Seu email...'
+          placeholder='Logue com email...'
           loading={loading}
           value={email}
           fontSize={20}

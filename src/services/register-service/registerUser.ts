@@ -15,3 +15,23 @@ export const createUserService = async (data: createUserDataProps) => {
     return error.response;
   }
 };
+
+export const validateTokenService = async (token: string) => {
+  try {
+    const res = await instance.patch(`/identity/verifyEmail?token=${token}`);
+
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const resendTokenService = async (email: string) => {
+  try {
+    const res = await instance.post('/identity/sendEmailToken', { email });
+
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+};
