@@ -10,8 +10,8 @@ export const createUserService = async (data: createUserDataProps) => {
   try {
     const res = await instance.post('/identity/register', data);
 
-    return res.data;
+    return res;
   } catch (error) {
-    return error.response.data;
+    return error.response;
   }
 };

@@ -35,10 +35,19 @@ export const Password = () => {
       password
     };
 
-    console.log('data:', data);
-
     const res = await createUserService(data);
-    console.log('res:', res);
+    console.log('res:', res.status);
+
+    if (res.status === 400) {
+      Alert.alert(res.data.message, 'Já existe um usuário cadastrado com este e-mail.', [
+        {
+          text: 'Blz ?',
+          onPress: () => {
+            navigate(PUBLIC.HOME as never);
+          }
+        }
+      ]);
+    }
 
     if (password !== passwordCheck) {
       Alert.alert('Senhas não conferem', 'Tente novamente', [
@@ -55,17 +64,19 @@ export const Password = () => {
       return;
     }
 
-    dispatch({
-      type: USER_REGISTER.PASSWORD,
-      payload: {
-        password
-      }
-    });
+    if (res.status === 200) {
+      dispatch({
+        type: USER_REGISTER.PASSWORD,
+        payload: {
+          password
+        }
+      });
 
-    // navigate(PUBLIC.VERIFY_EMAIL as never);
-    // setPasswordCheck('');
-    // setLoading(false);
-    // setFlip(true);
+      navigate(PUBLIC.VERIFY_EMAIL as never);
+      setPasswordCheck('');
+      setLoading(false);
+      setFlip(true);
+    }
   };
 
   return (
