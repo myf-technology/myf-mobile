@@ -4,7 +4,7 @@ import Animated, {
   runOnJS,
   useDerivedValue,
   useSharedValue,
-  withTiming,
+  withTiming
 } from 'react-native-reanimated';
 import { Text } from '../../../../components/Text';
 import Colors from '../../../../constants/Colors';
@@ -30,10 +30,9 @@ export const Countdown = ({ from, onComplete, restart }: CountdownProps) => {
   const [timer, setTimer] = useState(from);
 
   const animation = () => {
-    console.log(timer);
     time.value = withTiming(time.value - from, {
       duration: from * 1000,
-      easing: Easing.linear,
+      easing: Easing.linear
     });
   };
 
@@ -58,11 +57,7 @@ export const Countdown = ({ from, onComplete, restart }: CountdownProps) => {
   });
 
   return (
-    <Text
-      font='footnote'
-      style={{ fontSize: 200, opacity: 0.4 }}
-      color={Colors.yellow4}
-    >
+    <Text font='footnote' style={{ fontSize: 200, opacity: 0.4 }} color={Colors.yellow4}>
       {Math.floor(timer)}
     </Text>
   );

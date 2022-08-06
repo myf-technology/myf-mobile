@@ -6,6 +6,7 @@ import { iProps } from './types';
 
 import { Input } from '../Input';
 import { WhiteLine } from './_components/WhiteLine';
+import Colors from '../../constants/Colors';
 
 export const KeyConfirm = ({
   digitOne,
@@ -17,7 +18,7 @@ export const KeyConfirm = ({
   digitTwoValue,
   digitThreeValue,
   digitFourValue,
-  passwordMode,
+  passwordMode
 }: iProps) => {
   const refOne = useRef();
   const refTwo = useRef();
@@ -28,7 +29,7 @@ export const KeyConfirm = ({
     one: false,
     two: false,
     three: false,
-    four: false,
+    four: false
   });
 
   const onFocusOne = () => {
@@ -36,7 +37,7 @@ export const KeyConfirm = ({
       one: true,
       two: false,
       three: false,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -45,7 +46,7 @@ export const KeyConfirm = ({
       one: false,
       two: true,
       three: false,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -54,7 +55,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: true,
-      four: false,
+      four: false
     };
     setFocused(newFocused);
   };
@@ -64,7 +65,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: false,
-      four: true,
+      four: true
     };
     setFocused(newFocused);
   };
@@ -119,7 +120,7 @@ export const KeyConfirm = ({
           value={digitOneValue}
           onFocus={onFocusOne}
           textColor={focused.one ? 'yellow' : 'yellow3'}
-          backgroundColor='dark'
+          backgroundColor='black'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
@@ -143,7 +144,7 @@ export const KeyConfirm = ({
             }
           }}
           textColor={focused.two ? 'yellow' : 'yellow3'}
-          backgroundColor='dark'
+          backgroundColor='black'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
@@ -167,7 +168,7 @@ export const KeyConfirm = ({
             }
           }}
           textColor={focused.three ? 'yellow' : 'yellow3'}
-          backgroundColor='dark'
+          backgroundColor='black'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}
@@ -192,7 +193,7 @@ export const KeyConfirm = ({
             }
           }}
           textColor={focused.four ? 'yellow' : 'yellow3'}
-          backgroundColor='dark'
+          backgroundColor='black'
           caretHidden
           returnKeyType={'done'}
           maxLength={1}

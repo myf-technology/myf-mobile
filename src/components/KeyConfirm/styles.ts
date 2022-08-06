@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import Colors from '../../constants/Colors';
 
 import { width } from '../../constants/responsive';
 

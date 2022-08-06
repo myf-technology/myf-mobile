@@ -130,11 +130,7 @@ export const VerifyEmail = () => {
         >
           Resend Token
         </PathLink>
-        <Countdown
-          restart={restartCountdown}
-          from={3}
-          onComplete={onComplete}
-        />
+        <Countdown restart={restartCountdown} from={60} onComplete={onComplete} />
       </View>
     </PageLayout>
   );
