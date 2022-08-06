@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import PageLayout from '../../../components/PageLayout/PageLayout';
 import { KeyConfirm } from '../../../components/KeyConfirm';
 import { Text } from '../../../components/Text';
@@ -10,6 +10,12 @@ import { useSelector } from 'react-redux';
 import { Store } from '../../../store/types';
 import styles from './styles';
 import { Countdown } from './_helpers/Countdown';
+import {
+  resendTokenService,
+  validateTokenService
+} from '../../../services/register-service/registerUser';
+import { useNavigation } from '@react-navigation/native';
+import { PUBLIC } from '../../../navigation/Public/constants';
 
 export const VerifyEmail = () => {
   const { email } = useSelector(({ user }: Store) => user);
@@ -20,6 +26,7 @@ export const VerifyEmail = () => {
   const [digitFour, setDigitFour] = useState('');
   const [resendDisabled, setResendDisabled] = useState(true);
   const [restartCountdown, setRestartCountdown] = useState(false);
+  const { navigate } = useNavigation();
 
   const onComplete = () => {
     setResendDisabled(false);
@@ -29,6 +36,67 @@ export const VerifyEmail = () => {
   const resendToken = () => {
     setResendDisabled(true);
     setRestartCountdown(true);
+  };
+
+  const onBlur = async () => {
+    const token = digitOne + digitTwo + digitThree + digitFour;
+
+    const res = await validateTokenService(token);
+
+    console.log(res.data.mesasge);
+
+    if (res.status !== 200) {
+      Alert.alert(res.data.mesasge, 'tem que corrigir lá, ta escrito mesasge', [
+        {
+          text: 'Blz ?',
+          onPress: () => {
+            setDigitOne('');
+            setDigitTwo('');
+            setDigitThree('');
+            setDigitFour('');
+          }
+        }
+      ]);
+    } else {
+      Alert.alert('Parabéns', 'Agora vá fazer o login no app', [
+        {
+          text: 'Ok',
+          onPress: () => {
+            navigate(PUBLIC.LOGIN as never);
+          }
+        }
+      ]);
+    }
+  };
+
+  const onResendToken = async () => {
+    const res = await resendTokenService(email);
+
+    if (res.status !== 200) {
+      Alert.alert('Erro', 'Houve um erro e sua verificação tera que esperar um pouco', [
+        {
+          text: 'Ok',
+          onPress: () => {
+            setDigitOne('');
+            setDigitTwo('');
+            setDigitThree('');
+            setDigitFour('');
+          }
+        }
+      ]);
+    } else {
+      Alert.alert('Sucesso', 'Sua nova verificação foi enviada', [
+        {
+          text: 'Ok',
+          onPress: () => {
+            setDigitOne('');
+            setDigitTwo('');
+            setDigitThree('');
+            setDigitFour('');
+          }
+        }
+      ]);
+    }
   };
 
   return (
@@ -43,6 +111,7 @@ export const VerifyEmail = () => {
           {email}
         </Text>
         <KeyConfirm
+          onBlur={onBlur}
           digitOneValue={digitOne}
           digitTwoValue={digitTwo}
           digitThreeValue={digitThree}

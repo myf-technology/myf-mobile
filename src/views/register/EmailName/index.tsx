@@ -1,63 +1,67 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { InvisibleInput } from '../../../components/InvisibleInput';
 import PageLayout from '../../../components/PageLayout/PageLayout';
+import { Spacer } from '../../../components/Spacer';
 import Colors from '../../../constants/Colors';
 import { PUBLIC } from '../../../navigation/Public/constants';
 import { storeEmailAction } from '../../../store/reducers/user/actions';
-import { FlashInput } from './_components/FlashInput';
+import { USER_REGISTER } from '../../../store/reducers/user/constants';
 
 export const NameEmail = () => {
-  const dispatch = useDispatch();
-  const { navigate } = useNavigation();
-  const [value, setValue] = useState('');
   const [loading, setLoading] = useState(false);
+  const [flip, setFlip] = useState(false);
+  const [value, setValue] = useState('');
   const [email, setEmail] = useState('');
-  const [res, setRes] = useState(0);
+  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+
   const onArrowPress = () => {
     setLoading(true);
-    setTimeout(() => {
-      setValue('');
-      setLoading(false);
-      setRes(200);
-    }, 3000);
+    dispatch({
+      type: USER_REGISTER.FULL_NAME,
+      payload: {
+        fullName: value
+      }
+    });
+    setFlip(true);
+    setLoading(false);
   };
 
   const onSendEmail = () => {
     setLoading(true);
-    setTimeout(() => {
-      dispatch(storeEmailAction({ email }));
-
-      navigate(PUBLIC.PASSWORD as never);
-      setEmail('');
-      setLoading(false);
-      setRes(200);
-    }, 3000);
+    dispatch(storeEmailAction({ email }));
+    navigate(PUBLIC.PASSWORD as never);
+    setEmail('');
+    setLoading(false);
+    setFlip(false);
   };
 
   return (
     <PageLayout>
-      {res !== 200 ? (
-        <FlashInput
-          value={value}
-          onArrowPress={onArrowPress}
-          arrowForward={value.length >= 3 ? true : false}
-          onChangeText={setValue}
-          loading={loading}
-          placeholder='Nome...'
+      <Spacer amount={25} />
+      {!flip ? (
+        <InvisibleInput
+          arrowGo={value.length >= 3 ? true : false}
           placeholderTextColor={Colors.grey2}
+          onArrowPress={onArrowPress}
+          onChangeText={setValue}
+          placeholder='Nome...'
+          loading={loading}
+          value={value}
           fontSize={20}
         />
       ) : (
-        <FlashInput
-          value={email}
-          onArrowPress={onSendEmail}
-          arrowForward={email.match('@') ? true : false}
-          onChangeText={setEmail}
-          loading={loading}
-          placeholder='Email...'
+        <InvisibleInput
+          arrowGo={email.match('@') ? true : false}
           placeholderTextColor={Colors.grey2}
+          onArrowPress={onSendEmail}
+          onChangeText={setEmail}
+          placeholder='Email...'
+          loading={loading}
           fontSize={20}
+          value={email}
         />
       )}
     </PageLayout>

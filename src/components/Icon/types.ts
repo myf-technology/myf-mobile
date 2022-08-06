@@ -60,7 +60,7 @@ export enum iconName {
   Type = 'Type',
   Web = 'Web',
   MyF = 'MyF',
-  Calendar = 'Calendar',
+  Calendar = 'Calendar'
 }
 
 export type iconNameProp =

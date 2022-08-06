@@ -1,10 +1,11 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import Colors from '../../../../constants/Colors';
 
 export default StyleSheet.create({
   calendar: {
-    color: 'rgba(5, 155, 55, 0.6)',
-    fontSize: 20,
+    color: Colors.yellow3,
+    fontSize: 20
   },
-  agenda: {color: 'white', fontSize: 10},
-  container: {alignItems: 'center'},
+  agenda: { color: 'white', fontSize: 10 },
+  container: { alignItems: 'center' }
 });

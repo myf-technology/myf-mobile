@@ -1,29 +1,52 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { InvisibleInput } from '../../../components/InvisibleInput';
 import PageLayout from '../../../components/PageLayout/PageLayout';
+import { Spacer } from '../../../components/Spacer';
 import Colors from '../../../constants/Colors';
 import { PUBLIC } from '../../../navigation/Public/constants';
-import { FlashInput } from './_components/FlashInput';
+import { createUserService } from '../../../services/register-service/registerUser';
+import { USER_REGISTER } from '../../../store/reducers/user/constants';
 
 export const Password = () => {
-  const { navigate } = useNavigation();
-  const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
   const [passwordCheck, setPasswordCheck] = useState('');
   const [showPassword, setShowPassword] = useState(true);
-  const [res, setRes] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState('');
+  const [flip, setFlip] = useState(false);
+  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const userData = useSelector((state: any) => state.user);
+
   const onArrowPress = () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setRes(200);
-    }, 3000);
+    setFlip(true);
+    setLoading(false);
   };
 
-  const onSendEmail = () => {
+  const onSendEmail = async () => {
     setLoading(true);
-    console.log(password, passwordCheck);
+    const data = {
+      fullName: userData.fullName,
+      email: userData.email,
+      password
+    };
+
+    const res = await createUserService(data);
+    console.log('res:', res.status);
+
+    if (res.status === 400) {
+      Alert.alert(res.data.message, 'Já existe um usuário cadastrado com este e-mail.', [
+        {
+          text: 'Blz ?',
+          onPress: () => {
+            navigate(PUBLIC.HOME as never);
+          }
+        }
+      ]);
+    }
     if (password !== passwordCheck) {
       Alert.alert('Senhas não conferem', 'Tente novamente', [
         {
@@ -32,27 +55,36 @@ export const Password = () => {
             setLoading(false);
             setPassword('');
             setPasswordCheck('');
-            setRes(0);
-          },
-        },
+            setFlip(false);
+          }
+        }
       ]);
       return;
     }
-    setTimeout(() => {
+
+    if (res.status === 200) {
+      dispatch({
+        type: USER_REGISTER.PASSWORD,
+        payload: {
+          password
+        }
+      });
+
+      navigate(PUBLIC.VERIFY_EMAIL as never);
       setPasswordCheck('');
       setLoading(false);
-      setRes(200);
-      navigate(PUBLIC.VERIFY_EMAIL as never);
-    }, 3000);
+      setFlip(true);
+    }
   };
 
   return (
     <PageLayout>
-      {res !== 200 ? (
-        <FlashInput
+      <Spacer amount={25} />
+      {!flip ? (
+        <InvisibleInput
           eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          arrowForward={password.length >= 4 ? true : false}
+          arrowGo={password.length >= 4 ? true : false}
           placeholder='Senha, crie uma.'
           placeholderTextColor={Colors.grey2}
           passwordMode={showPassword}
@@ -63,10 +95,10 @@ export const Password = () => {
           fontSize={20}
         />
       ) : (
-        <FlashInput
+        <InvisibleInput
           eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          arrowForward={passwordCheck.length >= 1 ? true : false}
+          arrowGo={passwordCheck.length >= 1 ? true : false}
           placeholderTextColor={Colors.grey2}
           placeholder='Sua senha, repita.'
           onChangeText={setPasswordCheck}

@@ -26,13 +26,14 @@ export const Input = ({
   fontSize = 16,
   eyeIcon,
   textColor = 'white',
-  backgroundColor = 'dark',
+  backgroundColor = 'black',
   onChangeText,
   errorMessage = '',
   placeholderAlign = 'left',
   passwordMode = false,
   toggleVisibility,
-  arrowForward,
+  arrowGo,
+  sufixIcon = 'ArrowForward',
   loading,
   onArrowPress,
   containerTestID,
@@ -112,7 +113,7 @@ export const Input = ({
         onFocus={focusHandler}
         onBlur={blurHandler}
       />
-      {arrowForward ? (
+      {arrowGo ? (
         <TouchableOpacity
           onPress={() => onArrowPress()}
           style={{ position: 'absolute', top: width(10), left: width(80) }}
@@ -123,7 +124,7 @@ export const Input = ({
               style={{ right: width(3), bottom: width(1) }}
             />
           ) : (
-            <Icon fill='yellow' name='ArrowForward' />
+            <Icon fill='yellow' name={sufixIcon} />
           )}
         </TouchableOpacity>
       ) : null}

@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   layoutContainer: {
     flex: 1,
     padding: Layout.paddingHorizontal,
-    backgroundColor: Colors.dark
+    backgroundColor: 'black'
   }
 });
 

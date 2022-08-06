@@ -115,7 +115,7 @@ export const KeyConfirm = ({
     <View style={styles.container}>
       <View style={styles.squaredInput}>
         <Input
-          noShadow
+          noShadow={true}
           value={digitOneValue}
           onFocus={onFocusOne}
           textColor={focused.one ? 'yellow' : 'yellow3'}
@@ -134,7 +134,7 @@ export const KeyConfirm = ({
       </View>
       <View style={styles.squaredInput}>
         <Input
-          noShadow
+          noShadow={true}
           value={digitTwoValue}
           onFocus={onFocusTwo}
           onKeyPress={({ nativeEvent: { key: keyValue } }) => {
@@ -158,7 +158,7 @@ export const KeyConfirm = ({
       </View>
       <View style={styles.squaredInput}>
         <Input
-          noShadow
+          noShadow={true}
           value={digitThreeValue}
           onFocus={onFocusThree}
           onKeyPress={({ nativeEvent: { key: keyValue } }) => {
@@ -182,7 +182,7 @@ export const KeyConfirm = ({
       </View>
       <View style={styles.squaredInput}>
         <Input
-          noShadow
+          noShadow={true}
           value={digitFourValue}
           onBlur={backOnDigit ? onBlur : ''}
           onFocus={onFocusFour}

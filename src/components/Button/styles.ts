@@ -16,20 +16,26 @@ export default StyleSheet.create({
     backgroundColor: Colors.yellow3
   },
   green: {
-    backgroundColor: Colors.green
+    backgroundColor: 'transparent'
   },
   white: {
     backgroundColor: Colors.white
   },
   red: {
-    backgroundColor: Colors.red
+    backgroundColor: 'transparent'
+    // borderColor: Colors.white,
   },
   dark: {
     backgroundColor: Colors.dark
   },
+  redFluid: {
+    backgroundColor: 'transparent',
+    // borderColor: Colors.white,
+    borderWidth: 1
+  },
   transparent: {
     backgroundColor: 'transparent',
-    borderColor: Colors.white,
+    // borderColor: Colors.white,
     borderWidth: 1
   },
   disabled: {
