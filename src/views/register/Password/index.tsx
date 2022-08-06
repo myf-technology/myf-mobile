@@ -28,7 +28,6 @@ export const Password = () => {
 
   const onSendEmail = async () => {
     setLoading(true);
-
     const data = {
       fullName: userData.fullName,
       email: userData.email,
@@ -48,7 +47,6 @@ export const Password = () => {
         }
       ]);
     }
-
     if (password !== passwordCheck) {
       Alert.alert('Senhas não conferem', 'Tente novamente', [
         {

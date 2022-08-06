@@ -6,4 +6,5 @@ export interface PathLinkProps extends TextProps {
   destination?: string;
   textColor?: string;
   children: ReactChild;
+  disabled?: boolean;
 }

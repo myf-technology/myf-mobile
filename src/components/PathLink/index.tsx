@@ -10,6 +10,7 @@ import Colors from '../../constants/Colors';
 export const PathLink = ({
   destination,
   children,
+  disabled,
   textColor,
   onPress,
   ...props
@@ -18,6 +19,7 @@ export const PathLink = ({
 
   return (
     <TouchableOpacity
+      disabled={disabled}
       onPress={() => {
         destination && navigate(destination as never);
         onPress && onPress();

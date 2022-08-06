@@ -2,13 +2,14 @@ import { Alert, View } from 'react-native';
 import PageLayout from '../../../components/PageLayout/PageLayout';
 import { KeyConfirm } from '../../../components/KeyConfirm';
 import { Text } from '../../../components/Text';
-import { forwardRef, useState } from 'react';
+import { useState } from 'react';
 import Colors from '../../../constants/Colors';
 import { PathLink } from '../../../components/PathLink';
 import { Spacer } from '../../../components/Spacer';
 import { useSelector } from 'react-redux';
 import { Store } from '../../../store/types';
 import styles from './styles';
+import { Countdown } from './_helpers/Countdown';
 import {
   resendTokenService,
   validateTokenService
@@ -17,13 +18,25 @@ import { useNavigation } from '@react-navigation/native';
 import { PUBLIC } from '../../../navigation/Public/constants';
 
 export const VerifyEmail = () => {
+  const { email } = useSelector(({ user }: Store) => user);
+
   const [digitOne, setDigitOne] = useState('');
   const [digitTwo, setDigitTwo] = useState('');
   const [digitThree, setDigitThree] = useState('');
   const [digitFour, setDigitFour] = useState('');
+  const [resendDisabled, setResendDisabled] = useState(true);
+  const [restartCountdown, setRestartCountdown] = useState(false);
   const { navigate } = useNavigation();
 
-  const { email } = useSelector(({ user }: Store) => user);
+  const onComplete = () => {
+    setResendDisabled(false);
+    setRestartCountdown(false);
+  };
+
+  const resendToken = () => {
+    setResendDisabled(true);
+    setRestartCountdown(true);
+  };
 
   const onBlur = async () => {
     const token = digitOne + digitTwo + digitThree + digitFour;
@@ -90,7 +103,7 @@ export const VerifyEmail = () => {
     <PageLayout>
       <View style={styles.container}>
         <Spacer amount={18} />
-        <Text textAlign='left' color={Colors.yellow4}>
+        <Text textAlign='left' color={Colors.yellow}>
           Please check the token sent to your E-mail.
         </Text>
         <Spacer amount={1} />
@@ -110,9 +123,18 @@ export const VerifyEmail = () => {
           digitFour={setDigitFour}
         />
         <Spacer amount={6} />
-        <PathLink onPress={onResendToken} color={Colors.yellow4}>
+        <PathLink
+          disabled={resendDisabled}
+          color={resendDisabled ? Colors.yellow4 : Colors.yellow}
+          onPress={resendToken}
+        >
           Resend Token
         </PathLink>
+        <Countdown
+          restart={restartCountdown}
+          from={3}
+          onComplete={onComplete}
+        />
       </View>
     </PageLayout>
   );

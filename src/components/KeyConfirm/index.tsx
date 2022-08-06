@@ -17,7 +17,7 @@ export const KeyConfirm = ({
   digitTwoValue,
   digitThreeValue,
   digitFourValue,
-  passwordMode
+  passwordMode,
 }: iProps) => {
   const refOne = useRef();
   const refTwo = useRef();
@@ -28,7 +28,7 @@ export const KeyConfirm = ({
     one: false,
     two: false,
     three: false,
-    four: false
+    four: false,
   });
 
   const onFocusOne = () => {
@@ -36,7 +36,7 @@ export const KeyConfirm = ({
       one: true,
       two: false,
       three: false,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -45,7 +45,7 @@ export const KeyConfirm = ({
       one: false,
       two: true,
       three: false,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -54,7 +54,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: true,
-      four: false
+      four: false,
     };
     setFocused(newFocused);
   };
@@ -64,7 +64,7 @@ export const KeyConfirm = ({
       one: false,
       two: false,
       three: false,
-      four: true
+      four: true,
     };
     setFocused(newFocused);
   };
@@ -130,7 +130,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitOne}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitOneValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
@@ -154,7 +154,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitTwo}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitTwoValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
@@ -178,7 +178,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitThree}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitThreeValue ? 'yellow' : 'yellow4'} />
       </View>
       <View style={styles.squaredInput}>
         <Input
@@ -203,7 +203,7 @@ export const KeyConfirm = ({
           onChangeText={handleDigitFour}
           passwordMode={passwordMode}
         />
-        <WhiteLine />
+        <WhiteLine color={digitFourValue ? 'yellow' : 'yellow4'} />
       </View>
     </View>
   );
