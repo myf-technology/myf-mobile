@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, TouchableOpacity, View, ViewProps } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ViewProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
@@ -17,6 +17,7 @@ export interface Iprops extends ViewProps {
   customArrowBackHandler?: () => void;
   blockStepBack?: boolean;
   toolTips?: boolean;
+  pageTitle?: string;
 }
 
 const PageLayout = ({
@@ -24,6 +25,7 @@ const PageLayout = ({
   style,
   blockStepBack,
   toolTips,
+  pageTitle,
   customArrowBackHandler
 }: Iprops) => {
   const { goBack } = useNavigation();
@@ -31,32 +33,45 @@ const PageLayout = ({
   return (
     <SafeAreaView style={[styles.layoutContainer, style]}>
       <StatusBar style='white' />
-
-      <TouchableOpacity
-        style={{
-          height: 40,
-          width: width(90),
-          flexDirection: 'row',
-          justifyContent: 'space-between'
-        }}
-        onPress={
-          blockStepBack
-            ? null
-            : async () => {
-                customArrowBackHandler && (await customArrowBackHandler());
-                goBack();
-              }
-        }
-      >
-        <Icon
-          name='ArrowBack'
-          height={Layout.window.height * 0.02}
-          width={Layout.window.width * 0.024}
-          style={{ justifyContent: 'center' }}
-          fill='yellow'
-        />
-        {toolTips ? <Tooltips /> : <View></View>}
-      </TouchableOpacity>
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableOpacity
+          style={{
+            height: 25,
+            width: width(90),
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          }}
+          onPress={
+            blockStepBack
+              ? null
+              : async () => {
+                  customArrowBackHandler && (await customArrowBackHandler());
+                  goBack();
+                }
+          }
+        >
+          <Icon
+            name='ArrowBack'
+            height={Layout.window.height * 0.02}
+            width={Layout.window.width * 0.024}
+            style={{ justifyContent: 'center' }}
+            fill='yellow'
+          />
+          <Text
+            style={{
+              color: 'white',
+              // position: 'absolute',
+              // left: width(8),
+              fontSize: width(6),
+              bottom: width(1.4)
+              // justifyContent: 'center'
+            }}
+          >
+            {pageTitle}
+          </Text>
+          {toolTips ? <Tooltips /> : <View></View>}
+        </TouchableOpacity>
+      </View>
 
       {/* {stepBack ? (
         <TouchableOpacity
