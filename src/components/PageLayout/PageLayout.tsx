@@ -59,7 +59,7 @@ const PageLayout = ({
           />
           <Text
             style={{
-              color: 'white',
+              color: Colors.yellow3,
               // position: 'absolute',
               // left: width(8),
               fontSize: width(6),

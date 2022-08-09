@@ -13,10 +13,10 @@ export const PennyInOut = ({ onPennyInPress, onPennyOutPress }: pennyInOutProps)
   return (
     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
       <TouchableOpacity onPress={onPennyInPress} style={[styles.titleBox, { width: width(15) }]}>
-        <Icon name='Penny' fill='green' />
+        <Icon name='DollarSign' fill='green' />
       </TouchableOpacity>
       <TouchableOpacity style={{ ...styles.titleBox, width: width(15) }} onPress={onPennyOutPress}>
-        <Icon name='Penny' fill='red' />
+        <Icon name='DollarSign' fill='red' />
       </TouchableOpacity>
     </View>
   );

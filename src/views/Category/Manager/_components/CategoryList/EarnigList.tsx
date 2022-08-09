@@ -57,7 +57,7 @@ export const EarnigList = ({
               <Text color={Colors.grey4}>Valor Estimado</Text>
               <MaskInput
                 mask={Masks.BRL_CURRENCY}
-                style={{ color: Colors.grey4, fontSize: 16, left: width(10) }}
+                style={{ color: Colors.yellow3, fontSize: 16, left: width(10) }}
                 value={String(averangeAmount)}
               />
 
@@ -66,14 +66,14 @@ export const EarnigList = ({
               <Text textAlign='left' color={Colors.grey4}>
                 Data média
               </Text>
-              <Text style={{ left: width(10) }} textAlign='left' color={Colors.grey4}>
+              <Text style={{ left: width(10) }} textAlign='left' color={Colors.yellow3}>
                 {averangeDate}
               </Text>
               <Spacer amount={1} />
               <Text textAlign='left' color={Colors.grey4}>
                 Descrição
               </Text>
-              <Text style={{ left: width(10) }} textAlign='left' color={Colors.grey4}>
+              <Text style={{ left: width(10) }} textAlign='left' color={Colors.yellow3}>
                 {description}
               </Text>
             </View>

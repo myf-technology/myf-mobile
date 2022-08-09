@@ -37,6 +37,7 @@ export const Input = ({
   loading,
   onArrowPress,
   containerTestID,
+  arrowPosition,
   ...rest
 }: Iprops) => {
   const [iconVisible, setIconVisible] = useState(false);
@@ -77,7 +78,7 @@ export const Input = ({
   return (
     <View testID={containerTestID}>
       {label ? (
-        <Text color={colors} textAlign='left' font='callout'>
+        <Text color={Colors.yellow4} textAlign='left' font='callout'>
           {label}
         </Text>
       ) : null}
@@ -116,7 +117,7 @@ export const Input = ({
       {arrowGo ? (
         <TouchableOpacity
           onPress={() => onArrowPress()}
-          style={{ position: 'absolute', top: width(10), left: width(80) }}
+          style={{ position: 'absolute', top: arrowPosition, left: width(80) }}
         >
           {loading ? (
             <ActivityIndicator

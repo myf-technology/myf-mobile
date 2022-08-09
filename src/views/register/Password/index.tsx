@@ -82,6 +82,7 @@ export const Password = () => {
       <Spacer amount={25} />
       {!flip ? (
         <InvisibleInput
+          arrowPosition={40}
           eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
           arrowGo={password.length >= 4 ? true : false}
@@ -96,6 +97,7 @@ export const Password = () => {
         />
       ) : (
         <InvisibleInput
+          arrowPosition={40}
           eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
           arrowGo={passwordCheck.length >= 1 ? true : false}
