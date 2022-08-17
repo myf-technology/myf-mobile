@@ -7,35 +7,36 @@ import { Login } from '../../views/Login';
 import { NameEmail } from '../../views/register/EmailName';
 import { VerifyEmail } from '../../views/register/VerifyEmail';
 import { Password } from '../../views/register/Password';
+import { Placeholder } from '../../views/Placeholder';
 
 export default [
   {
     name: PUBLIC.DEV,
-    component: Dev
+    component: Dev,
   },
   {
     name: PUBLIC.HOME,
-    component: Home
+    component: Home,
   },
   {
     name: PUBLIC.STORYBOOK,
-    component: Storybook
+    component: Storybook,
   },
   {
     name: PUBLIC.LOGIN,
-    component: Login
+    component: Login,
   },
   {
     name: PUBLIC.EMAILNAME,
-    component: NameEmail
+    component: NameEmail,
   },
   {
     name: PUBLIC.PASSWORD,
-    component: Password
-  }
-  ,
+    component: Password,
+  },
   {
     name: PUBLIC.VERIFY_EMAIL,
-    component: VerifyEmail
-  }
+    component: VerifyEmail,
+  },
+  { name: PUBLIC.PLACEHOLDER, component: Placeholder },
 ];

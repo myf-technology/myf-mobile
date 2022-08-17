@@ -1,6 +1,4 @@
-import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Example } from './Example';
 
 import { WithProvider } from './src/hoc/WithProvider';
 import useCachedResources from './src/hooks/useCachedResources';
