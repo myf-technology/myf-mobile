@@ -1,16 +1,10 @@
-import { NameEmail } from './src/views/Register/EmailName';
-import { Register } from './src/views/Register';
-import { Input } from './src/components';
 import { View } from 'react-native';
-import { useState } from 'react';
+import { VerifyEmail } from './src/views/Register/VerifyEmail';
 
 export default () => {
-  const [state, setState] = useState('');
   return (
     <View style={{ flex: 1, backgroundColor: 'black' }}>
-      <Register>
-        <Input value={state} onChangeText={setState} />
-      </Register>
+      <VerifyEmail />
     </View>
   );
 };
