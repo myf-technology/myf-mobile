@@ -28,7 +28,8 @@ export const Button = ({
           style={rest.enabled ? undefined : styles.textDisabled}>
           {title}
         </Text>
-        {suffixIcon && suffixIcon}
+
+        {suffixIcon && <View style={styles.suffixIcon}>suffixIcon()</View>}
       </View>
     </RectButton>
   );
