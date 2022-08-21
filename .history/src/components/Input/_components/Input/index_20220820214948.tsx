@@ -28,7 +28,6 @@ export const Input = ({
   onArrowPress,
   containerTestID,
   arrowPosition,
-  refs,
   ...rest
 }: IInputProps) => {
   const [eyeIconVisibility, setEyeIconVisibility] = useState(false);
@@ -68,7 +67,6 @@ export const Input = ({
           textColor,
         })}
         numberOfLines={1}
-        ref={refs}
         placeholderTextColor={Colors.white}
         testID="textinput-input-component"
         secureTextEntry={passwordMode}

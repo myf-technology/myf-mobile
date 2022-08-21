@@ -68,7 +68,7 @@ export const Input = ({
           textColor,
         })}
         numberOfLines={1}
-        ref={refs}
+        refs={refs}
         placeholderTextColor={Colors.white}
         testID="textinput-input-component"
         secureTextEntry={passwordMode}
