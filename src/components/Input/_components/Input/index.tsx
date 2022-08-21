@@ -17,17 +17,10 @@ import { IInputProps } from './types';
 
 export const Input = ({
   mask,
-  refs,
-  noShadow,
-  label = '',
-  fontSize = 16,
-  eyeIcon,
   textColor = 'white',
-  backgroundColor = 'black',
-  onChangeText,
   errorMessage = '',
   placeholderAlign = 'left',
-  passwordMode = false,
+  passwordMode = true,
   toggleVisibility,
   arrowGo,
   sufixIcon = 'ArrowForward',
@@ -37,8 +30,7 @@ export const Input = ({
   arrowPosition,
   ...rest
 }: IInputProps) => {
-  const [iconVisible, setIconVisible] = useState(false);
-  const [value, setValue] = useState('');
+  const [eyeIconVisibility, setEyeIconVisibility] = useState(false);
   const [textcolors, setTextColors] = useState(Colors.black);
 
   const isErrorState = textcolors === Colors.red;
@@ -57,8 +49,8 @@ export const Input = ({
   };
 
   useEffect(() => {
-    passwordMode && setIconVisible(true);
-  }, [passwordMode, setIconVisible]);
+    passwordMode && setEyeIconVisibility(true);
+  }, [passwordMode, setEyeIconVisibility]);
 
   useEffect(() => {
     const shouldSetError = errorMessage !== '';
@@ -67,35 +59,19 @@ export const Input = ({
     !shouldSetError && setTextColors(Colors.white);
   }, [errorMessage]);
 
-  const changeHandler = (_: string, text: string) => {
-    onChangeText && onChangeText(text);
-    setValue(text);
-  };
-
   return (
     <View testID={containerTestID}>
-      {label ? (
-        <Text color={textColor} textAlign="left" typography="callout">
-          {label}
-        </Text>
-      ) : null}
-
       <MaskInput
         style={inputStyles({
-          noShadow,
-          fontSize,
           placeholderAlign,
           textColor,
-          backgroundColor,
         })}
         numberOfLines={1}
-        ref={refs}
         placeholderTextColor={Colors.white}
         testID="textinput-input-component"
-        onChangeText={changeHandler}
         secureTextEntry={passwordMode}
         mask={mask}
-        value={value}
+        value=""
         {...rest}
         onFocus={focusHandler}
         onBlur={blurHandler}
@@ -114,16 +90,15 @@ export const Input = ({
           )}
         </TouchableOpacity>
       ) : null}
-      {eyeIcon ? (
+      {eyeIconVisibility && (
         <TouchableOpacity onPress={toggleVisibility} style={styles.eyeWrapper}>
-          {iconVisible &&
-            (passwordMode ? (
-              <Icon fill="yellow2" name="ArrowForward" />
-            ) : (
-              <Icon fill="yellow2" name="ArrowForward" />
-            ))}
+          {passwordMode ? (
+            <Icon fill="yellow2" name="ArrowForward" />
+          ) : (
+            <Icon fill="yellow2" name="ArrowForward" />
+          )}
         </TouchableOpacity>
-      ) : null}
+      )}
       <Spacer amount={2} />
       <Text color="white" textAlign="left" typography="callout">
         {isErrorState && errorMessage}
