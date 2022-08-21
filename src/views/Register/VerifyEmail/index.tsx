@@ -43,8 +43,6 @@ export const VerifyEmail = () => {
 
     // const res = await validateTokenService(token);
 
-    console.log(res.data.mesasge);
-
     if (res.status !== 200) {
       Alert.alert(res.data.mesasge, 'tem que corrigir lá, ta escrito mesasge', [
         {
