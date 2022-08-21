@@ -16,6 +16,8 @@ export default StyleSheet.create({
   },
   textDisabled: {
     color: Colors.grey,
+  },
+  suffixIcon: {
     marginRight: width(3),
   },
   disabled: {
