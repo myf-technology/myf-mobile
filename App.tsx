@@ -1,17 +1,19 @@
+import { NameEmail } from './src/views/Register/EmailName';
+import { Register } from './src/views/Register';
+import { Input } from './src/components';
 import { View } from 'react-native';
-import { Icon } from 'react-native-eva-icons';
+import { useState } from 'react';
+import { Dashboard } from './src/views/Dashboard';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Button } from './src/components/Button';
 
 export default () => {
+  const [state, setState] = useState('');
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <GestureHandlerRootView>
       <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Button
-          onPress={() => ''}
-          suffixIcon={<Icon name="trash" fill="white" width={20} height={20} />}
-          title="hey ho"
-        />
+        <Register>
+          <Dashboard />
+        </Register>
       </View>
     </GestureHandlerRootView>
   );
