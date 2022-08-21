@@ -5,7 +5,6 @@ import { Colors } from '../../../constants';
 import { Spacer } from '../../../components/Spacer';
 // import { Alert, View } from 'react-native';
 // import { useDispatch, useSelector } from 'react-redux';
-// import { InvisibleInput } from '../../../components/InvisibleInput';
 // import { PUBLIC } from '../../../navigation/Public/constants';
 // import { createUserService } from '../../../services/register-service/registerUser';
 // import { USER_REGISTER } from '../../../store/reducers/user/constants';

@@ -1,5 +1,5 @@
 export { Icon } from './Icon';
-export { Input, InvisibleInput } from './Input';
+export { Input } from './Input';
 export { Layout } from './Layout';
 export { Spacer } from './Spacer';
 export { Text } from './Text';
