@@ -8,5 +8,5 @@ export type ThemeLibrary = 'default';
 export interface IButtonProps extends RectButtonProps {
   theme?: ThemeLibrary;
   title: string;
-  suffixIcon: React.ReactNode;
+  suffixIcon?: () => React.ReactNode;
 }

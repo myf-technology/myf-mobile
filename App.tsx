@@ -1,5 +1,4 @@
-import { View } from 'react-native';
-import { Icon } from 'react-native-eva-icons';
+import { ActivityIndicator, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Button } from './src/components/Button';
 
@@ -9,7 +8,7 @@ export default () => {
       <View style={{ flex: 1, backgroundColor: 'black' }}>
         <Button
           onPress={() => ''}
-          suffixIcon={<Icon name="trash" fill="white" width={20} height={20} />}
+          suffixIcon={() => <ActivityIndicator />}
           title="hey ho"
         />
       </View>
