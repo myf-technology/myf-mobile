@@ -1,12 +1,15 @@
 import React from 'react';
-
-import {Register} from './src/views/Register';
-import {NameEmail} from './src/views/Register/EmailName';
+import {View} from 'react-native';
+import {Login} from './src/views/Login';
 
 export default () => {
   return (
-    <Register>
-      <NameEmail />
-    </Register>
+    <View
+      style={{
+        backgroundColor: 'black',
+        flex: 1,
+      }}>
+      <Login />
+    </View>
   );
 };

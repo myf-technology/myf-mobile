@@ -14,7 +14,6 @@ export const inputStyles = ({
 
   return StyleSheet.create({
     input: {
-      fontFamily: 'rubik',
       borderRadius: 8,
       height: height(7.2),
       // padding: 10,
