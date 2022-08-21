@@ -1,30 +1,12 @@
-import {
-  ButtonProps,
-  NativeSyntheticEvent,
-  NativeTouchEvent,
-} from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
-export enum Theme {
-  yellow = 'yellow',
-  white = 'white',
-  transparent = 'transparent',
-  red = 'red',
-  dark = 'dark',
-  green = 'green',
-  disabled = 'disabled',
+export enum ThemeMap {
+  default = 'default',
 }
-export interface Iprops extends ButtonProps {
-  theme?:
-    | 'yellow'
-    | 'green'
-    | 'red'
-    | 'white'
-    | 'transparent'
-    | 'dark'
-    | 'disabled';
-  onPress(ev: NativeSyntheticEvent<NativeTouchEvent>): void;
-  text?: string;
-  small?: boolean;
-  testID?: string;
-  loading?: boolean;
+
+export type ThemeLibrary = 'default';
+export interface IButtonProps extends RectButtonProps {
+  theme?: ThemeLibrary;
+  title: string;
+  suffixIcon?: () => React.ReactNode;
 }

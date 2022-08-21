@@ -1,7 +1,7 @@
 // import {useNavigation} from '@react-navigation/native';
 import { useState } from 'react';
+import { Input } from '../../../components';
 // import {useDispatch} from 'react-redux';
-import { InvisibleInput } from '../../../components';
 import { Layout } from '../../../components/Layout';
 import { Spacer } from '../../../components/Spacer';
 import { Colors } from '../../../constants';
@@ -42,7 +42,7 @@ export const NameEmail = () => {
     <Layout>
       <Spacer amount={25} />
       {!flip ? (
-        <InvisibleInput
+        <Input
           arrowPosition={40}
           arrowGo={value.length >= 3 ? true : false}
           placeholderTextColor={Colors.grey}
@@ -54,7 +54,7 @@ export const NameEmail = () => {
           fontSize={20}
         />
       ) : (
-        <InvisibleInput
+        <Input
           arrowPosition={40}
           arrowGo={email.match('@') ? true : false}
           placeholderTextColor={Colors.grey}

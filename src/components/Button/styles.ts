@@ -1,45 +1,26 @@
 import { StyleSheet } from 'react-native';
-import { Colors, height } from '../../constants';
+import { Colors, height, width } from '../../constants';
 
 export default StyleSheet.create({
   baseButton: {
-    width: '100%',
-    height: height(7),
     borderRadius: height(1.6),
+    padding: height(1),
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    alignSelf: 'center',
   },
-  yellow: {
-    backgroundColor: Colors.yellow,
+  default: {},
+  titleContainer: {
+    flexDirection: 'row',
   },
-  green: {
-    backgroundColor: 'transparent',
+  textDisabled: {
+    color: Colors.grey,
   },
-  white: {
-    backgroundColor: Colors.white,
-  },
-  red: {
-    backgroundColor: 'transparent',
-    // borderColor: Colors.white,
-  },
-  dark: {
-    backgroundColor: Colors.black,
-  },
-  redFluid: {
-    backgroundColor: 'transparent',
-    // borderColor: Colors.white,
-    borderWidth: 1,
-  },
-  transparent: {
-    backgroundColor: 'transparent',
-    // borderColor: Colors.white,
-    borderWidth: 1,
+  suffixIcon: {
+    marginRight: width(3),
   },
   disabled: {
-    backgroundColor: '#AFAFAF',
-  },
-  sizeSmall: {
-    width: height(18),
+    // backgroundColor: '#AFAFAF',
   },
 });

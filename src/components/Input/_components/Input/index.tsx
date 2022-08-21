@@ -39,7 +39,7 @@ export const Input = forwardRef(
             autoFocus
             {...rest}
           />
-          {suffixIcon && suffixIcon}
+          {suffixIcon && suffixIcon()}
           {passwordMode &&
             (eyeIconVisibility ? (
               <Icon
