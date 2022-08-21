@@ -1,7 +1,6 @@
-import {View} from 'react-native';
-import {Input} from '../Input';
-import {IInvisibleInputProps} from './types';
-import React from 'react';
+import { View } from 'react-native';
+import { Input } from '../Input';
+import { IInvisibleInputProps } from './types';
 
 export const InvisibleInput = ({
   sufixIcon,

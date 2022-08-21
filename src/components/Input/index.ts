@@ -1,2 +1,2 @@
-export {Input} from './_components/Input';
-export {InvisibleInput} from './_components/InvisibleInput';
+export { Input } from './_components/Input';
+export { InvisibleInput } from './_components/InvisibleInput';

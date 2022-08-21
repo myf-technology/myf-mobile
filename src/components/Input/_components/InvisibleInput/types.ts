@@ -1,5 +1,5 @@
-import {IIconNameProp} from '../../../Icon/types';
-import {IInputProps} from '../Input/types';
+import { IIconNameProp } from '../../../Icon/types';
+import { IInputProps } from '../Input/types';
 
 export interface IInvisibleInputProps extends IInputProps {
   sufixIcon?: IIconNameProp;

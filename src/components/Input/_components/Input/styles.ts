@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {Colors, height, TypographySizeMap} from '../../../../constants';
-import {IInputProps} from './types';
+import { Colors, height, TypographySizeMap } from '../../../../constants';
+import { IInputProps } from './types';
 
 export const inputStyles = ({
   noShadow,

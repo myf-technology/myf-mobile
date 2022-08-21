@@ -1,8 +1,8 @@
-import {TextInputProps} from 'react-native';
+import { TextInputProps } from 'react-native';
 
-import {ColorNames} from '../../../../constants';
-import {IIconNameProp} from '../../../Icon/types';
-import {TextAlignLibrary} from '../../../Text/types';
+import { ColorNames } from '../../../../constants';
+import { IIconNameProp } from '../../../Icon/types';
+import { TextAlignLibrary } from '../../../Text/types';
 
 export interface IInputProps extends TextInputProps {
   onChangeText?(text: string): void;

@@ -1,5 +1,5 @@
-export {Colors, type ColorNames} from './Colors';
-export {height, width} from './Responsive';
+export { Colors, type ColorNames } from './Colors';
+export { height, width } from './Responsive';
 export {
   isSmallDevice,
   paddingHorizontal,

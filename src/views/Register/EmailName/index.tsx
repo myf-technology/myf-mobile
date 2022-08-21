@@ -1,11 +1,10 @@
 // import {useNavigation} from '@react-navigation/native';
-import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 // import {useDispatch} from 'react-redux';
-import {InvisibleInput} from '../../../components';
-import {Layout} from '../../../components/Layout';
-import {Spacer} from '../../../components/Spacer';
-import {Colors} from '../../../constants';
+import { InvisibleInput } from '../../../components';
+import { Layout } from '../../../components/Layout';
+import { Spacer } from '../../../components/Spacer';
+import { Colors } from '../../../constants';
 // import {PUBLIC} from '../../../navigation/Public/constants';
 // import {storeEmailAction} from '../../../store/reducers/user/actions';
 // import {USER_REGISTER} from '../../../store/reducers/user/constants';

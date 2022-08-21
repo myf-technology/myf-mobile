@@ -1,10 +1,10 @@
-import {createElement} from 'react';
-import {View} from 'react-native';
+import { createElement } from 'react';
+import { View } from 'react-native';
 
 import * as icons from './iconLib';
-import {IElement, IIconName, IIconProps} from './types';
+import { IElement, IIconName, IIconProps } from './types';
 
-export const Icon = ({name, ...props}: IIconProps) => {
+export const Icon = ({ name, ...props }: IIconProps) => {
   switch (name) {
     case IIconName[name]:
       return createElement(icons[name] as IElement, props);

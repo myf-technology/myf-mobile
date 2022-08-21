@@ -1,9 +1,8 @@
-import {View} from 'react-native';
-import React from 'react';
+import { View } from 'react-native';
 
-import {windowHeight} from '../../constants';
+import { windowHeight } from '../../constants';
 
-export const Spacer = ({amount = 0}: {amount?: number}) => (
+export const Spacer = ({ amount = 0 }: { amount?: number }) => (
   <View
     testID="spacer"
     style={{

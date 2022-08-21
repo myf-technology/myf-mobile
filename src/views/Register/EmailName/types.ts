@@ -1,5 +1,5 @@
-import {TextInputProps} from 'react-native';
-import {IIconNameProp} from '../../../components/Icon/types';
+import { TextInputProps } from 'react-native';
+import { IIconNameProp } from '../../../components/Icon/types';
 
 export interface IEmail extends TextInputProps {
   sufixIcon?: IIconNameProp;

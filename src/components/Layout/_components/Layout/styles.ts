@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {paddingHorizontal} from '../../../../constants';
+import { StyleSheet } from 'react-native';
+import { paddingHorizontal } from '../../../../constants';
 
 export default StyleSheet.create({
   layoutContainer: {

@@ -1,4 +1,4 @@
-import {width} from '.';
+import { width } from '.';
 
 export type TypographyLibrary =
   | 'caption'

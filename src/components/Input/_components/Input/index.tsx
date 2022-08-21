@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import {
   View,
   TouchableOpacity,
@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import MaskInput from 'react-native-mask-input';
 
-import {inputStyles, styles} from './styles';
+import { inputStyles, styles } from './styles';
 
-import {Colors} from '../../../../constants';
-import {width} from '../../../../constants/Responsive';
-import {Icon, Text, Spacer} from '../../../';
-import {IInputProps} from './types';
+import { Colors } from '../../../../constants';
+import { width } from '../../../../constants/Responsive';
+import { Icon, Text, Spacer } from '../../../';
+import { IInputProps } from './types';
 
 export const Input = ({
   mask,
@@ -103,11 +103,11 @@ export const Input = ({
       {arrowGo ? (
         <TouchableOpacity
           onPress={() => onArrowPress && onArrowPress()}
-          style={{position: 'absolute', top: arrowPosition, left: width(80)}}>
+          style={{ position: 'absolute', top: arrowPosition, left: width(80) }}>
           {loading ? (
             <ActivityIndicator
               color={Colors.yellow}
-              style={{right: width(3), bottom: width(1)}}
+              style={{ right: width(3), bottom: width(1) }}
             />
           ) : (
             <Icon fill="yellow" name={sufixIcon} />

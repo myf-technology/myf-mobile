@@ -1,7 +1,7 @@
-import {StyleSheet, TextStyle} from 'react-native';
-import {Colors, TypographySizeMap} from '../../constants';
+import { StyleSheet, TextStyle } from 'react-native';
+import { Colors, TypographySizeMap } from '../../constants';
 
-let typographyStyles: {[x: string]: TextStyle} = {};
+let typographyStyles: { [x: string]: TextStyle } = {};
 
 for (const size in TypographySizeMap) {
   typographyStyles = {
