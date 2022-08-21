@@ -15,10 +15,10 @@ export const Text = ({
       testID={TextTestIds.Text}
       {...rest}
       style={[
+        rest.style,
         styles.baseText,
         { color: Colors[color] },
         styles[typography as keyof typeof styles],
-        rest.style,
       ]}>
       {children}
     </RNText>
