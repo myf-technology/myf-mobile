@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { ActivityIndicator, View } from 'react-native';
 import MaskInput, { Masks } from 'react-native-mask-input';
-import Describe from '../_components/Category/index';
+import Describe from '../_components/CreateBalanceForm/index';
 import { Spacer } from '../../../components/Spacer';
 import { SetStateAction } from 'react';
 import styles from '../styles';
