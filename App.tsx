@@ -1,10 +1,13 @@
+import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { CreateCategorySheet } from './src/components/CreateCategorySheet';
+import { Button } from './src/components/Button';
 
 export default () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <CreateCategorySheet />
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <Button onPress={() => ''} title="hey ho" />
+      </View>
     </GestureHandlerRootView>
   );
 };
