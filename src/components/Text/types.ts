@@ -1,6 +1,6 @@
-import {LayoutRectangle, TextProps as RNTextProps} from 'react-native';
+import { LayoutRectangle, TextProps as RNTextProps } from 'react-native';
 
-import {ColorNames, TypographyLibrary} from '../../constants';
+import { ColorNames, TypographyLibrary } from '../../constants';
 
 export type TextAlignLibrary = 'center' | 'left' | 'right' | 'auto' | 'justify';
 

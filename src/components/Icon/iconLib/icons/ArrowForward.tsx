@@ -1,11 +1,10 @@
-import * as React from 'react';
-import Svg, {Path} from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
-import {Colors} from '../../../../constants';
-import {ISvgIconProps} from '../../types';
-import {IconFactory} from '../../_components/IconFactory';
+import { Colors } from '../../../../constants';
+import { ISvgIconProps } from '../../types';
+import { IconFactory } from '../../_components/IconFactory';
 
-export const ArrowForward = ({fill = 'white', ...props}: ISvgIconProps) => (
+export const ArrowForward = ({ fill = 'white', ...props }: ISvgIconProps) => (
   <IconFactory
     svg={() => (
       <Svg width="9" height="16" viewBox="0 0 9 16" fill="none" {...props}>

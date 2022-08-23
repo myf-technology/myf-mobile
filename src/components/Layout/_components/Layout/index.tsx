@@ -1,10 +1,9 @@
-import React from 'react';
-import {TouchableOpacity, View, SafeAreaView} from 'react-native';
-import {width, height} from '../../../../constants';
+import { TouchableOpacity, View, SafeAreaView } from 'react-native';
+import { width, height } from '../../../../constants';
 import styles from './styles';
 
-import {Icon} from '../../../Icon';
-import {ILayoutProps} from './types';
+import { Icon } from '../../../Icon';
+import { ILayoutProps } from './types';
 
 export const Layout = ({
   children,
@@ -15,7 +14,7 @@ export const Layout = ({
 
   return (
     <SafeAreaView style={[styles.layoutContainer, style]}>
-      <View style={{flexDirection: 'row'}}>
+      <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity
           style={{
             height: 25,
@@ -32,7 +31,7 @@ export const Layout = ({
             name="ArrowForward"
             height={height(2)}
             width={width(2.4)}
-            style={{justifyContent: 'center'}}
+            style={{ justifyContent: 'center' }}
             fill="yellow"
           />
         </TouchableOpacity>

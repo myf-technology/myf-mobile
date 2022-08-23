@@ -1,13 +1,12 @@
-import {Text as RNText} from 'react-native';
-import React from 'react';
-import {ITextProps} from './types';
+import { Text as RNText } from 'react-native';
+import { ITextProps } from './types';
 import styles from './styles';
-import {Colors} from '../../constants';
-import {TextTestIds} from '../../enums';
+import { Colors } from '../../constants';
+import { TextTestIds } from '../../enums';
 
 export const Text = ({
   children,
-  typography = 'callout',
+  typography = 'caption',
   color = 'white',
   ...rest
 }: ITextProps) => {
@@ -16,10 +15,10 @@ export const Text = ({
       testID={TextTestIds.Text}
       {...rest}
       style={[
-        styles.baseText,
-        {color: Colors[color]},
-        styles[typography as keyof typeof styles],
         rest.style,
+        styles.baseText,
+        { color: Colors[color] },
+        styles[typography as keyof typeof styles],
       ]}>
       {children}
     </RNText>
