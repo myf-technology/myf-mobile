@@ -1,8 +1,7 @@
-import React from 'react';
-import {View} from 'react-native';
-import {Login} from './src/views/Login';
-import {Provider} from 'react-redux';
-import {store} from './src/store/store';
+import { View } from 'react-native';
+import { Login } from './src/views/Login';
+import { Provider } from 'react-redux';
+import { store } from './src/store/store';
 
 export default () => {
   return (
