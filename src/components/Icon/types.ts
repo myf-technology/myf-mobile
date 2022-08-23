@@ -1,7 +1,7 @@
-import {ComponentClass, FunctionComponent, RefAttributes} from 'react';
-import {SvgProps} from 'react-native-svg';
+import { ComponentClass, FunctionComponent, RefAttributes } from 'react';
+import { SvgProps } from 'react-native-svg';
 
-import {ColorNames} from '../../constants/Colors';
+import { ColorNames } from '../../constants/Colors';
 
 export interface ISvgIconProps extends SvgProps {
   fill?: ColorNames;

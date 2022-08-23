@@ -1,3 +1,3 @@
-export const Register = ({children}: any) => {
+export const Register = ({ children }: any) => {
   return children;
 };

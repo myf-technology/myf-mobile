@@ -1,6 +1,6 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Login} from './src/views/Login';
+import { View } from 'react-native';
+import { Login } from './src/views/Login';
 
 export default () => {
   return (

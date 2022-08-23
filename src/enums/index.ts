@@ -1,1 +1,1 @@
-export {TextTestIds} from './TestIds';
+export { TextTestIds } from './TestIds';
