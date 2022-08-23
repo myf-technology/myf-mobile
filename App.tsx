@@ -1,13 +1,15 @@
-import { View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Button } from './src/components/Button';
+import { Colors } from './src/constants';
+import { Dashboard } from './src/views/Dashboard';
 
 export default () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={{ flex: 1, backgroundColor: 'black' }}>
-        <Button onPress={() => ''} title="hey ho" />
-      </View>
+    <GestureHandlerRootView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.black,
+      }}>
+      <Dashboard />
     </GestureHandlerRootView>
   );
 };

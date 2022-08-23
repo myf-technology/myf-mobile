@@ -21,16 +21,16 @@ export enum TypographyMap {
   largeTitle = 'largeTitle',
 }
 
-export enum TypographySizeMap {
-  caption = width(3.5), // 14
-  footnote = width(3.7), // 16
-  subhead = width(5), // 20
-  callout = width(5.4), // 22
-  body = width(7.2),
-  headline = width(9.2),
-  title = width(10),
-  largeTitle = width(11),
-}
+export const TypographySizeMap = {
+  caption: width(2.93), // 12
+  footnote: width(3.7), // 16
+  subhead: width(5), // 20
+  callout: width(5.4), // 22
+  body: width(7.2),
+  headline: width(9.2),
+  title: width(10),
+  largeTitle: width(11),
+};
 
 export enum TypographyWeightMap {
   bold = 'bold',
