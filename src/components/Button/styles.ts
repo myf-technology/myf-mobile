@@ -9,6 +9,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     alignSelf: 'center',
+    backgroundColor: '#111',
   },
   default: {},
   titleContainer: {
