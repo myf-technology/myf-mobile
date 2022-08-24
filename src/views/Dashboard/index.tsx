@@ -1,12 +1,8 @@
-import bottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet';
-import { useRef, useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Spacer } from '../../components';
-import { CreateCategorySheet } from '../../components/CreateCategorySheet';
+import { CategoryListBottomSheet } from '../../components/BottomSheet/CategoryListBottomSheet';
 import styles from './styles';
-import { Header } from './_components';
-import { CategoryListBottomSheet } from './_components/CategoryListBottomSheet';
-import { CreateBalanceForm } from './_components/CreateBalanceForm';
+import { CreateBalanceForm, Header } from './_components';
 
 export const Dashboard = () => {
   return (
@@ -19,9 +15,7 @@ export const Dashboard = () => {
           <CreateBalanceForm categoryType="expense" />
         </View>
       </SafeAreaView>
-      <CategoryListBottomSheet
-      // {...{ onItemPress }} ref={bottomSheetRef}
-      />
+      <CategoryListBottomSheet />
     </>
   );
 };
