@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Private from './Private';
-// import Public from './Public';
 import { NAVIGATORS } from './constants';
 
 const Stack = createNativeStackNavigator();

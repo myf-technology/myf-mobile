@@ -1,6 +1,6 @@
 import { DASHBOARD } from './constants';
 
-import { Dashboard } from '../../../views/Dashboard';
+import { Dashboard } from '..';
 import { Icon } from '../../../components';
 // import { Statement } from '../../../views/Statement';
 
