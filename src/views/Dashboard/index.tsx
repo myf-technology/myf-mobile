@@ -1,5 +1,8 @@
+import bottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet';
+import { useRef, useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Spacer } from '../../components';
+import { CreateCategorySheet } from '../../components/CreateCategorySheet';
 import styles from './styles';
 import { Header } from './_components';
 import { CategoryListBottomSheet } from './_components/CategoryListBottomSheet';
