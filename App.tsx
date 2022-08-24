@@ -1,7 +1,7 @@
 import { View } from 'react-native';
-import { Login } from './src/views/Login';
 import { Provider } from 'react-redux';
-import { store } from './src/store/store';
+import { store } from './src/store';
+import { Dashboard } from './src/views/Dashboard';
 
 export default () => {
   return (
@@ -11,7 +11,7 @@ export default () => {
           backgroundColor: 'black',
           flex: 1,
         }}>
-        <Login />
+        <Dashboard />
       </View>
     </Provider>
   );

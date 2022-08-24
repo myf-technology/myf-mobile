@@ -4,6 +4,4 @@ export interface ICategoryData {
   balanceType: 'income' | 'expense';
 }
 
-export interface ICategoryBottomSheetProps {
-  onItemPress(categoryData: ICategoryData): void;
-}
+export interface ICategoryBottomSheetProps {}

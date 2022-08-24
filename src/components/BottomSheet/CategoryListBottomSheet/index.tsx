@@ -1,20 +1,23 @@
 import { View } from 'react-native';
-import { Spacer, Text } from '../../../../components';
+import { Spacer, Text } from '../..';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useEffect, useRef } from 'react';
-import { height } from '../../../../constants';
+import { height } from '../../../constants';
 import styles from './styles';
 import { ICategoryBottomSheetProps, ICategoryData } from './types';
 import { useSelector } from 'react-redux';
-import { IStore } from '../../../../store/types';
+import { IStore } from '../../../store/types';
+import { bottomSheetControl } from './store/slice';
+import { fetchCategoryListThunk } from './store/actions';
+import { useAsyncDispatch } from '../../../hooks/useAsyncDispatch';
 
-export const CategoryListBottomSheet = ({
-  onItemPress,
-}: ICategoryBottomSheetProps) => {
+export const CategoryListBottomSheet = ({}: ICategoryBottomSheetProps) => {
+  const dispatch = useAsyncDispatch();
   const ref = useRef<BottomSheet>(null);
   const { visible } = useSelector(
-    (store: IStore) => store.bottomSheet.controls,
+    ({ bottomSheet }: IStore) => bottomSheet.controls,
   );
+
   const useSelectorMock: ICategoryData[] = [
     {
       id: '1',
@@ -29,6 +32,13 @@ export const CategoryListBottomSheet = ({
 
   return (
     <BottomSheet
+      onChange={index => {
+        const isOpening = !!index;
+
+        isOpening
+          ? dispatch(fetchCategoryListThunk())
+          : dispatch(bottomSheetControl({ visible: false }));
+      }}
       handleStyle={styles.handle}
       handleIndicatorStyle={styles.handleIndicator}
       ref={ref}
@@ -38,7 +48,8 @@ export const CategoryListBottomSheet = ({
           <View key={id}>
             <Text
               typography="footnote"
-              onPress={() => onItemPress({ id, value, balanceType })}>
+              // onPress={() => onItemPress({ id, value, balanceType })}
+            >
               {value}
             </Text>
             <Spacer amount={1} />

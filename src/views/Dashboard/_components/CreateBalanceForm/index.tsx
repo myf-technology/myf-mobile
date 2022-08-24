@@ -1,23 +1,23 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 import { Icon } from 'react-native-eva-icons';
 import { Input, Spacer, Text } from '../../../../components';
 import { formData, IFormData } from './_helpers/initialFormData';
-import BottomSheet from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheet';
+import { ICategoryProps } from './types';
+import { useDispatch } from 'react-redux';
 
 import styles from './styles';
-import { ICategoryData } from '../CategoryListBottomSheet/types';
-import { ICategoryProps } from './types';
+import { bottomSheetControl } from '../../../../components/BottomSheet/CategoryListBottomSheet/store/slice';
 
 export const CreateBalanceForm = ({
   categoryType = 'income',
 }: ICategoryProps) => {
   const isIncome = categoryType === 'income';
   const [form, setForm] = useState<IFormData[]>([]);
+  const dispatch = useDispatch();
 
-  const bottomSheetRef = useRef<BottomSheet>(null);
-  const openModal = () => bottomSheetRef.current?.snapToIndex(1);
-  const closeModal = () => bottomSheetRef.current?.snapToIndex(0);
+  const openModal = () => dispatch(bottomSheetControl({ visible: true }));
+  const closeModal = () => dispatch(bottomSheetControl({ visible: false }));
 
   const updateForm = (index: number, value: string) => {
     const newForm = [...form];
