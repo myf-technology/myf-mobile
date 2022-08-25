@@ -1,7 +1,9 @@
+import { BalanceType } from '../../../types/balanceType';
+
 export interface ICategoryData {
   id: string;
   value: string;
-  balanceType: 'income' | 'expense';
+  balanceType: BalanceType;
 }
 
 export interface ICategoryBottomSheetProps {}

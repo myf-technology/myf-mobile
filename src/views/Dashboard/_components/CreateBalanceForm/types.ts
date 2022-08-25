@@ -1,3 +1,5 @@
+import { BalanceType } from '../../../../types/balanceType';
+
 export interface ICategoryProps {
-  categoryType: 'income' | 'expense';
+  balanceType: BalanceType;
 }

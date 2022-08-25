@@ -10,9 +10,4 @@ export default StyleSheet.create({
   handleIndicator: {
     backgroundColor: Colors.yellow1,
   },
-  itemsContainer: {
-    padding: 20,
-    flex: 1,
-    backgroundColor: Colors.black,
-  },
 });

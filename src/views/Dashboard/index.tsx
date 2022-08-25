@@ -11,8 +11,8 @@ export const Dashboard = () => {
         <Header />
         <Spacer amount={15} />
         <View style={styles.createBalanceFormContainer}>
-          <CreateBalanceForm categoryType="income" />
-          <CreateBalanceForm categoryType="expense" />
+          <CreateBalanceForm balanceType="INCOME" />
+          <CreateBalanceForm balanceType="EXPENSE" />
         </View>
       </SafeAreaView>
       <CategoryListBottomSheet />
