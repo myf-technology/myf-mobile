@@ -5,17 +5,19 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Dashboard } from './src/views/Dashboard';
+import Navigation from './src/views/Dashboard/navigation';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default () => {
   return (
-    <Provider store={store}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <SafeAreaProvider>
-          <View style={{ flex: 1, backgroundColor: 'black' }}>
-            <Dashboard />
-          </View>
-        </SafeAreaProvider>
-      </GestureHandlerRootView>
-    </Provider>
+    <NavigationContainer>
+      <Provider store={store}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <SafeAreaProvider>
+            <Navigation />
+          </SafeAreaProvider>
+        </GestureHandlerRootView>
+      </Provider>
+    </NavigationContainer>
   );
 };
