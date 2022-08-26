@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { fetchCategoriesByTypeService } from '../../service/fetchCategoryListByType';
+import { fetchCategoriesByTypeService } from '../../service/fetchCategoryListByTypeService';
 import {
   IFetchCategoryListByTypePayload,
   IBottomSheetState,

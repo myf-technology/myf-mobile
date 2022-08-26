@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { fetchCategoryList } from '../../service/fetchCategoryList';
+import { fetchCategoryListService } from '../../service/fetchCategoryListService';
 import { IBottomSheetState, ICategoryItem } from '../types';
 
 const fetchCategoriesPending = (state: IBottomSheetState) => {
@@ -11,7 +11,7 @@ export const fetchCategoryListAsync = createAsyncThunk(
   'CategoryBottomSheet/fetchCategoryListAsync',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await fetchCategoryList();
+      const { data } = await fetchCategoryListService();
       console.log(data);
 
       return data;

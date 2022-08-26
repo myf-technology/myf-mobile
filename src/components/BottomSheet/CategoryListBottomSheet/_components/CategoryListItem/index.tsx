@@ -5,17 +5,17 @@ import { SwipeRight } from './_components/SwipeRight';
 
 import styles from './styles';
 
-export const CategoryListItem = ({ title }: ICategoryListItemProps) => {
+export const CategoryListItem = ({
+  categoryItem: { name, id },
+}: ICategoryListItemProps) => {
   return (
     <Swipeable
       containerStyle={styles.swipeableContainer}
       overshootLeft={false}
       overshootRight={false}
-      renderRightActions={props => (
-        <SwipeRight onDelete={() => ''} onEdit={() => ''} {...props} />
-      )}>
+      renderRightActions={props => <SwipeRight {...props} {...{ id }} />}>
       <RectButton style={styles.itemTextContainer}>
-        <Text>{title}</Text>
+        <Text>{name}</Text>
       </RectButton>
     </Swipeable>
   );

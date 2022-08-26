@@ -17,9 +17,9 @@ export const CategoryListItems = () => {
 
   return (
     <View style={styles.container}>
-      {list.map(({ name, id }) => (
-        <View key={id}>
-          <CategoryListItem title={name} />
+      {list.map(categoryItem => (
+        <View key={categoryItem.id}>
+          <CategoryListItem {...{ categoryItem }} />
         </View>
       ))}
     </View>

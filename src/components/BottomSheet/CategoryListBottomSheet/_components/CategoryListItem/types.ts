@@ -1,3 +1,5 @@
+import { ICategoryItem } from '../../store/types';
+
 export interface ICategoryListItemProps {
-  title: string;
+  categoryItem: ICategoryItem;
 }
