@@ -1,10 +1,11 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
+import { BalanceType } from '../../../../../types/balanceType';
 import { fetchCategoriesByTypeService } from '../../service/fetchCategoryListByTypeService';
 import {
   IFetchCategoryListByTypePayload,
   IBottomSheetState,
-  ICategoryItem,
+  IFetchCategoryListByTypeFulfilledPayload,
 } from '../types';
 
 export const fetchCategoryListByTypeAsync = createAsyncThunk(
@@ -22,13 +23,11 @@ export const fetchCategoryListByTypeAsync = createAsyncThunk(
 
       const { data } = await fetchCategoriesByTypeService(balanceType);
 
-      return data;
+      return { data, balanceType };
     } catch (error) {
-      const { message, response } = error as AxiosError;
-      return rejectWithValue({
-        message,
-        response: response?.data,
-      });
+      const { response } = error as AxiosError<{ message: string }>;
+
+      return rejectWithValue({ message: response?.data.message, balanceType });
     }
   },
 );
@@ -44,11 +43,12 @@ const fetchCategoryListByTypePending = (state: IBottomSheetState) => {
 
 const fetchCategoryListByTypeFulfilled = (
   state: IBottomSheetState,
-  action: PayloadAction<ICategoryItem[]>,
+  action: PayloadAction<IFetchCategoryListByTypeFulfilledPayload>,
 ) => {
-  state.list = action.payload;
+  state.list = action.payload.data;
   state.controls = {
     ...state.controls,
+    balanceType: action.payload.balanceType,
     message: null,
     status: 'fulfilled',
     visible: true,
@@ -59,15 +59,19 @@ const fetchCategoryListByTypeRejected = (
   state: IBottomSheetState,
   action: PayloadAction<unknown>,
 ) => {
-  if (typeof action.payload !== 'string') {
-    throw new Error('type of payload is not a string.');
-  }
+  const { balanceType, message } = action.payload as unknown as {
+    message: string;
+    balanceType: BalanceType;
+  };
+
+  state.list = [];
 
   state.controls = {
     ...state.controls,
-    message: action.payload,
     status: 'rejected',
     visible: true,
+    balanceType,
+    message,
   };
 };
 

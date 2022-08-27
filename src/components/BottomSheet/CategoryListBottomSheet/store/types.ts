@@ -30,3 +30,8 @@ export interface IBottomSheetControlPayload {
 export interface IFetchCategoryListByTypePayload {
   balanceType: null | BalanceType;
 }
+
+export interface IFetchCategoryListByTypeFulfilledPayload {
+  data: ICategoryItem[];
+  balanceType: BalanceType;
+}
