@@ -31,6 +31,15 @@ export const deleteCategoryByIdAsync = createAsyncThunk(
   },
 );
 
+const deleteCategoryByIdPending = (state: IBottomSheetState) => {
+  state.controls = {
+    ...state.controls,
+    message: null,
+    status: 'loading',
+    visible: true,
+  };
+};
+
 const deleteCategoryByIdFulfilled = (
   state: IBottomSheetState,
   action: PayloadAction<ICategoryItem[]>,
@@ -44,6 +53,7 @@ const deleteCategoryByIdRejected = (state: IBottomSheetState) => {
 };
 
 export const deleteCategoryByIdFactory = {
-  deleteCategoryByIdFulfilled,
-  deleteCategoryByIdRejected,
+  fulfilled: deleteCategoryByIdFulfilled,
+  rejected: deleteCategoryByIdRejected,
+  pending: deleteCategoryByIdPending,
 };

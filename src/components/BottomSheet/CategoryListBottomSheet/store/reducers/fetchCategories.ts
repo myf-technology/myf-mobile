@@ -12,7 +12,6 @@ export const fetchCategoryListAsync = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await fetchCategoryListService();
-      console.log(data);
 
       return data;
     } catch (error) {
