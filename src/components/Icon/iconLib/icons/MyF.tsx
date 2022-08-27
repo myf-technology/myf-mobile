@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg';
 import { ISvgIconProps } from '../../types';
 import { IconFactory } from '../../_components/IconFactory';
 
-export const MyF = ({ fill = 'white', ...props }: ISvgIconProps) => (
+export const MyF = ({ ...props }: ISvgIconProps) => (
   <IconFactory
     svg={() => (
       <Svg width="77" height="85" viewBox="0 0 577 585" fill="none" {...props}>

@@ -1,10 +1,13 @@
-// import {useNavigation} from '@react-navigation/native';
+/* eslint-disable react-native/no-inline-styles */
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Input } from '../../../components';
+import { TouchableOpacity, View } from 'react-native';
+import { Icon, Input } from '../../../components';
 // import {useDispatch} from 'react-redux';
 import { Layout } from '../../../components/Layout';
 import { Spacer } from '../../../components/Spacer';
-import { Colors } from '../../../constants';
+import { Colors, width } from '../../../constants';
+import { PUBLIC } from '../../../navigation/Public/constants';
 // import {PUBLIC} from '../../../navigation/Public/constants';
 // import {storeEmailAction} from '../../../store/reducers/user/actions';
 // import {USER_REGISTER} from '../../../store/reducers/user/constants';
@@ -14,7 +17,7 @@ export const NameEmail = () => {
   const [flip, setFlip] = useState(false);
   const [value, setValue] = useState('');
   const [email, setEmail] = useState('');
-  // const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
   // const dispatch = useDispatch();
 
   const onArrowPress = () => {
@@ -38,13 +41,34 @@ export const NameEmail = () => {
     setFlip(false);
   };
 
+  const onNameChossen = () => {
+    setFlip(true);
+  };
+  const onEmailChossen = () => {
+    navigate(PUBLIC.CREATEPASSWORD as never);
+  };
+
+  const onName = () => (
+    <TouchableOpacity
+      onPress={onNameChossen}
+      style={{ right: width(7), position: 'absolute' }}>
+      <Icon name="ArrowForward" />
+    </TouchableOpacity>
+  );
+  const onEmail = () => (
+    <TouchableOpacity
+      onPress={onEmailChossen}
+      style={{ right: width(7), position: 'absolute' }}>
+      <Icon name="ArrowForward" />
+    </TouchableOpacity>
+  );
+
   return (
     <Layout>
       <Spacer amount={25} />
       {!flip ? (
         <Input
-          arrowPosition={40}
-          arrowGo={value.length >= 3 ? true : false}
+          suffixIcon={value ? onName : null}
           placeholderTextColor={Colors.grey}
           onArrowPress={onArrowPress}
           onChangeText={setValue}
@@ -55,8 +79,7 @@ export const NameEmail = () => {
         />
       ) : (
         <Input
-          arrowPosition={40}
-          arrowGo={email.match('@') ? true : false}
+          suffixIcon={email.match('@') ? onEmail : null}
           placeholderTextColor={Colors.grey}
           onArrowPress={onSendEmail}
           onChangeText={setEmail}

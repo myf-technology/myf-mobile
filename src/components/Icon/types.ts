@@ -16,7 +16,7 @@ export enum IIconName {
   MyF = 'MyF',
 }
 
-export type IIconNameProp = 'ArrowForward';
+export type IIconNameProp = 'ArrowForward' | 'MyF';
 
 export type IElement =
   | string

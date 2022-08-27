@@ -1,7 +1,7 @@
-import {View} from 'react-native';
-import {Input} from '../../components';
-import {styles} from './styles';
-import React, {useState} from 'react';
+import { View } from 'react-native';
+import { Input } from '../../components';
+import { styles } from './styles';
+import React, { useState } from 'react';
 
 export const Login = () => {
   return (

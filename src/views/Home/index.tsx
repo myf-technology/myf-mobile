@@ -1,38 +1,32 @@
-// import { useNavigation } from '@react-navigation/native';
-// import { StatusBar } from 'expo-status-bar';
-import { StatusBar, View } from 'react-native';
+/* eslint-disable react-native/no-inline-styles */
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import styles from './styles';
 
 import { Icon } from '../../components/Icon';
 import { Spacer } from '../../components/Spacer';
-import { PathLink } from '../../components/PathLink';
-import { Colors, height, width } from '../../constants';
-import { Text } from '../../components';
+
+import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/native';
+import { PUBLIC } from '../../navigation/Public/constants';
 
 export const Home = () => {
-  // const { navigate } = useNavigation();
-
-  const handleRegister = () => {
-    console.log('handleRegister');
+  const { navigate } = useNavigation();
+  const onLogin = () => {
+    navigate(PUBLIC.LOGIN as never);
   };
 
-  const handleLogin = () => {
-    console.log('handleRegister');
+  const onRegister = () => {
+    navigate(PUBLIC.NAMEEMAIL as never);
   };
 
   return (
-    // <ImageBackground
-    //   testID="background"
-    //   resizeMode="cover"
-    //   style={styles.background}
-    //   source={require('../../../assets/images/home.jpeg')}
-    // >
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'black' }}>
-      <Text>Home</Text>
-      <Icon name="ArrowForward" />
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: 'black', alignItems: 'center' }}>
+      <Spacer amount={15} />
+      <Icon width={100} height={100} name="MyF" />
+      <Spacer amount={35} />
+      <Button onPress={onRegister} title="Criar conta" />
+      <Spacer amount={5} />
+      <Button onPress={onLogin} title="Logar" />
     </SafeAreaView>
-    // </ImageBackground>
   );
 };

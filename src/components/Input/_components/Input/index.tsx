@@ -43,6 +43,7 @@ export const Input = forwardRef(
           {passwordMode &&
             (eyeIconVisibility ? (
               <Icon
+                style={{ marginRight: width(5) }}
                 fill="white"
                 onPress={toggleVisibility}
                 name="eye"
@@ -51,6 +52,7 @@ export const Input = forwardRef(
               />
             ) : (
               <Icon
+                style={{ marginRight: width(5) }}
                 width={width(10)}
                 height={width(6)}
                 fill="white"
