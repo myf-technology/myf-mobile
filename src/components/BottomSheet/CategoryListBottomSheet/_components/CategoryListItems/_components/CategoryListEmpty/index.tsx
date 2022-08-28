@@ -16,13 +16,15 @@ export const CategoryListEmpty = () => {
   const type = balanceType === 'INCOME' ? '"Ganhos"' : '"Despesas"';
   const message = `Não temos categorias do tipo ${type}`;
 
+  const onPress = () => {};
+
   return (
     <View style={styles.textContainer}>
       <Text typography="title1" style={styles.text} color="white">
         {message}
       </Text>
       <Spacer amount={1} />
-      <Button title="Criar uma nova categoria" onPress={() => ''} />
+      <Button title="Criar uma nova categoria" onPress={onPress} />
     </View>
   );
 };

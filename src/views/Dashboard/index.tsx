@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Spacer } from '../../components';
 import { CategoryListBottomSheet } from '../../components/BottomSheet/CategoryListBottomSheet';
+import { ManageCategoryBottomSheet } from '../../components/BottomSheet/ManageCategoryBottomSheet';
 import { Warning } from '../../components/Warning';
 
 import styles from './styles';
@@ -23,6 +24,7 @@ export const Dashboard = () => {
         </View>
       </SafeAreaView>
       <CategoryListBottomSheet />
+      <ManageCategoryBottomSheet />
     </>
   );
 };

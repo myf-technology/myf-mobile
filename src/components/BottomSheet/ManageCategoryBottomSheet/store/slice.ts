@@ -11,5 +11,6 @@ const manageCategoryBottomSheetSlice = createSlice({
 });
 
 export const {
-  actions: {},
+  actions: { manageCategoryBottomSheetControl },
+  reducer: manageCategoryReducer,
 } = manageCategoryBottomSheetSlice;
