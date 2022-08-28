@@ -8,7 +8,7 @@ import styles from './styles';
 import { CreateBalanceForm, Header } from './_components';
 
 export const Dashboard = () => {
-  const [warging, setWarning] = useState(true);
+  const [warging, setWarning] = useState(false);
   return (
     <>
       {warging ? (

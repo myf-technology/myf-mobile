@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { width } from '../../constants';
+import { width } from '../../../constants';
 
 export default StyleSheet.create({
   view: {
