@@ -27,8 +27,7 @@ export const Layout = ({
             // goBack();
           }}>
           <Icon
-            // TODO: add back arrow icon
-            name="ArrowForward"
+            name="ArrowBack"
             height={height(2)}
             width={width(2.4)}
             style={{ justifyContent: 'center' }}
