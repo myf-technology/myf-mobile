@@ -8,6 +8,8 @@ export const manageCategoryBottomSheetControl = (
   state: IManageCategoryBottomSheetState,
   action: PayloadAction<IManageCategoryBottomSheetControlPayload>,
 ) => {
+  state.category = null;
+
   state.controls = {
     message: null,
     status: null,

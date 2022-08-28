@@ -7,3 +7,5 @@ export {
 } from './store/slice';
 
 export { getCategoryByIdService } from './services/getCategoryByIdService';
+export { createCategory } from './store/actions/createCategory';
+export { editCategory } from './store/actions/editCategory';

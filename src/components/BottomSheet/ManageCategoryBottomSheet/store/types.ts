@@ -1,4 +1,13 @@
+import { BalanceType } from '../../../../types/balanceType';
 import { ICategoryItem } from '../../CategoryListBottomSheet/store/types';
+
+export interface ICategoryRequestBody {
+  name: string;
+  projectedAmount?: number;
+  description?: string;
+  autoInsert: boolean;
+  balanceType: BalanceType;
+}
 
 export interface IManageCategoryBottomSheetState {
   category: null | ICategoryItem;
@@ -15,4 +24,8 @@ export interface IGetCategoryByIdPayload {
 
 export interface IManageCategoryBottomSheetControlPayload {
   visible: boolean;
+}
+export interface IEditCategoryPayload {
+  categoryId: string;
+  categoryData: ICategoryRequestBody;
 }

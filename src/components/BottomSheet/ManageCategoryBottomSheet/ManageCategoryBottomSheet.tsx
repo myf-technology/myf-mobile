@@ -1,6 +1,5 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useEffect, useRef } from 'react';
-import { CreateCategoryModalProps } from './types';
 
 import style from './style';
 import { height } from '../../../constants';
@@ -10,9 +9,7 @@ import { ManageCategoryLoading } from './components/ManageCategoryLoading';
 import { ManageCategory } from './components/ManageCategory';
 import { manageCategoryBottomSheetControl } from './store/slice';
 
-export const ManageCategoryBottomSheet = ({
-  onPress,
-}: CreateCategoryModalProps) => {
+export const ManageCategoryBottomSheet = () => {
   const ref = useRef<BottomSheet>(null);
 
   const {
@@ -39,11 +36,7 @@ export const ManageCategoryBottomSheet = ({
       handleStyle={style.handleStyle}
       backgroundStyle={style.backgroundStyle}
       snapPoints={[height(0.01), height(80)]}>
-      {status === 'pending' ? (
-        <ManageCategoryLoading />
-      ) : (
-        <ManageCategory {...{ onPress }} />
-      )}
+      {status === 'pending' ? <ManageCategoryLoading /> : <ManageCategory />}
     </BottomSheet>
   );
 };

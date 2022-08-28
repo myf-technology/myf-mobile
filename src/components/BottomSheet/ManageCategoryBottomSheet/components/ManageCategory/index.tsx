@@ -1,18 +1,27 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TextInput, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { Input } from '../../../..';
+import { useAsyncDispatch } from '../../../../../hooks/useAsyncDispatch';
 import { IStore } from '../../../../../store/types';
 import { Button } from '../../../../Button';
 import { Spacer } from '../../../../Spacer';
 import { Text } from '../../../../Text';
+import { fetchCategoryListByTypeAsync } from '../../../CategoryListBottomSheet';
+import { createCategory } from '../../store/actions/createCategory';
+import { editCategory } from '../../store/actions/editCategory';
 import styles from './styles';
-import { IManageCategoryProps } from './types';
 
-export const ManageCategory = ({ onPress }: IManageCategoryProps) => {
-  const { category } = useSelector(
-    ({ manageCategoryBottomSheet }: IStore) => manageCategoryBottomSheet,
+export const ManageCategory = () => {
+  const { category, balanceType, visible } = useSelector(
+    ({ manageCategoryBottomSheet, bottomSheet }: IStore) => ({
+      category: manageCategoryBottomSheet.category,
+      balanceType: bottomSheet.controls.balanceType,
+      visible: manageCategoryBottomSheet.controls.visible,
+    }),
   );
+
+  const dispatch = useAsyncDispatch();
 
   const [newCategory, setNewCategory] = useState(category?.name || '');
   const [amount, setAmount] = useState(category?.projectedAmount || '');
@@ -31,6 +40,42 @@ export const ManageCategory = ({ onPress }: IManageCategoryProps) => {
   const onNoPress = () => {
     setAutoInsert(false);
   };
+
+  const onPress = async () => {
+    const newCategoryData = {
+      autoInsert,
+      balanceType: balanceType!,
+      name: newCategory,
+      description,
+      projectedAmount: Number(amount),
+    };
+
+    if (!category) {
+      await dispatch(createCategory(newCategoryData));
+
+      dispatch(fetchCategoryListByTypeAsync({ balanceType }));
+
+      return;
+    }
+
+    await dispatch(
+      editCategory({
+        categoryId: category.id,
+        categoryData: newCategoryData,
+      }),
+    );
+
+    dispatch(fetchCategoryListByTypeAsync({ balanceType }));
+  };
+
+  useEffect(() => {
+    if (!visible) {
+      setNewCategory('');
+      setAmount('');
+      setDescription('');
+      setAutoInsert(false);
+    }
+  }, [visible]);
 
   return (
     <View style={styles.modalView}>
@@ -102,12 +147,7 @@ export const ManageCategory = ({ onPress }: IManageCategoryProps) => {
       <Spacer amount={8} />
 
       <View>
-        <Button
-          onPress={() =>
-            onPress && onPress({ newCategory, amount, description, autoInsert })
-          }
-          title={`${category ? 'Salvar' : 'Criar'}`}
-        />
+        <Button {...{ onPress }} title={`${category ? 'Salvar' : 'Criar'}`} />
       </View>
     </View>
   );
