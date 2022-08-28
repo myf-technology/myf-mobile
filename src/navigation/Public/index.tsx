@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { PUBLIC } from './constants';
 
 import views from './views';
 
@@ -8,7 +7,6 @@ export default () => {
 
   return (
     <Stack.Navigator
-      initialRouteName={PUBLIC.HOME}
       screenOptions={{
         headerShown: false,
       }}>
