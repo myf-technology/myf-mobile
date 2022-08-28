@@ -26,9 +26,6 @@ const {
   fetchCategoryListByTypeRejected,
 } = fetchCategoryListByTypeFactory;
 
-const { deleteCategoryByIdFulfilled, deleteCategoryByIdRejected } =
-  deleteCategoryByIdFactory;
-
 export const reducers = {
   ...bottomSheetReducerFactory,
 };
@@ -54,8 +51,15 @@ export const extraReducers = (
   );
 
   builder.addCase(
-    deleteCategoryByIdAsync.fulfilled,
-    deleteCategoryByIdFulfilled,
+    deleteCategoryByIdAsync.pending,
+    deleteCategoryByIdFactory.pending,
   );
-  builder.addCase(deleteCategoryByIdAsync.rejected, deleteCategoryByIdRejected);
+  builder.addCase(
+    deleteCategoryByIdAsync.fulfilled,
+    deleteCategoryByIdFactory.fulfilled,
+  );
+  builder.addCase(
+    deleteCategoryByIdAsync.rejected,
+    deleteCategoryByIdFactory.rejected,
+  );
 };

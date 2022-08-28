@@ -5,8 +5,6 @@ import { Colors } from '../../../../constants';
 import { closeWarningProps } from '../../types';
 
 export const CloseWarning = ({ onPress }: closeWarningProps) => {
-  console.log('oi');
-
   return (
     <View>
       <TouchableOpacity onPress={onPress}>
