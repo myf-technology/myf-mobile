@@ -6,9 +6,9 @@ import styles from './styles';
 import { Alert, View } from 'react-native';
 import { Layout } from '../../../components';
 import { Colors } from '../../../constants';
-// import { useSelector } from 'react-redux';
 import { KeyConfirm } from '../../../components/KeyConfirm';
 import { PathLink } from '../../../components/PathLink';
+import { useSelector } from 'react-redux';
 // import { Store } from '../../../store/types';
 // import {
 //   resendTokenService,
@@ -18,6 +18,9 @@ import { PathLink } from '../../../components/PathLink';
 // import { PUBLIC } from '../../../navigation/Public/constants';
 
 export const VerifyEmail = () => {
+  const register = useSelector(state => state.register);
+
+  console.log(register);
   // const { email } = useSelector(({ user }: Store) => user);
 
   const [digitOne, setDigitOne] = useState('');

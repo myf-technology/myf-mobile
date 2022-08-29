@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { TouchableOpacity, View, SafeAreaView } from 'react-native';
 import { width, height } from '../../../../constants';
 import styles from './styles';

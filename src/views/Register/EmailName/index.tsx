@@ -2,12 +2,13 @@
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { Icon, Input } from '../../../components';
-// import {useDispatch} from 'react-redux';
 import { Layout } from '../../../components/Layout';
 import { Spacer } from '../../../components/Spacer';
 import { Colors, width } from '../../../constants';
 import { PUBLIC } from '../../../navigation/Public/constants';
+import { storeEmailName } from '../store/slice';
 // import {PUBLIC} from '../../../navigation/Public/constants';
 // import {storeEmailAction} from '../../../store/reducers/user/actions';
 // import {USER_REGISTER} from '../../../store/reducers/user/constants';
@@ -15,17 +16,19 @@ import { PUBLIC } from '../../../navigation/Public/constants';
 export const NameEmail = () => {
   const [loading, setLoading] = useState(false);
   const [flip, setFlip] = useState(false);
-  const [value, setValue] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const { navigate } = useNavigation();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  console.log(name, email);
 
   const onArrowPress = () => {
     setLoading(true);
     // dispatch({
     //   type: USER_REGISTER.FULL_NAME,
     //   payload: {
-    //     fullName: value,
+    //     fullName: name,
     //   },
     // });
     setFlip(true);
@@ -34,7 +37,6 @@ export const NameEmail = () => {
 
   const onSendEmail = () => {
     setLoading(true);
-    // dispatch(storeEmailAction({email}));
     // navigate(PUBLIC.PASSWORD as never);
     setEmail('');
     setLoading(false);
@@ -46,6 +48,7 @@ export const NameEmail = () => {
   };
   const onEmailChossen = () => {
     navigate(PUBLIC.CREATEPASSWORD as never);
+    dispatch(storeEmailName({ name, email }));
   };
 
   const onName = () => (
@@ -68,20 +71,19 @@ export const NameEmail = () => {
       <Spacer amount={25} />
       {!flip ? (
         <Input
-          suffixIcon={value ? onName : null}
+          suffixIcon={name ? onName : null}
           placeholderTextColor={Colors.grey}
           onArrowPress={onArrowPress}
-          onChangeText={setValue}
+          onChangeText={setName}
           placeholder="Nome..."
           loading={loading}
-          value={value}
+          value={name}
           fontSize={20}
         />
       ) : (
         <Input
           suffixIcon={email.match('@') ? onEmail : null}
           placeholderTextColor={Colors.grey}
-          onArrowPress={onSendEmail}
           onChangeText={setEmail}
           placeholder="Email..."
           loading={loading}

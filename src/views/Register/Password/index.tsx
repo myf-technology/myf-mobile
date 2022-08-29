@@ -7,7 +7,8 @@ import { Spacer } from '../../../components/Spacer';
 import { TouchableOpacity } from 'react-native';
 import { PUBLIC } from '../../../navigation/Public/constants';
 // import { Alert, View } from 'react-native';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { storePassword } from '../store/slice';
 // import { PUBLIC } from '../../../navigation/Public/constants';
 // import { createUserService } from '../../../services/register-service/registerUser';
 // import { USER_REGISTER } from '../../../store/reducers/user/constants';
@@ -19,8 +20,7 @@ export const Password = () => {
   const [password, setPassword] = useState('');
   const [flip, setFlip] = useState(false);
   const { navigate } = useNavigation();
-  // const dispatch = useDispatch();
-  // const userData = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
 
   // const onSendEmail = async () => {
   //   setLoading(true);
@@ -83,14 +83,15 @@ export const Password = () => {
     setLoading(false);
   };
 
-  const onEye = () => (
+  const onPassword = () => (
     <TouchableOpacity
       onPress={onPasswordSet}
       style={{ right: width(7), position: 'absolute' }}>
-      <Icon name="ArrowBack" />
+      <Icon name="ArrowForward" />
     </TouchableOpacity>
   );
   const onPasswordCheckSet = () => {
+    dispatch(storePassword({ password: passwordCheck }));
     setLoading(true);
     // setFlip(true);
     navigate(PUBLIC.VERIFY as never);
@@ -113,7 +114,7 @@ export const Password = () => {
           inputSize={75}
           eyeIcon={password.length >= 4 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          suffixIcon={password.length >= 4 ? onEye : null}
+          suffixIcon={password.length >= 4 ? onPassword : null}
           placeholder="Senha, crie uma."
           placeholderTextColor={Colors.grey}
           passwordMode={password ? showPassword : false}

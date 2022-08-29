@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { paddingHorizontal } from '../../../../constants';
+import { paddingHorizontal, width } from '../../../../constants';
 
 export default StyleSheet.create({
   layoutContainer: {
-    flex: 1,
-    padding: paddingHorizontal,
+    // backgroundColor: 'rgba(20, 0, 50, 0.9)',
     backgroundColor: 'black',
+    padding: paddingHorizontal,
+    flex: 1,
+    // width: width(90),
+    // alignSelf: 'center',
   },
 });
