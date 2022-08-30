@@ -2,7 +2,7 @@ import { TouchableOpacity, View, SafeAreaView } from 'react-native';
 import { width, height } from '../../../../constants';
 import styles from './styles';
 
-import { Icon } from '../../../Icon';
+import { Icon } from 'react-native-eva-icons';
 import { ILayoutProps } from './types';
 
 export const Layout = ({
@@ -18,7 +18,7 @@ export const Layout = ({
         <TouchableOpacity
           style={{
             height: 25,
-            width: width(90),
+            width: width(100),
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}
@@ -28,9 +28,9 @@ export const Layout = ({
           }}>
           <Icon
             // TODO: add back arrow icon
-            name="ArrowForward"
-            height={height(2)}
-            width={width(2.4)}
+            name="arrow-ios-back-outline"
+            height={height(5)}
+            width={width(10)}
             style={{ justifyContent: 'center' }}
             fill="yellow"
           />

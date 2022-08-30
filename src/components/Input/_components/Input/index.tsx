@@ -26,14 +26,14 @@ export const Input = forwardRef(
     };
 
     return (
-      <View>
+      <>
         <View style={styles.inputContainer}>
           <MaskInput
             ref={ref}
             style={inputStyles()}
             value=""
             numberOfLines={1}
-            placeholderTextColor={Colors.white}
+            placeholderTextColor={Colors.grey}
             secureTextEntry={eyeIconVisibility}
             mask={mask}
             autoFocus
@@ -68,7 +68,7 @@ export const Input = forwardRef(
             </Text>
           </>
         ) : null}
-      </View>
+      </>
     );
   },
 );

@@ -1,14 +1,16 @@
 import { StyleSheet } from 'react-native';
 
-import { Colors, TypographySizeMap } from '../../../../constants';
+import { Colors, height, TypographySizeMap } from '../../../../constants';
 
 export const inputStyles = () => {
   // const isErrorState = textColor === 'red';
 
   return StyleSheet.create({
     input: {
-      color: Colors.white,
+      color: Colors.yellow,
       fontSize: TypographySizeMap.footnote,
+      height: height(3),
+      paddingVertical: 0,
       flex: 1,
     },
   }).input;
