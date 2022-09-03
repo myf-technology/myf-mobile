@@ -12,7 +12,14 @@ import { Icon } from 'react-native-eva-icons';
 
 export const Input = forwardRef(
   (
-    { mask, errorMessage, passwordMode, suffixIcon, ...rest }: IInputProps,
+    {
+      mask,
+      errorMessage,
+      passwordMode,
+      inputSize = 40,
+      suffixIcon,
+      ...rest
+    }: IInputProps,
     ref: Ref<TextInput>,
   ) => {
     const [eyeIconVisibility, setEyeIconVisibility] = useState(false);
@@ -30,7 +37,14 @@ export const Input = forwardRef(
         <View style={styles.inputContainer}>
           <MaskInput
             ref={ref}
-            style={inputStyles()}
+            style={
+              (inputStyles(),
+              {
+                ...styles.inputContainer,
+                width: width(inputSize),
+                color: 'white',
+              })
+            }
             value=""
             numberOfLines={1}
             placeholderTextColor={Colors.grey}
@@ -43,6 +57,7 @@ export const Input = forwardRef(
           {passwordMode &&
             (eyeIconVisibility ? (
               <Icon
+                style={{ marginRight: width(5) }}
                 fill="white"
                 onPress={toggleVisibility}
                 name="eye"
@@ -51,6 +66,7 @@ export const Input = forwardRef(
               />
             ) : (
               <Icon
+                style={{ marginRight: width(5) }}
                 width={width(10)}
                 height={width(6)}
                 fill="white"

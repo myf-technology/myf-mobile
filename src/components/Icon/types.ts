@@ -13,9 +13,11 @@ export interface IIconProps extends ISvgIconProps {
 
 export enum IIconName {
   ArrowForward = 'ArrowForward',
+  ArrowBack = 'ArrowBack',
+  MyF = 'MyF',
 }
 
-export type IIconNameProp = 'ArrowForward';
+export type IIconNameProp = 'ArrowForward' | 'ArrowBack' | 'MyF';
 
 export type IElement =
   | string

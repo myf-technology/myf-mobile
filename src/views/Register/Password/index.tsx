@@ -1,8 +1,11 @@
-// import { useNavigation } from '@react-navigation/native';
+/* eslint-disable react-native/no-inline-styles */
+import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import { Input, Layout, Text } from '../../../components';
-import { Colors } from '../../../constants';
+import { Icon, Input, Layout, Text } from '../../../components';
+import { Colors, width } from '../../../constants';
 import { Spacer } from '../../../components/Spacer';
+import { TouchableOpacity } from 'react-native';
+import { PUBLIC } from '../../../navigation/Public/constants';
 // import { Alert, View } from 'react-native';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { PUBLIC } from '../../../navigation/Public/constants';
@@ -15,15 +18,9 @@ export const Password = () => {
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
   const [flip, setFlip] = useState(false);
-  // const { navigate } = useNavigation();
+  const { navigate } = useNavigation();
   // const dispatch = useDispatch();
   // const userData = useSelector((state: any) => state.user);
-
-  const onArrowPress = () => {
-    setLoading(true);
-    setFlip(true);
-    setLoading(false);
-  };
 
   // const onSendEmail = async () => {
   //   setLoading(true);
@@ -80,19 +77,46 @@ export const Password = () => {
   // }
   // };
 
+  const onPasswordSet = () => {
+    setLoading(true);
+    setFlip(true);
+    setLoading(false);
+  };
+
+  const onEye = () => (
+    <TouchableOpacity
+      onPress={onPasswordSet}
+      style={{ right: width(7), position: 'absolute' }}>
+      <Icon name="ArrowBack" />
+    </TouchableOpacity>
+  );
+  const onPasswordCheckSet = () => {
+    setLoading(true);
+    // setFlip(true);
+    navigate(PUBLIC.VERIFY as never);
+    setLoading(false);
+  };
+
+  const onPasswordCheck = () => (
+    <TouchableOpacity
+      onPress={onPasswordCheckSet}
+      style={{ right: width(7), position: 'absolute' }}>
+      <Icon name="ArrowForward" />
+    </TouchableOpacity>
+  );
+
   return (
     <Layout>
       <Spacer amount={25} />
       {!flip ? (
         <Input
-          arrowPosition={40}
-          eyeIcon={password.length >= 1 ? (loading ? false : true) : false}
+          inputSize={75}
+          eyeIcon={password.length >= 4 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
-          arrowGo={password.length >= 4 ? true : false}
+          suffixIcon={password.length >= 4 ? onEye : null}
           placeholder="Senha, crie uma."
-          placeholderTextColor={Colors.grey2}
-          passwordMode={showPassword}
-          onArrowPress={onArrowPress}
+          placeholderTextColor={Colors.grey}
+          passwordMode={password ? showPassword : false}
           onChangeText={setPassword}
           loading={loading}
           value={password}
@@ -100,10 +124,10 @@ export const Password = () => {
         />
       ) : (
         <Input
-          arrowPosition={40}
           eyeIcon={passwordCheck.length >= 1 ? (loading ? false : true) : false}
           toggleVisibility={() => setShowPassword(!showPassword)}
           arrowGo={passwordCheck.length >= 1 ? true : false}
+          suffixIcon={passwordCheck.length >= 4 ? onPasswordCheck : null}
           placeholderTextColor={Colors.grey}
           placeholder="Sua senha, repita."
           onChangeText={setPasswordCheck}
@@ -112,6 +136,7 @@ export const Password = () => {
           value={passwordCheck}
           loading={loading}
           fontSize={20}
+          inputSize={75}
         />
       )}
     </Layout>

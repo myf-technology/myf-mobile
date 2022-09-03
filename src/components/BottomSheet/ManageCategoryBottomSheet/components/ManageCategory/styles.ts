@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { width } from '../../constants';
+import { width } from '../../../../../constants';
 
 export default StyleSheet.create({
   view: {
@@ -8,13 +8,18 @@ export default StyleSheet.create({
     backgroundColor: 'grey',
     marginTop: width(100),
   },
+  titleContainer: {
+    alignSelf: 'center',
+  },
   modalView: {
     height: width(200),
     width: width(90),
     alignSelf: 'center',
   },
-  backgroundStyle: { backgroundColor: 'black' },
-  handleStyle: { backgroundColor: 'white', borderRadius: 10 },
+  radioContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   input: {
     color: 'black',
     fontSize: 20,

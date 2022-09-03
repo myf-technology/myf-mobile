@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { verifyEmailAsync } from './store/reducers/verifyEmail';
 import { IStore } from '../../store/types';
 import { loginAsync } from './store/reducers/login';
+import { useNavigation } from '@react-navigation/native';
+import { NAVIGATORS } from '../../navigation/constants';
 
 export const Login = () => {
   const [stage, setStage] = useState<'EMAIL' | 'PASSWORD'>('EMAIL');
@@ -18,6 +20,7 @@ export const Login = () => {
     password: '',
   });
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
   const selector = useSelector((store: IStore) => store.login);
 
@@ -48,6 +51,7 @@ export const Login = () => {
     }
 
     dispatch(loginAsync({ email: form.email, password: form.password }) as any);
+    navigate(NAVIGATORS.PRIVATE as never);
   };
 
   const onPress = () => 'esqueci a senha';
@@ -55,24 +59,27 @@ export const Login = () => {
   return (
     <Layout style={styles.loginContainer}>
       <Spacer amount={1} />
-      <Input
-        suffixIcon={() => (
-          <Icon
-            name="arrow-forward-outline"
-            width={25}
-            height={25}
-            fill="white"
-            onPress={handleNextStep}
-          />
-        )}
-        placeholder={
-          isEmailStage
-            ? placeholderValue.PLACEHOLDER_EMAIL
-            : placeholderValue.PLACEHOLDER_PASSWORD
-        }
-        onChangeText={handleChangeText}
-        value={isEmailStage ? form.email : form.password}
-      />
+      <View style={styles.inputContainer}>
+        <Input
+          secureTextEntry={!isEmailStage ? true : false}
+          suffixIcon={() => (
+            <Icon
+              name="arrow-forward-outline"
+              width={25}
+              height={25}
+              fill="white"
+              onPress={handleNextStep}
+            />
+          )}
+          placeholder={
+            isEmailStage
+              ? placeholderValue.PLACEHOLDER_EMAIL
+              : placeholderValue.PLACEHOLDER_PASSWORD
+          }
+          onChangeText={handleChangeText}
+          value={isEmailStage ? form.email : form.password}
+        />
+      </View>
       <Text color="red">{selector.controls.message}</Text>
       <View style={styles.linksContainer}>
         {!isEmailStage && (

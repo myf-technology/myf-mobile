@@ -1,14 +1,16 @@
+import { BalanceType } from '../../../../types/balanceType';
+
 export interface ICategoryItem {
+  autoInsert: boolean;
+  balanceType: 'INCOME' | 'EXPENSE';
+  createdAt: Date;
+  deletedAt: Date;
+  description: string;
+  id: string;
   name: string;
   projectedAmount: string;
-  averageAmount: string;
-  description: string;
-  autoInsert: string;
-  averageDate: string;
-  balanceType: string;
-  createdAt: string;
   updatedAt: string;
-  deletedAt: string;
+  userId: string;
 }
 
 export interface IBottomSheetState {
@@ -17,9 +19,19 @@ export interface IBottomSheetState {
     status: null | 'fulfilled' | 'loading' | 'rejected';
     visible: boolean;
     message: null | string;
+    balanceType: null | BalanceType;
   };
 }
 
 export interface IBottomSheetControlPayload {
   visible: boolean;
+}
+
+export interface IFetchCategoryListByTypePayload {
+  balanceType: null | BalanceType;
+}
+
+export interface IFetchCategoryListByTypeFulfilledPayload {
+  data: ICategoryItem[];
+  balanceType: BalanceType;
 }

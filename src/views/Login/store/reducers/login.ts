@@ -1,6 +1,7 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { ILoginServiceProps, loginService } from '../../service/loginService';
 import { ILoginState } from './types';
+import asyncStorage from '@react-native-async-storage/async-storage';
 
 export const loginAsync = createAsyncThunk(
   'login/loginAsync',
@@ -8,7 +9,7 @@ export const loginAsync = createAsyncThunk(
     try {
       const res = await loginService(loginData);
 
-      console.log(res.data);
+      asyncStorage.setItem('@bearer_token', res.data.data.token);
 
       return res.data;
     } catch (error) {

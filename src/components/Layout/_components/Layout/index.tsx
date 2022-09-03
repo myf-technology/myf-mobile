@@ -4,13 +4,14 @@ import styles from './styles';
 
 import { Icon } from 'react-native-eva-icons';
 import { ILayoutProps } from './types';
+import { useNavigation } from '@react-navigation/native';
 
 export const Layout = ({
   children,
   style,
   customArrowBackHandler,
 }: ILayoutProps) => {
-  // const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   return (
     <SafeAreaView style={[styles.layoutContainer, style]}>
@@ -24,13 +25,12 @@ export const Layout = ({
           }}
           onPress={async () => {
             customArrowBackHandler && (await customArrowBackHandler());
-            // goBack();
+            goBack();
           }}>
           <Icon
-            // TODO: add back arrow icon
-            name="arrow-ios-back-outline"
-            height={height(5)}
-            width={width(10)}
+            name="arrow-back"
+            height={height(2)}
+            width={width(2.4)}
             style={{ justifyContent: 'center' }}
             fill="yellow"
           />

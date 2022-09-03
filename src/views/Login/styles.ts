@@ -4,7 +4,9 @@ export const styles = StyleSheet.create({
   loginContainer: {
     justifyContent: 'space-between',
     alignItems: 'center',
-    flex: 1,
+  },
+  inputContainer: {
+    width: '100%',
   },
   linksContainer: {
     flexDirection: 'row',

@@ -4,20 +4,18 @@ import { Icon } from 'react-native-eva-icons';
 import { Input, Spacer, Text } from '../../../../components';
 import { formData, IFormData } from './_helpers/initialFormData';
 import { ICategoryProps } from './types';
-import { useDispatch } from 'react-redux';
+import { useAsyncDispatch } from '../../../../hooks/useAsyncDispatch';
 
 import styles from './styles';
-import { bottomSheetControl } from '../../../../components/BottomSheet/CategoryListBottomSheet/store/slice';
+import { fetchCategoryListByTypeAsync } from '../../../../components/BottomSheet/CategoryListBottomSheet';
 
 export const CreateBalanceForm = ({
-  categoryType = 'income',
+  balanceType = 'INCOME',
 }: ICategoryProps) => {
-  const isIncome = categoryType === 'income';
-  const [form, setForm] = useState<IFormData[]>([]);
-  const dispatch = useDispatch();
+  const isIncome = balanceType === 'INCOME';
 
-  const openModal = () => dispatch(bottomSheetControl({ visible: true }));
-  const closeModal = () => dispatch(bottomSheetControl({ visible: false }));
+  const [form, setForm] = useState<IFormData[]>([]);
+  const dispatch = useAsyncDispatch();
 
   const updateForm = (index: number, value: string) => {
     const newForm = [...form];
@@ -37,7 +35,7 @@ export const CreateBalanceForm = ({
   };
 
   const onPress = () => {
-    openModal();
+    dispatch(fetchCategoryListByTypeAsync({ balanceType }));
   };
 
   // const onItemPress = ({ value }: ICategoryData) => {
@@ -58,7 +56,7 @@ export const CreateBalanceForm = ({
     <>
       <View>
         <Icon
-          onPress={onPress}
+          {...{ onPress }}
           name="plus-circle-outline"
           fill={isIncome ? 'green' : 'red'}
           height={30}
