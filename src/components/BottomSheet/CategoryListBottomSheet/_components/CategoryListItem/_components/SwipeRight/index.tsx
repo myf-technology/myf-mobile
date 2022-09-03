@@ -3,6 +3,7 @@ import { Icon } from 'react-native-eva-icons';
 import { RectButton } from 'react-native-gesture-handler';
 import { Colors } from '../../../../../../../constants';
 import { useAsyncDispatch } from '../../../../../../../hooks/useAsyncDispatch';
+import { getCategoryById } from '../../../../../ManageCategoryBottomSheet';
 import { deleteCategoryByIdAsync } from '../../../../store/reducers/deleteCategoryById';
 import styles from './styles';
 import { ISwipeRightProps } from './types';
@@ -10,7 +11,10 @@ import { ISwipeRightProps } from './types';
 export const SwipeRight = ({ id }: ISwipeRightProps) => {
   const dispatch = useAsyncDispatch();
 
-  const onEdit = () => {};
+  const onEdit = () => {
+    dispatch(getCategoryById({ categoryId: id }));
+  };
+
   const onDelete = () => {
     dispatch(deleteCategoryByIdAsync(id));
   };

@@ -1,3 +1,4 @@
+import { Dashboard } from '../../views/Dashboard';
 import { Home } from '../../views/Home';
 import { Login } from '../../views/Login';
 import { NameEmail } from '../../views/Register/EmailName';
@@ -6,6 +7,10 @@ import { VerifyEmail } from '../../views/Register/VerifyEmail';
 import { PUBLIC } from './constants';
 
 export default [
+  {
+    component: Dashboard,
+    name: 'dev',
+  },
   {
     component: Home,
     name: PUBLIC.HOME,

@@ -6,6 +6,7 @@ import {
   CreateCategoryError,
   CategoryListEmpty,
   CategoryListLoading,
+  CreateNewCategoryItem,
 } from './_components/';
 
 import styles from './styles';
@@ -35,6 +36,7 @@ export const CategoryListItems = () => {
           <CategoryListItem {...{ categoryItem }} />
         </View>
       ))}
+      <CreateNewCategoryItem />
     </View>
   );
 };

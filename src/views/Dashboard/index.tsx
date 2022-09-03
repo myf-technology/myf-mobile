@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import { Spacer } from '../../components';
 import { CategoryListBottomSheet } from '../../components/BottomSheet/CategoryListBottomSheet';
+import { ManageCategoryBottomSheet } from '../../components/BottomSheet/ManageCategoryBottomSheet';
 import { Warning } from '../../components/Warning';
 
 import styles from './styles';
 import { CreateBalanceForm, Header } from './_components';
 
 export const Dashboard = () => {
-  const [warging, setWarning] = useState(true);
+  const [warging, setWarning] = useState(false);
   return (
     <>
       {warging ? (
@@ -23,6 +24,7 @@ export const Dashboard = () => {
         </View>
       </SafeAreaView>
       <CategoryListBottomSheet />
+      <ManageCategoryBottomSheet />
     </>
   );
 };
