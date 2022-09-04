@@ -11,6 +11,7 @@ export const inputStyles = () => {
       fontSize: TypographySizeMap.footnote,
       height: height(3),
       paddingVertical: 0,
+      flex: 1,
     },
   }).input;
 };
@@ -18,6 +19,6 @@ export const inputStyles = () => {
 export const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
