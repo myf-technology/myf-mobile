@@ -1,10 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
+import moment from 'moment';
 import { View } from 'react-native';
 import { Icon } from 'react-native-eva-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Input, Layout, Spacer, Text } from '../../components';
 import { Colors, width } from '../../constants';
 import styles from './styles';
+import { BalanceInself } from './_component/BalanceInself';
 import { FilterIcons } from './_component/FilterIcons';
 import { Item } from './_component/Item';
 import { Filters } from './_helpers/Filters';
@@ -31,7 +33,9 @@ export const BalanceManager = () => {
   return (
     <Layout pageTitle="Balance Managements">
       <ScrollView>
-        <Spacer amount={8} />
+        <Spacer amount={2} />
+        <BalanceInself freeAmount={123.0} received={3000.0} expenses={123.0} />
+        <Spacer amount={2} />
         <View style={{ alignSelf: 'center' }}>
           <Input
             suffixIcon={search}
@@ -56,22 +60,32 @@ export const BalanceManager = () => {
             width: width(90),
             alignSelf: 'center',
           }}>
-          <Text color="yellow2">Agosto 2022</Text>
-
-          {Items.map(
-            ({ iconIndicator, categoryName, balanceAmount, eventDate }) => (
-              <View>
-                <Spacer amount={2} />
-
-                <Item
-                  iconIndicator={iconIndicator}
-                  categoryName={categoryName}
-                  balanceAmount={balanceAmount}
-                  eventDate={eventDate < 10 ? `0${eventDate}` : eventDate}
-                />
-              </View>
-            ),
-          )}
+          {Items.map((balanceList, index) => (
+            <View>
+              <Text>
+                {moment(balanceList.balanceMonth).format('MMMM-YYYY')}
+              </Text>
+              {balanceList.data.map(
+                ({
+                  name,
+                  amount,
+                  balanceDay,
+                  balanceType,
+                  description,
+                  balanceId,
+                }) => (
+                  <Item
+                    name={name}
+                    amount={amount}
+                    balanceDay={balanceDay}
+                    balanceType={balanceType}
+                    description={description}
+                    key={balanceId}
+                  />
+                ),
+              )}
+            </View>
+          ))}
         </View>
       </ScrollView>
     </Layout>

@@ -1,33 +1,189 @@
-/* eslint-disable no-sparse-arrays */
-export const Items: {
-  iconIndicator: 'trending-down-outline' | 'trending-up-outline';
-  categoryName: string;
-  balanceAmount: number;
-  eventDate: number;
-}[] = [
+import { BalanceListProps } from '../types';
+
+export const Items: BalanceListProps[] = [
   {
-    iconIndicator: 'trending-down-outline',
-    categoryName: 'Compras Atacadão',
-    balanceAmount: 823.42,
-    eventDate: 2,
+    balanceMonth: new Date('2022-08-22T19:25:19.110Z'),
+    data: [
+      {
+        name: 'Dividendos MXRF',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Salário CocaCola',
+        description: 'string1',
+        amount: 4296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Internet Movel',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Restituição IR',
+        description: 'string1',
+        amount: 0.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+    ],
   },
   {
-    iconIndicator: 'trending-up-outline',
-    categoryName: 'Alugueis Apto',
-    balanceAmount: 2650.0,
-    eventDate: 9,
+    balanceMonth: new Date('2022-08-22T19:25:19.110Z'),
+    data: [
+      {
+        name: 'Dividendos MXRF',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Salário CocaCola',
+        description: 'string1',
+        amount: 4296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Internet Movel',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Restituição IR',
+        description: 'string1',
+        amount: 0.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+    ],
   },
   {
-    iconIndicator: 'trending-down-outline',
-    categoryName: 'Internet Fixa StarLink',
-    balanceAmount: 500,
-    eventDate: 13,
+    balanceMonth: new Date('2022-08-22T19:25:19.110Z'),
+    data: [
+      {
+        name: 'Dividendos MXRF',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Salário CocaCola',
+        description: 'string1',
+        amount: 4296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Internet Movel',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Restituição IR',
+        description: 'string1',
+        amount: 0.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+    ],
   },
   {
-    iconIndicator: 'trending-up-outline',
-    categoryName: 'Dividendos MXRF',
-    balanceAmount: 296.88,
-    eventDate: 22,
+    balanceMonth: new Date('2022-08-22T19:25:19.110Z'),
+    data: [
+      {
+        name: 'Dividendos MXRF',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Salário CocaCola',
+        description: 'string1',
+        amount: 4296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Internet Movel',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Restituição IR',
+        description: 'string1',
+        amount: 0.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+    ],
   },
-  ,
+  {
+    balanceMonth: new Date('2022-08-22T19:25:19.110Z'),
+    data: [
+      {
+        name: 'Dividendos MXRF',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Salário CocaCola',
+        description: 'string1',
+        amount: 4296.88,
+        balanceId: 'string2',
+        balanceType: 'INCOME',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Internet Movel',
+        description: 'string1',
+        amount: 296.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+      {
+        name: 'Restituição IR',
+        description: 'string1',
+        amount: 0.88,
+        balanceId: 'string2',
+        balanceType: 'EXPENSE',
+        balanceDay: new Date('2022-08-22T19:25:19.110Z'),
+      },
+    ],
+  },
 ];

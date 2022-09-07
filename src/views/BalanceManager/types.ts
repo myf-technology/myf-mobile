@@ -5,8 +5,31 @@ export interface FilterIconsProps {
 }
 
 export interface ItemsProps {
-  iconIndicator?: 'trending-down-outline' | 'trending-up-outline';
-  categoryName?: string;
-  balanceAmount?: number;
-  eventDate?: number;
+  name?: string;
+  description?: string;
+  amount: number;
+  balanceId?: string;
+  balanceType: 'EXPENSE' | 'INCOME';
+  balanceDay: Date;
+}
+
+export interface UnitBalanceProps {
+  name: string;
+  description: string;
+  amount: number;
+  balanceId: string;
+  balanceType: 'EXPENSE' | 'INCOME';
+  balanceDay: Date;
+}
+
+export interface BalanceListProps {
+  balanceMonth: Date;
+  data: UnitBalanceProps[];
+}
+
+export interface BalanceInselfProps {
+  date: Date;
+  received: number;
+  freeAmount: number;
+  expenses: number;
 }

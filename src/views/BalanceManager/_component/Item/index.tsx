@@ -1,16 +1,19 @@
 /* eslint-disable react-native/no-inline-styles */
+import moment from 'moment';
 import { View } from 'react-native';
 import { Icon } from 'react-native-eva-icons';
-import { Spacer, Text } from '../../../../components';
+import { Text } from '../../../../components';
 import { Colors, width } from '../../../../constants';
 import { decimalToBRLCurrency } from '../../../../utils/functions/DecimalToBrlCurrency';
 import { ItemsProps } from '../../types';
 
 export const Item = ({
-  iconIndicator = 'trending-down-outline',
-  categoryName,
-  balanceAmount,
-  eventDate = 0,
+  name,
+  description,
+  amount,
+  // balanceId,
+  balanceType,
+  balanceDay,
 }: ItemsProps) => {
   return (
     <View
@@ -26,24 +29,28 @@ export const Item = ({
         style={{
           alignItems: 'center',
         }}>
-        <Text color="yellow2" typography="title">
-          {eventDate}
-        </Text>
+        <View style={{ alignItems: 'center' }}>
+          <Text color="yellow2" typography="title">
+            {moment(balanceDay).format('DD')}
+          </Text>
+          <Text color="yellow2">{moment(balanceDay).format('HH:mm')}</Text>
+        </View>
       </View>
       <View style={{ position: 'absolute', left: width(15) }}>
-        <Text>{categoryName}</Text>
-        <Text color="yellow1">R$ {decimalToBRLCurrency(balanceAmount)}</Text>
+        <Text>{name}</Text>
+        <Text>{description}</Text>
+        <Text color="yellow1">R$ {decimalToBRLCurrency(amount)}</Text>
       </View>
       <View style={{ position: 'absolute', right: width(0.1) }}>
         <Icon
-          name={iconIndicator}
+          name={
+            balanceType === 'EXPENSE'
+              ? 'trending-down-outline'
+              : 'trending-up-outline'
+          }
           width={25}
           height={25}
-          fill={
-            iconIndicator === 'trending-down-outline'
-              ? Colors.red
-              : Colors.green
-          }
+          fill={balanceType === 'EXPENSE' ? Colors.red : Colors.green}
         />
       </View>
       <View />
