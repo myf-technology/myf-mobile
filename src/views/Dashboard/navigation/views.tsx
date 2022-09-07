@@ -1,6 +1,6 @@
 import { DASHBOARD } from './constants';
 
-import { Dashboard } from '..';
+import { Dashboard } from '../index.tsx.old';
 import { Icon } from '../../../components';
 // import { Statement } from '../../../views/Statement';
 
