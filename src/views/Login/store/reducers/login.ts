@@ -8,8 +8,10 @@ export const loginAsync = createAsyncThunk(
   async (loginData: ILoginServiceProps, { rejectWithValue }) => {
     try {
       const res = await loginService(loginData);
+      const { token } = res.data.data;
+      const bearerToken = token.split(' ')[1];
 
-      asyncStorage.setItem('@bearer_token', res.data.data.token);
+      asyncStorage.setItem('@bearer_token', bearerToken);
 
       return res.data;
     } catch (error) {
