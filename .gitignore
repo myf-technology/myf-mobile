@@ -64,3 +64,4 @@ buck-out/
 /ios/Podfile.lock
 
 .history
+coverage/
