@@ -10,6 +10,7 @@ import { CreateBalanceForm, Header } from './_components';
 
 export const Dashboard = () => {
   const [warging, setWarning] = useState(false);
+
   return (
     <>
       {warging ? (
