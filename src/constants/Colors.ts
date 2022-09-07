@@ -6,12 +6,14 @@ export enum Colors {
   yellow2 = '#655502',
   green = '#4BAA00',
   red = '#FF0000',
+  purple = 'rgba(112, 52, 522, 0.3)',
   black = '#000000',
 }
 
 export type ColorNames =
   | 'white'
   | 'grey'
+  | 'purple'
   | 'yellow'
   | 'yellow1'
   | 'yellow2'

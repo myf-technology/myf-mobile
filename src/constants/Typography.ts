@@ -7,7 +7,7 @@ export type TypographyLibrary =
   | 'callout'
   | 'body'
   | 'headline'
-  | 'title1'
+  | 'title'
   | 'largeTitle';
 
 export enum TypographyMap {
