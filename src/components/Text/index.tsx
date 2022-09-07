@@ -6,7 +6,7 @@ import { TextTestIds } from '../../enums';
 
 export const Text = ({
   children,
-  typography = 'caption',
+  typography = 'title1',
   color = 'white',
   ...rest
 }: ITextProps) => {

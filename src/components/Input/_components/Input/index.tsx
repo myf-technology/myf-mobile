@@ -43,6 +43,7 @@ export const Input = forwardRef(
                 ...styles.inputContainer,
                 width: width(inputSize),
                 color: 'white',
+                fontSize: width(6),
               })
             }
             value=""
