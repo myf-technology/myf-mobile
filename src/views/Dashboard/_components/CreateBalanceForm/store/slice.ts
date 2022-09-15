@@ -7,11 +7,14 @@ import {
 export const createBalance = createAsyncThunk(
   'createBalanceForm/createBalance',
   async (payload: ICreateBalanceServiceParams, { rejectWithValue }) => {
+    console.log(payload);
     try {
-      const res = await createBalanceService(payload);
+      await createBalanceService(payload);
 
-      return res.status;
+      return { message: 'Balance Enviado' };
     } catch (error) {
+      console.log(error.response.data);
+
       return rejectWithValue({ message: 'erro ao criar o balance' });
     }
   },
@@ -21,7 +24,7 @@ const createBalanceFormSlice = createSlice({
   name: 'create-balance-form',
   initialState: {
     controls: {
-      state: null as string | null,
+      status: null as string | null,
       message: null as string | null,
     },
     selectedCategory: {
@@ -36,17 +39,17 @@ const createBalanceFormSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(createBalance.fulfilled, state => {
-      state.controls = { state: 'fulfilled', message: null };
+    builder.addCase(createBalance.fulfilled, (state, action) => {
+      state.controls = { status: 'fulfilled', message: action.payload.message };
     });
 
     builder.addCase(createBalance.rejected, (state, action) => {
       const { message } = action.payload as { message: string };
-      state.controls = { state: 'rejected', message };
+      state.controls = { status: 'rejected', message };
     });
 
     builder.addCase(createBalance.pending, state => {
-      state.controls = { state: 'pending', message: null };
+      state.controls = { status: 'pending', message: null };
     });
   },
 });

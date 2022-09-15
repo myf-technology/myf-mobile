@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Spacer } from '../../components';
 import { CategoryListBottomSheet } from '../../components/BottomSheet/CategoryListBottomSheet';
 import { ManageCategoryBottomSheet } from '../../components/BottomSheet/ManageCategoryBottomSheet';
+import { Dialog } from '../../components/Dialog';
 import { Warning } from '../../components/Warning';
 
 import styles from './styles';
@@ -44,6 +45,8 @@ export const Dashboard = () => {
             selectedCategory={expenseCategory}
           />
         </View>
+        <Spacer amount={3} />
+        <Dialog />
       </SafeAreaView>
       <CategoryListBottomSheet />
       <ManageCategoryBottomSheet />
