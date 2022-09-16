@@ -5,14 +5,27 @@ import { Icon } from 'react-native-eva-icons';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Input, Layout, Spacer, Text } from '../../components';
 import { Colors, width } from '../../constants';
-import styles from './styles';
 import { BalanceInself } from './_component/BalanceInself';
 import { FilterIcons } from './_component/FilterIcons';
 import { Item } from './_component/Item';
 import { Filters } from './_helpers/Filters';
 import { Items } from './_helpers/Items';
+import styles from './styles';
+import { useSelector } from 'react-redux';
+import { useAsyncDispatch } from '../../hooks/useAsyncDispatch';
+import { useEffect } from 'react';
+import { fetchBalanceList } from './store/slice';
 
 export const BalanceManager = () => {
+  const dispatch = useAsyncDispatch();
+  const store = useSelector((state: any) => {
+    return state.balanceManager;
+  });
+
+  useEffect(() => {
+    dispatch(fetchBalanceList());
+  }, [dispatch]);
+
   const onIconPress = name => {
     console.log(name);
   };
@@ -30,11 +43,24 @@ export const BalanceManager = () => {
     />
   );
 
+  if (store.controls.state === 'rejected') {
+    return (
+      <Layout>
+        <Text>{store.controls.message}</Text>
+      </Layout>
+    );
+  }
+
   return (
     <Layout pageTitle="Balance Managements">
       <ScrollView>
         <Spacer amount={2} />
-        <BalanceInself freeAmount={123.0} received={3000.0} expenses={123.0} />
+        <BalanceInself
+          date={moment().format('MMMM-YYYY')}
+          freeAmount={123.0}
+          received={3000.0}
+          expenses={123.0}
+        />
         <Spacer amount={2} />
         <View style={{ alignSelf: 'center' }}>
           <Input
@@ -60,8 +86,8 @@ export const BalanceManager = () => {
             width: width(90),
             alignSelf: 'center',
           }}>
-          {Items.map((balanceList, index) => (
-            <View>
+          {store.balanceList.map(balanceList => (
+            <View key={balanceList.balanceListId}>
               <Text>
                 {moment(balanceList.balanceMonth).format('MMMM-YYYY')}
               </Text>
@@ -88,6 +114,13 @@ export const BalanceManager = () => {
           ))}
         </View>
       </ScrollView>
+      <Icon
+        style={{ position: 'absolute', bottom: 15, alignSelf: 'center' }}
+        name="download-outline"
+        width={40}
+        height={40}
+        fill={Colors.white}
+      />
     </Layout>
   );
 };

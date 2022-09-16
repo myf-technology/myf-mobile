@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface FilterIconsProps {
   icon?: string;
   onPress?: () => void;
@@ -19,16 +21,17 @@ export interface UnitBalanceProps {
   amount: number;
   balanceId: string;
   balanceType: 'EXPENSE' | 'INCOME';
-  balanceDay: Date;
+  balanceDay: string;
 }
 
 export interface BalanceListProps {
-  balanceMonth: Date;
+  balanceMonth: string;
   data: UnitBalanceProps[];
+  balanceListId: number;
 }
 
 export interface BalanceInselfProps {
-  date: Date;
+  date: ReactNode;
   received: number;
   freeAmount: number;
   expenses: number;

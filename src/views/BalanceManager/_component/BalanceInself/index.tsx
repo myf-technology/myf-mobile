@@ -19,9 +19,7 @@ export const BalanceInself = ({
         alignSelf: 'center',
         justifyContent: 'flex-start',
       }}>
-      <Text style={{ alignSelf: 'center' }}>
-        {moment(date).format('MMMM-YYYY')}
-      </Text>
+      <Text style={{ alignSelf: 'center' }}>{date}</Text>
       <Spacer amount={1} />
       <View
         style={{
