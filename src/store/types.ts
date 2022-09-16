@@ -6,4 +6,6 @@ export interface IStore {
   bottomSheet: IBottomSheetState;
   manageCategoryBottomSheet: IManageCategoryBottomSheetState;
   login: ILoginState;
+  createBalance: any;
+  dialog: any;
 }

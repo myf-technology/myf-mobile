@@ -29,7 +29,7 @@ export const Button = ({
           {title}
         </Text>
 
-        {suffixIcon && <View style={styles.suffixIcon}>suffixIcon()</View>}
+        {suffixIcon && <View style={styles.suffixIcon}>{suffixIcon()}</View>}
       </View>
     </RectButton>
   );
